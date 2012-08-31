@@ -1,0 +1,30 @@
+include jade/index
+
++page('Stylobate')._index
+
+  header.section.text
+    h1 Stylobate
+
+  section.section.text
+    :markdown
+      Nothing there. Yet.
+
+      It's just some basic HTML (actually, Jade) with basic CSS (actually, Stylus) I use for my projects.
+
+      Maybe someday I'll rework it so someone else could use it, however right now it's in rough unfinished dirty blah blah blah state, so while you can use it, it would be on your own risk etc. :)
+
+  footer.section
+    p.fork
+      +link("https://github.com/kizu/stylobate") Fork me on GitHub!
+
+    p.copy
+      +link("http://kizu.ru/en/")._text._wrapper
+        = "© "
+        +e.inner Roman Komarov
+        = "."
+
+      = " "
+      +link("https://twitter.com/kizmarh")._wrapper
+        +icon(src="http://favicon.yandex.net/favicon/twitter.com", title="Twitter")
+        +e.inner Follow me on twitter
+        = "!"

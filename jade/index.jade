@@ -1,0 +1,24 @@
+include bemto/bemto
+
+// Move to mixins.jade
+
+mixin link(url)
+  +b('span').link(attributes, href=url)
+    block
+
+mixin icon
+  +b('span').ico(attributes)
+    block
+
+mixin page(title)
+  +b('html').page(attributes)
+    head
+      meta(charset="utf-8")
+      meta(name="viewport", content="width=device-width")
+      meta(http-equiv="X-UA-Compatible", content="IE=EmulateIE7,IE=edge")
+      link(rel="stylesheet", href="s/style.css")
+      title= title
+    body
+      block
+
+      // add conditional metrika here
