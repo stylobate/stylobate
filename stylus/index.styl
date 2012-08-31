@@ -1,0 +1,182 @@
+@import 'nib'
+@import 'if-ie_styl/if-ie.styl'
+
+// Move to somewhere
+/*_*/
+
+/* Layout etc. */
+html
+  height: 100%
+  padding: 0
+  margin: 0
+  overflow-y:scroll
+
+body
+  position: relative
+  z-index: 1
+
+  min-width: 30em
+  height: 100%
+  padding: 0 2.75em
+  margin: 0
+
+  font:100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif
+  color:#333
+  background:#FFF
+
+  text-rendering: optimizelegibility
+  -webkit-font-smoothing: subpixel-antialiased
+
+body:before,
+body:after
+  content: ""
+  display: table
+
+.section
+  position: relative
+  width: 37em
+  max-width: 100%
+  margin: 0 auto
+
+
+/* Links */
+.link
+  cursor: pointer
+  color: #0C56FF
+
+.link:hover
+  color: #F00
+
+
+/* Awfully useful wrapper link (also, all pseudo-links are made as wrappers) */
+.link_wrapper
+  display: inline-block
+
+  white-space: nowrap /* Would be a class for multiline links */
+  text-decoration: none
+
+.link_wrapper .ico
+  margin-top: -4px
+
+  vertical-align: middle
+
+
+.link__inner
+  line-height: 1.1
+
+  text-decoration: underline
+
+
+/* Pseudo-link (can be only in wrapper)  */
+.link_pseudo,
+.link_pseudo.link_wrapper .link__inner
+  text-decoration: none
+  border-bottom: 1px dotted
+
+.link_pseudo.link_wrapper
+  border-bottom: 0
+
+
+/* Text-like link */
+.link_text
+  color: inherit
+
+
+/* Copyrights block */
+.copy
+  font-size: .875em
+  line-height: 1.6em
+  color: rgba(0,0,0,.5)
+
+.copy .link_text:not(:hover)>.link__inner
+  text-decoration: none
+
+
+/* Typography */
+.text .link
+  padding: .2em 0
+
+.text p,
+.text ul,
+.text ol,
+.text dl,
+.text blockquote,
+.text hr,
+.text code,
+.text pre,
+.text table
+  padding: 0
+  margin: 0 0 1.375em
+
+.text li,
+.text li > p
+  padding: 0
+  margin: 0 0 .6875em
+
+
+.text H1,
+.text H2,
+.text H3,
+.text H4,
+.text H5,
+.text H6
+  padding: 0
+  margin: 0
+  font-weight: normal
+
+
+.text H1
+  padding:.2em 0
+
+  font-size: 3.4375em
+  line-height: 1.2em
+
+.text H2
+  margin:0 0 .55em
+
+  font-size:2.5em
+  line-height:1.1em
+
+.text H3
+  margin:0 0 .6875em
+
+  font-size:2em
+  line-height:1.375em
+
+.text H4,
+.text H5,
+.text H6
+  margin:0 0 1.1em
+
+  font-size:1.25em
+  line-height:1.1em
+
+
+/* Styles for “Fork” link */
+.fork
+  position: fixed
+  top: 0
+  left: 0
+  z-index: -1
+
+.fork > .link
+  display: block
+
+  padding: 10px 40px
+  margin: 2em 0 0 -3em
+
+  font: bold 16px/1 Helvetica, Arial, sans-serif
+  text-decoration: none
+
+  color: #FFF
+  background: #FEDBD9
+
+  transform: rotate(-45deg)
+
+  transition: background .3s
+
+.fork > .link:hover
+  background: #F40B00
+
+
+
