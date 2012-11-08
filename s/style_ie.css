@@ -1,3 +1,16 @@
+.clearfix /**/ {
+  zoom: 1;
+}
+.isle {
+  padding: 28px;
+  zoom: 1;
+}
+.isle_s {
+  padding: 14px;
+}
+.isle_l {
+  padding: 56px;
+}
 html {
   height: 100%;
   padding: 0;
@@ -36,7 +49,8 @@ body:after {
   color: #f00;
 }
 .link_wrapper {
-  display: inline-block;
+  display: inline;
+  zoom: 1;
   white-space: nowrap;
 /* Would be a class for multiline links */
   text-decoration: none;
@@ -134,16 +148,6 @@ body:after {
   text-decoration: none;
   color: #fff;
   background: #fedbd9;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  -webkit-transition: background 0.3s;
-  -moz-transition: background 0.3s;
-  -o-transition: background 0.3s;
-  -ms-transition: background 0.3s;
-  transition: background 0.3s;
 }
 .fork > .link:hover {
   background: #f40b00;

@@ -1,19 +1,24 @@
 // Clearfix
-if !ie
-  .clearfix
+.clearfix
+  if !ie
     &:before,
     &:after
       content: " "
       display: table
-else
+
+    &:after
+      clear: both
+
+if ie
   // We need `zoom:1` only on clearfix,
-  // so it won’t extend things
-  {'.clearfix /* don’t extend me */'}
+  // so it won’t extend things.
+  // Comment is there so it won't be extended.
+  {'.clearfix /**/'}
     zoom:1
 
 // Shortcut
 //   Use this insted of manually extending `.clearfix`,
-//   it would be more optimal for the file size
+//   it would be more optimal for the file size.
 clearfix()
-  zoom: 1
   @extend .clearfix
+  zoom: 1

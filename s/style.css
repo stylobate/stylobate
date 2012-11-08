@@ -1,3 +1,23 @@
+.clearfix:before,
+.isle:before,
+.clearfix:after,
+.isle:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after,
+.isle:after {
+  clear: both;
+}
+.isle {
+  padding: 28px;
+}
+.isle_s {
+  padding: 14px;
+}
+.isle_l {
+  padding: 56px;
+}
 html {
   height: 100%;
   padding: 0;
