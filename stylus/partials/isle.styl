@@ -1,0 +1,14 @@
+// Island object
+//   Use by literal classes, or by calling `isle()` or `isle: <size>`
+isle($size = $medium)
+  padding: $size
+
+.isle
+  isle: $medium
+  clearfix()
+
+  &_s
+    isle: $small
+
+  &_l
+    isle: $large
