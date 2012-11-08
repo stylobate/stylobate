@@ -4,3 +4,6 @@
 [submodule "jade/bemto"]
 	path = jade/bemto
 	url = git://github.com/kizu/bemto.git
+[submodule "stylus/utilus"]
+	path = stylus/utilus
+	url = https://github.com/kizu/utilus.styl.git
