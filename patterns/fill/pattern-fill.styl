@@ -1,6 +1,6 @@
-pattern-fill($offset = 0, $position = absolute)
-  position: $position
-  top: $offset
-  right: $offset
-  bottom: $offset
-  left: $offset
+pattern-fill($offset = 0)
+  position: absolute  unless @position
+  top: $offset        unless @top
+  right: $offset      unless @right
+  bottom: $offset     unless @bottom
+  left: $offset       unless @left
