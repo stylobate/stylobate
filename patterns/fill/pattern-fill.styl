@@ -1,5 +1,6 @@
 pattern-fill($offset = 0)
-  position: absolute  unless @position
+  // Can we safely use `@` here, or should we consider parents for the block, so it could have those stuff (and everything would break in this case?)
+  position: absolute  unless @position in (absolute fixed)
   top: $offset        unless @top
   right: $offset      unless @right
   bottom: $offset     unless @bottom
