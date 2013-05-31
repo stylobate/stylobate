@@ -1,0 +1,16 @@
+{
+  "name": "stylobate",
+  "description": "Ok, there would be a description someday",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kizu/stylobate.git"
+  },
+  "devDependencies": {
+      "stylus": "0.32.x"
+    , "mocha": "*"
+    , "should": "*"
+  },
+  "author": "Roman Komarov <kizu@kizu.ru>",
+  "engines": { "node": "*" }
+}
