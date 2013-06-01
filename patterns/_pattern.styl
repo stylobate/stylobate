@@ -4,9 +4,9 @@ remove_first($where)
     push($result, $item) if $index > 0
   return $result
 
-pattern()
+kind()
   if is_hash(arguments)
-    for $pattern in arguments
-      pattern-{$pattern[0]}(remove_first($pattern))
+    for $kind in arguments
+      kind-{$kind[0]}(remove_first($kind))
   else
-    pattern-{arguments[0]}(remove_first(arguments))
+    kind-{arguments[0]}(remove_first(arguments))
