@@ -7,11 +7,18 @@
   visibility: hidden;
 }
 .guides2 {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   visibility: hidden;
+}
+.guides3 {
   position: fixed;
+  top: 1em;
+  right: 1em;
+  bottom: 1em;
+  left: 1em;
+  visibility: hidden;
 }
