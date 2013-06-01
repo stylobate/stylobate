@@ -1,0 +1,12 @@
+remove_first($where)
+  $result = unquote('')
+  for $item, $index in $where
+    push($result, $item) if $index > 0
+  return $result
+
+pattern()
+  if is_hash(arguments)
+    for $pattern in arguments
+      pattern-{$pattern[0]}(remove_first($pattern))
+  else
+    pattern-{arguments[0]}(remove_first(arguments))
