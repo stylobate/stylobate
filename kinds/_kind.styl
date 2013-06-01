@@ -1,9 +1,3 @@
-remove_first($where)
-  $result = unquote('')
-  for $item, $index in $where
-    push($result, $item) if $index > 0
-  return $result
-
 kind()
   if is_hash(arguments)
     for $kind in arguments
