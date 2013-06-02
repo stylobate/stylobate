@@ -1,0 +1,8 @@
+kind-hidden()
+  $type = get_ident(arguments)
+
+  if $type == 'visually'
+    position: absolute !important
+    clip: rect(1px,1px,1px,1px) !important
+  else
+    display: none !important
