@@ -4,3 +4,6 @@
 [submodule "utilus.styl"]
 	path = utilus.styl
 	url = git://github.com/kizu/utilus.styl.git
+[submodule "docs"]
+	path = docs
+	url = git://github.com/kizu/stylobate.wiki.git
