@@ -1,0 +1,6 @@
+skin()
+  if is_hash(arguments)
+    for $skin in arguments
+      skin-{$skin[0]}(remove_first($skin))
+  else
+    skin-{arguments[0]}(remove_first(arguments))
