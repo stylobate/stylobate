@@ -1,14 +1,9 @@
 kind-button()
   kind-pill()
-  // Why this don't work?!
-  // kind: pill
 
   cursor: pointer
   user-select: none
 
-  -moz-appearance: none
-
-  &::-moz-focus-inner
-    padding: 0
-    border: none
-
+  // Should we replace it with `no-reset`?
+  if reset in arguments
+    reset('button')

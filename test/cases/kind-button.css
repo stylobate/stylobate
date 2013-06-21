@@ -4,6 +4,8 @@
   text-decoration: none;
   cursor: pointer;
   user-select: none;
+}
+.button {
   -moz-appearance: none;
 }
 .button::-moz-focus-inner {
