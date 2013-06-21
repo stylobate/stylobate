@@ -55,3 +55,27 @@
   bottom: auto;
   left: 1em;
 }
+.paranja_gray {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+}
+.paranja_image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("kitty.png") no-repeat 50%;
+}
+.paranja_tiled {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("pattern.png") repeat 50%;
+}
