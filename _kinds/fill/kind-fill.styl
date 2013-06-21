@@ -1,8 +1,8 @@
 kind-fill()
-  $offset = alike(arguments, 0)
-
   position: retrieve(arguments, fixed static sticky, absolute)
-  top: $offset
-  right: $offset
-  bottom: $offset
-  left: $offset
+
+  $sides = get_sides(arguments)
+  top: $sides[0]
+  right: $sides[1]
+  bottom: $sides[2]
+  left: $sides[3]

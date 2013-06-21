@@ -27,3 +27,31 @@
   bottom: 1em;
   left: 1em;
 }
+.sidey {
+  position: absolute;
+  top: 1em;
+  right: 0;
+  bottom: 1em;
+  left: 0;
+}
+.triple {
+  position: absolute;
+  top: 1em;
+  right: 0;
+  bottom: 2em;
+  left: 0;
+}
+.fourey {
+  position: absolute;
+  top: 1em;
+  right: 0;
+  bottom: 2em;
+  left: 3em;
+}
+.toppy {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  bottom: auto;
+  left: 1em;
+}
