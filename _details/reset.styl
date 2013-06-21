@@ -1,0 +1,20 @@
+$resetted_elements = unquote('')
+
+reset($which, $global = false)
+  reset_check($name)
+    return $name in $which and (not $name in $resetted_elements)
+
+  reset_selector($name)
+    if $global
+      push($resetted_elements, $name)
+      return $name
+    else
+      return '&'
+
+  if reset_check('button')
+    {reset_selector('button')}
+      -moz-appearance: none
+
+      &::-moz-focus-inner
+        padding: 0
+        border: none
