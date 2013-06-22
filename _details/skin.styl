@@ -1,6 +1,9 @@
+_skin()
+  skin-{arguments[0]}(remove_first(arguments))
+
 skin()
-  if is_hash(arguments)
+  if is_comma_list(arguments)
     for $skin in arguments
-      skin-{$skin[0]}(remove_first($skin))
+      _skin($skin)
   else
-    skin-{arguments[0]}(remove_first(arguments))
+    _skin(arguments)
