@@ -1,0 +1,18 @@
+.something:before {
+  content: "";
+  display: table;
+}
+.something:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.margin-collapsed:before {
+  content: "";
+  display: table;
+}
+.just-clear-those-floats:after {
+  content: "";
+  display: table;
+  clear: both;
+}

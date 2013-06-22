@@ -1,0 +1,14 @@
+kind-clear()
+  if !ie
+    unless after in arguments
+      &:before
+        content: ""
+        display: table
+
+    unless before in arguments
+      &:after
+        content: ""
+        display: table
+        clear: both
+
+  zoom: 1
