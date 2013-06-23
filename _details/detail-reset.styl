@@ -17,24 +17,26 @@ reset_button()
     padding: 0
     border: none
 
-reset($which, $global = false)
-  // Should we split which by comma if it's there? Can we?
-  reset_check($name)
-    $check = $name in $which and (not $name in $resetted_elements)
-    if $check and $global
-      push($resetted_elements, $name)
-    return $check
 
-  reset_selector($tags)
-    if $global
-      // Can we not check there, if the join would do nothing on single item?
-      if is_array($tags)
-        return join(',', $tags)
-      else
-        return $tags
+reset_selector($tags, $global)
+  if $global
+    // Can we not check there, if the join would do nothing on single item?
+    if is_array($tags)
+      return join(',', $tags)
     else
-      return '&'
+      return $tags
+  else
+    return '&'
 
+
+apply-reset($reset, $tags, $global)
+  if $reset in $tags and (not $reset in $resetted_elements)
+    {reset_selector($reset, $global)}
+      reset_{$reset}()
+    if $global
+      push($resetted_elements, $reset)
+
+reset($which, $global = false)
   // This could be made easier, with better names and checks
   $list_for_meyer_general_reset = ()
   for $tag in $which
@@ -45,10 +47,7 @@ reset($which, $global = false)
           push($resetted_elements, $tag)
 
   if length($list_for_meyer_general_reset) > 0
-    {reset_selector($list_for_meyer_general_reset)}
+    {reset_selector($list_for_meyer_general_reset, $global)}
       reset_meyer_general()
 
-  // This could be made as the kinds and skins, so we could just define `reset-button()` etc.
-  if reset_check('button')
-    {reset_selector('button')}
-      reset_button()
+  apply-reset('button', $which, $global)
