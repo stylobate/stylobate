@@ -10,6 +10,13 @@ reset_meyer_general()
   font: inherit
   vertical-align: baseline
 
+reset_button()
+  -moz-appearance: none
+
+  &::-moz-focus-inner
+    padding: 0
+    border: none
+
 reset($which, $global = false)
   // Should we split which by comma if it's there? Can we?
   reset_check($name)
@@ -28,6 +35,8 @@ reset($which, $global = false)
     if $tag in $reset_meyer_general_list
       unless $tag in $resetted_elements or $tag in $list_for_meyer_general_reset
         push($list_for_meyer_general_reset, $tag)
+        if $global
+          push($resetted_elements, $tag)
 
   if length($list_for_meyer_general_reset) > 0
     if $global
@@ -40,14 +49,4 @@ reset($which, $global = false)
   // This could be made as the kinds and skins, so we could just define `reset-button()` etc.
   if reset_check('button')
     {reset_selector('button')}
-      -moz-appearance: none
-
-      &::-moz-focus-inner
-        padding: 0
-        border: none
-
-
-// reset('ul,ol,li', global)
-
-
-// reset('ul')
+      reset_button()
