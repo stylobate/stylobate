@@ -1,6 +1,17 @@
 $resetted_elements = unquote('')
 
+$reset_meyer_general_list = 'html' 'body' 'div' 'span' 'applet' 'object' 'iframe' 'h1' 'h2' 'h3' 'h4' 'h5' 'h6' 'p' 'blockquote' 'pre' 'a' 'abbr' 'acronym' 'address' 'big' 'cite' 'code' 'del' 'dfn' 'em' 'img' 'ins' 'kbd' 'q' 's' 'samp' 'small' 'strike' 'strong' 'sub' 'sup' 'tt' 'var' 'b' 'u' 'i' 'center' 'dl' 'dt' 'dd' 'ol' 'ul' 'li' 'fieldset' 'form' 'label' 'legend' 'table' 'caption' 'tbody' 'tfoot' 'thead' 'tr' 'th' 'td' 'article' 'aside' 'canvas' 'details' 'embed'  'figure' 'figcaption' 'footer' 'header' 'hgroup'  'menu' 'nav' 'output' 'ruby' 'section' 'summary' 'time' 'mark' 'audio' 'video'
+
+reset_meyer_general()
+  margin: 0
+  padding: 0
+  border: 0
+  font-size: 100%
+  font: inherit
+  vertical-align: baseline
+
 reset($which, $global = false)
+  // Should we split which by comma if it's there? Can we?
   reset_check($name)
     return $name in $which and (not $name in $resetted_elements)
 
@@ -11,6 +22,22 @@ reset($which, $global = false)
     else
       return '&'
 
+  // This could be made easier, with better names and checks
+  $list_for_meyer_general_reset = ()
+  for $tag in $which
+    if $tag in $reset_meyer_general_list
+      unless $tag in $resetted_elements or $tag in $list_for_meyer_general_reset
+        push($list_for_meyer_general_reset, $tag)
+
+  if length($list_for_meyer_general_reset) > 0
+    if $global
+      {join(',',$list_for_meyer_general_reset)}
+        reset_meyer_general()
+    else
+      reset_meyer_general()
+
+
+  // This could be made as the kinds and skins, so we could just define `reset-button()` etc.
   if reset_check('button')
     {reset_selector('button')}
       -moz-appearance: none
@@ -18,3 +45,9 @@ reset($which, $global = false)
       &::-moz-focus-inner
         padding: 0
         border: none
+
+
+// reset('ul,ol,li', global)
+
+
+// reset('ul')
