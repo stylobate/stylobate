@@ -31,10 +31,12 @@ reset_selector($tags, $global)
 
 apply-reset($reset, $tags, $global)
   if $reset in $tags and (not $reset in $resetted_elements)
-    {reset_selector($reset, $global)}
-      reset_{$reset}()
     if $global
       push($resetted_elements, $reset)
+      {join(',', $tags)}
+        reset_{$reset}()
+    else
+      reset_{$reset}()
 
 reset($which, $global = false)
   // This could be made easier, with better names and checks
@@ -47,7 +49,10 @@ reset($which, $global = false)
           push($resetted_elements, $tag)
 
   if length($list_for_meyer_general_reset) > 0
-    {reset_selector($list_for_meyer_general_reset, $global)}
+    if $global
+      {join(',', $list_for_meyer_general_reset)}
+        reset_meyer_general()
+    else
       reset_meyer_general()
 
   apply-reset('button', $which, $global)
