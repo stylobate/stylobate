@@ -1,5 +1,6 @@
 .btn {
   padding: 0;
+  margin: 0;
   border: none;
   background: transparent;
   -moz-appearance: none;
@@ -11,6 +12,7 @@
 }
 button {
   padding: 0;
+  margin: 0;
   border: none;
   background: transparent;
   -moz-appearance: none;
