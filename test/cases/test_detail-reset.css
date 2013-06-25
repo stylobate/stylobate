@@ -1,12 +1,20 @@
 .btn {
+  padding: 0;
+  border: none;
+  background: transparent;
   -moz-appearance: none;
+  font: inherit;
 }
 .btn::-moz-focus-inner {
   padding: 0;
   border: none;
 }
 button {
+  padding: 0;
+  border: none;
+  background: transparent;
   -moz-appearance: none;
+  font: inherit;
 }
 button::-moz-focus-inner {
   padding: 0;
