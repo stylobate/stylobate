@@ -1,5 +1,5 @@
-// Setting the default `rem` to be equal to the default page font size
-rem_px ?= 16px
+// Setting the default `rem` to be equal to the 10px, so everything based on it would be decimal
+rem_px ?= 10px
 
 // Calculate the desired font-size in `em`, so it would be equal to the desired rem_px
 $page_rem ?= unit(round(16px/rem_px,3),em)
