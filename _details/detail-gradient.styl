@@ -1,0 +1,21 @@
+gradient()
+  $colors = ()
+
+  if is_array(arguments)
+    for $stop in arguments
+      if is_array($stop)
+        push($colors, rgba($stop[0], $stop[1]))
+      else
+        if type($stop) == 'rgba'
+          push($colors, rgba($stop, 1))
+        else
+          push($colors, rgba(last($colors), $stop))
+  else
+    $colors = arguments[0]
+
+  $average_color = average_color($colors)
+  $colors = join(',',$colors)
+  background: rgba-ie($average_color)
+  background: unquote('-webkit-linear-gradient(' + $colors + ')')
+  background: unquote('-moz-linear-gradient(' + $colors + ')')
+  background: unquote('linear-gradient(' + $colors + ')')
