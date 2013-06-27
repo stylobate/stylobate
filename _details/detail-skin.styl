@@ -1,5 +1,14 @@
+$skin_namespace ?= ''
+
+set-skin-namespace($what)
+  $what = $what + '-' if $what != ''
+  reassign($skin_namespace, $what)
+
+reset-skin-namespace()
+  reassign($skin_namespace, '')
+
 _skin()
-  skin-{arguments[0]}(remove_first(arguments))
+  skin-{$skin_namespace + arguments[0]}(remove_first(arguments))
 
 skin()
   if is_comma_list(arguments)

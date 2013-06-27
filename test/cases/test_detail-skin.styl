@@ -1,0 +1,40 @@
+@import "../../index"
+
+skin-foo()
+  background: lime
+  if baz in arguments
+    width: 10px
+
+skin-bar()
+  color: #FFF
+  if baz in arguments
+    height: 10px
+
+skin-lol-foo()
+  background: red
+  content: "OLOLO"
+
+
+.limey
+  skin: foo
+
+.whitey
+  skin: bar
+
+.mergey
+  skin: foo, bar
+
+.oneparamey
+  skin: foo baz
+  overflow: hidden
+  skin: bar baz
+
+set-skin-namespace('lol')
+
+.lolly
+  skin: foo
+
+set-skin-namespace('')
+
+.multiparamey
+  skin: foo baz, bar baz

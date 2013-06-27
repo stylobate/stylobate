@@ -1,0 +1,27 @@
+.limey {
+  background: #0f0;
+}
+.whitey {
+  color: #fff;
+}
+.mergey {
+  background: #0f0;
+  color: #fff;
+}
+.oneparamey {
+  background: #0f0;
+  width: 10px;
+  overflow: hidden;
+  color: #fff;
+  height: 10px;
+}
+.lolly {
+  background: #f00;
+  content: "OLOLO";
+}
+.multiparamey {
+  background: #0f0;
+  width: 10px;
+  color: #fff;
+  height: 10px;
+}
