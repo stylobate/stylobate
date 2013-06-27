@@ -6,6 +6,7 @@
   content: "";
   display: inline-block;
   vertical-align: middle;
+  height: 100%;
 }
 .centerer-content {
   display: inline-block;
