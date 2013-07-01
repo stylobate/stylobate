@@ -1,0 +1,44 @@
+kind-group()
+  kind: block inline
+  white-space: nowrap
+
+kind-group-item()
+  &:first-child
+    kind-group-start(arguments)
+
+  &:not(:first-child)
+    margin-left: -1px
+
+  &:not(:first-child):not(:last-child)
+    kind-group-middle(arguments)
+
+  &:last-child
+    kind-group-end(arguments)
+
+kind-group-start()
+  $selector = alike(arguments, '')
+  if $selector != ''
+    {$selector}
+      border-top-right-radius: 0
+      border-bottom-right-radius: 0
+  else
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+
+kind-group-end()
+  $selector = alike(arguments, '')
+  if $selector != ''
+    {$selector}
+      border-top-left-radius: 0
+      border-bottom-left-radius: 0
+  else
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+
+kind-group-middle()
+  $selector = alike(arguments, '')
+  if $selector != ''
+    {$selector}
+      border-radius: 0
+  else
+    border-radius: 0
