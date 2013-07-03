@@ -3,17 +3,19 @@ kind-group()
   white-space: nowrap
 
 kind-group-item()
-  &:first-child
-    kind-group-start(arguments)
+  unless no-margin in arguments
+    &:not(:first-child)
+      margin-left: -1px
 
-  &:not(:first-child)
-    margin-left: -1px
+  unless no-radius in arguments
+    &:first-child
+      kind-group-start(arguments)
 
-  &:not(:first-child):not(:last-child)
-    kind-group-middle(arguments)
+    &:not(:first-child):not(:last-child)
+      kind-group-middle(arguments)
 
-  &:last-child
-    kind-group-end(arguments)
+    &:last-child
+      kind-group-end(arguments)
 
 kind-group-start()
   $selector = alike(arguments, '')

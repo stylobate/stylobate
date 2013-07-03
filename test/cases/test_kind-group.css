@@ -1,0 +1,32 @@
+.radiogroup {
+  kind: block inline;
+  white-space: nowrap;
+}
+.radiogroup__item:not(:first-child) {
+  margin-left: -1px;
+}
+.radiogroup__item:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.radiogroup__item:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.radiogroup__item:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.radiogroup > .complex-button:not(:first-child) {
+  margin-left: -1px;
+}
+.radiogroup > .complex-button:first-child > .complex-button-inner, .radiogroup > .complex-button:first-child > .complex-button-inner:before {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.radiogroup > .complex-button:not(:first-child):not(:last-child) > .complex-button-inner, .radiogroup > .complex-button:not(:first-child):not(:last-child) > .complex-button-inner:before {
+  border-radius: 0;
+}
+.radiogroup > .complex-button:last-child > .complex-button-inner, .radiogroup > .complex-button:last-child > .complex-button-inner:before {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
