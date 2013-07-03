@@ -7,7 +7,7 @@
     "url": "git://github.com/kizu/stylobate.git"
   },
   "devDependencies": {
-      "stylus": "0.32.x"
+      "stylus": "0.x"
     , "mocha": "*"
     , "should": "*"
   },
