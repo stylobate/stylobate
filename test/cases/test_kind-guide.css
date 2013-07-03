@@ -22,3 +22,17 @@
   left: 1em;
   visibility: hidden;
 }
+.visible-guides {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+.guides-item {
+  visibility: visible;
+}
+.visible-guides-item {
+  pointer-events: auto;
+}

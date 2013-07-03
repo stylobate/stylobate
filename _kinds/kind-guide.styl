@@ -1,7 +1,14 @@
 kind-guide()
-  kind-fill(arguments) // Should we really need it here, or should we add something extra for trbl?
-  visibility: hidden
+  kind-fill(arguments)
+
+  if visible in arguments
+    pointer-events: none
+  else
+    visibility: hidden
 
 kind-guide-item()
-  visibility: visible
-  // Should we add anything here, or just use it as a semantic helper?
+  if visible in arguments
+    // It would be super cool to be able to somehow get this from the parental `guide`
+    pointer-events: auto
+  else
+    visibility: visible
