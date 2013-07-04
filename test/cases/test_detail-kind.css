@@ -1,0 +1,30 @@
+.foo {
+  width: 10px;
+}
+.bar {
+  height: 10px;
+}
+.foobar {
+  width: 10px;
+  height: 10px;
+}
+.foobar2 {
+  width: 11px;
+  height: 10px;
+}
+.foobar3 {
+  width: 10px;
+  height: 11px;
+}
+.foobar4 {
+  width: 11px;
+  height: 11px;
+}
+.baz {
+  width: 10px;
+  height: 10px;
+}
+.baz2 {
+  width: 11px;
+  height: 11px;
+}

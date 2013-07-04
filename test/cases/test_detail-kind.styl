@@ -1,0 +1,35 @@
+@import "../../index"
+
+kind-foo()
+  width: alike(arguments, 10px)
+
+kind-bar()
+  height: alike(arguments, 10px)
+
+kind-baz()
+  kind-foo(arguments)
+  kind-bar(arguments)
+
+.foo
+  kind: foo
+
+.bar
+  kind: bar
+
+.foobar
+  kind: foo, bar
+
+.foobar2
+  kind: foo 11px, bar
+
+.foobar3
+  kind: foo, bar 11px
+
+.foobar4
+  kind: foo 11px, bar 11px
+
+.baz
+  kind: baz
+
+.baz2
+  kind: baz 11px
