@@ -1,0 +1,15 @@
+kind-view-controller()
+  $view = alike(arguments, '&-view')
+  $controller = alike(arguments, '&-controller', 1)
+
+  {$controller}
+    kind-hidden(visually)
+    // Could add `.is-disabled &\n kind: hidden`
+
+  if checked in arguments
+    {$controller}:checked + {$view}
+      skin: button_checked
+
+  if focus in arguments
+    {$controller}:focus + {$view}
+      skin: button_focus
