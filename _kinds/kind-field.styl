@@ -6,10 +6,10 @@ kind-field()
       kind-field-content()
 
     &-left
-      kind-field-left()
+      kind-field-left(arguments)
 
     &-right
-      kind-field-right()
+      kind-field-right(arguments)
 
 kind-field-content()
   kind-block(static)
@@ -23,7 +23,21 @@ kind-field-left()
   z-index: 9
   float: left
 
+  unless no-margin in arguments
+    margin: -0.5*gap_s -1*gap_s
+    margin-right: 0
+
+  unless no-padding in arguments
+    padding: 0.5*gap_s gap_s
+
 kind-field-right()
   position: relative
   z-index: 9
   float: right
+
+  unless no-margin in arguments
+    margin: -0.5*gap_s -1*gap_s
+    margin-left: 0
+
+  unless no-padding in arguments
+    padding: 0.5*gap_s gap_s
