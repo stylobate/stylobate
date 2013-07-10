@@ -1,0 +1,29 @@
+kind-field()
+  kind-input(no-reset)
+
+  unless no-elements in arguments
+    &-content
+      kind-field-content()
+
+    &-left
+      kind-field-left()
+
+    &-right
+      kind-field-right()
+
+kind-field-content()
+  kind-block(static)
+
+  overflow: hidden
+
+  height: 100%
+
+kind-field-left()
+  position: relative
+  z-index: 9
+  float: left
+
+kind-field-right()
+  position: relative
+  z-index: 9
+  float: right

@@ -30,6 +30,9 @@ reset_input()
   background: transparent
   font: inherit
 
+  unless no-focus in arguments
+    &:focus
+      outline: none
 
 reset_selector($tags, $global)
   if $global

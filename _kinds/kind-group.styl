@@ -3,10 +3,6 @@ kind-group()
   white-space: nowrap
 
 kind-group-item()
-  unless no-margin in arguments
-    &:not(:first-child)
-      margin-left: -1px
-
   unless no-radius in arguments
     &:first-child
       kind-group-start(arguments)
@@ -28,6 +24,9 @@ kind-group-start()
     border-bottom-right-radius: 0
 
 kind-group-end()
+  unless no-margin in arguments
+    margin-left: -1px
+
   $selector = alike(arguments, '')
   if $selector != ''
     {$selector}
@@ -38,6 +37,9 @@ kind-group-end()
     border-bottom-left-radius: 0
 
 kind-group-middle()
+  unless no-margin in arguments
+    margin-left: -1px
+
   $selector = alike(arguments, '')
   if $selector != ''
     {$selector}
