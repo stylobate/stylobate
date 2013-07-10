@@ -23,6 +23,13 @@ reset_button()
     padding: 0
     border: none
 
+reset_input()
+  padding: 0
+  margin: 0
+  border: none
+  background: transparent
+  font: inherit
+
 
 reset_selector($tags, $global)
   if $global
@@ -62,3 +69,4 @@ reset($which, $global = false)
       reset_meyer_general()
 
   apply-reset('button', $which, $global)
+  apply-reset('input', $which, $global)
