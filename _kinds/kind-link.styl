@@ -1,0 +1,21 @@
+kind-link()
+  unless nested in arguments
+    cursor: pointer
+
+    color: alike(arguments, #22C)
+
+    unless no-hover in arguments
+      &:hover
+        kind-link_hover(arguments)
+
+  if underline in arguments
+    text-decoration: underline
+  else
+    text-decoration: none
+
+  if pseudo in arguments
+    text-decoration: none
+    border-bottom: 1px dashed
+
+kind-link_hover()
+  color: alike(arguments, #D00, 1)
