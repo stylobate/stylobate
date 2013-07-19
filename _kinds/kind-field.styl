@@ -24,11 +24,11 @@ kind-field-left()
   float: left
 
   unless no-margin in arguments
-    margin: -0.5*gap_s -1*gap_s
+    margin: -0.5*$s -1*$s
     margin-right: 0
 
   unless no-padding in arguments
-    padding: 0.5*gap_s gap_s
+    padding: 0.5*$s $s
 
 kind-field-right()
   position: relative
@@ -36,8 +36,8 @@ kind-field-right()
   float: right
 
   unless no-margin in arguments
-    margin: -0.5*gap_s -1*gap_s
+    margin: -0.5*$s -1*$s
     margin-left: 0
 
   unless no-padding in arguments
-    padding: 0.5*gap_s gap_s
+    padding: 0.5*$s $s
