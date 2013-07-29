@@ -4,3 +4,4 @@ Makefile
 *.sublime-workspace
 *.sublime-project
 .DS_Store
+.travis.yml
