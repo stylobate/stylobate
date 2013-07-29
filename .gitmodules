@@ -1,9 +1,0 @@
-[submodule "if-ie.styl"]
-	path = if-ie.styl
-	url = git://github.com/kizu/if-ie.styl.git
-[submodule "utilus.styl"]
-	path = utilus.styl
-	url = git://github.com/kizu/utilus.styl.git
-[submodule "docs"]
-	path = docs
-	url = git://github.com/kizu/stylobate.wiki.git
