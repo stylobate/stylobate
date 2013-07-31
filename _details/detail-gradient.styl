@@ -23,6 +23,4 @@ gradient()
   $colors = join(', ',$colors)
   background: rgba-ie($average_color)
   if !ie
-    background: unquote('-webkit-linear-gradient(' + $colors + ')')
-    background: unquote('-moz-linear-gradient(' + $colors + ')')
     background: unquote('linear-gradient(' + $colors + ')')
