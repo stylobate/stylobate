@@ -37,7 +37,7 @@ reset_input()
 reset_selector($tags, $global)
   if $global
     // Can we not check there, if the join would do nothing on single item?
-    if is_array($tags)
+    if utilus_is_array($tags)
       return join(',', $tags)
     else
       return $tags

@@ -2,16 +2,16 @@ $skin_namespace ?= ''
 
 set-skin-namespace($what)
   $what = $what + '-' if $what != ''
-  reassign($skin_namespace, $what)
+  utilus_reassign($skin_namespace, $what)
 
 reset-skin-namespace()
-  reassign($skin_namespace, '')
+  utilus_reassign($skin_namespace, '')
 
 _skin()
-  skin-{$skin_namespace + arguments[0]}(remove_first(arguments))
+  skin-{$skin_namespace + arguments[0]}(utilus_remove_first(arguments))
 
 skin()
-  if is_comma_list(arguments)
+  if utilus_is_comma_list(arguments)
     for $skin in arguments
       _skin($skin)
   else

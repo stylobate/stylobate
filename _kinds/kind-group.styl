@@ -14,7 +14,7 @@ kind-group-item()
       kind-group-end(arguments)
 
 kind-group-start()
-  $selector = alike(arguments, '')
+  $selector = utilus_alike(arguments, '')
   if $selector != ''
     {$selector}
       border-top-right-radius: 0
@@ -27,7 +27,7 @@ kind-group-end()
   unless no-margin in arguments
     margin-left: -1px
 
-  $selector = alike(arguments, '')
+  $selector = utilus_alike(arguments, '')
   if $selector != ''
     {$selector}
       border-top-left-radius: 0
@@ -40,7 +40,7 @@ kind-group-middle()
   unless no-margin in arguments
     margin-left: -1px
 
-  $selector = alike(arguments, '')
+  $selector = utilus_alike(arguments, '')
   if $selector != ''
     {$selector}
       border-radius: 0

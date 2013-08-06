@@ -1,8 +1,8 @@
 _kind()
-  kind-{arguments[0]}(remove_first(arguments))
+  kind-{arguments[0]}(utilus_remove_first(arguments))
 
 kind()
-  if is_comma_list(arguments)
+  if utilus_is_comma_list(arguments)
     for $kind in arguments
       _kind($kind)
   else
