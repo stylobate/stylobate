@@ -7,7 +7,7 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  margin-top: -4px;
+  margin-top: -0.25em;
   background: 50% no-repeat;
 }
 .ico-replaced {
