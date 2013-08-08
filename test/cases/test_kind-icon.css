@@ -3,4 +3,25 @@
   display: inline-block;
   vertical-align: middle;
   margin-top: -4px;
+  background: 50% no-repeat;
+}
+.ico-sized {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -4px;
+  background: 50% no-repeat;
+  width: 10px;
+  height: 20px;
+}
+.ico-replaced {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -4px;
+  background: 50% no-repeat;
+  width: 0;
+  height: 0;
+  padding: 0 10px 20px 0;
+  content: "";
 }

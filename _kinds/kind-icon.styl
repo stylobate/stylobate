@@ -1,4 +1,18 @@
 kind-icon()
-  kind-block(inline middle)
+  kind-block(inline utilus_retrieve(arguments, baseline top bottom, middle))
 
   margin-top: -4px // Or this should be in em?
+  background: 50% no-repeat
+
+  $width = utilus_get(arguments, 'w')
+  $height = utilus_get(arguments, 'h')
+
+  if $width and $height
+    if replace-image in arguments
+      width: 0
+      height 0
+      padding: 0 $width $height 0
+      content: ""
+    else
+      width: $width
+      height $height

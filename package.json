@@ -1,6 +1,6 @@
 {
   "name": "stylobate",
-  "version": "0.1.5",
+  "version": "0.2.0",
 
   "author": "Roman Komarov <kizmarh@ya.ru> (http://kizu.ru/en/)",
   "licence": "MIT",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "if-ie.styl": "0.1.x",
-    "utilus.styl": "0.2.x"
+    "utilus.styl": "0.4.x"
   },
   "devDependencies": {
     "stylus": "0.35.x",
