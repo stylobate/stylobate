@@ -2,7 +2,8 @@
 .ico-sized,
 .ico-replaced,
 .ico-with-image,
-.ico-auto-image-size {
+.ico-auto-image-size,
+.ico-image-sizeless {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -30,4 +31,15 @@
   width: 19px;
   height: 19px;
   background-image: url("test_kind-icon.png");
+}
+.ico-image-sizeless {
+  background-image: url("test_kind-icon.png");
+}
+.ico_modifying {
+  width: 19px;
+  height: 19px;
+  background-image: url("test_kind-icon.png");
+}
+.ico-replaced_16px {
+  padding: 0 16px 16px 0;
 }

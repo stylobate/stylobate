@@ -1,11 +1,16 @@
 kind-icon()
   @extends $kind-icon-base
+  kind-icon_(arguments)
 
+  if replace-image in arguments
+    @extends $kind-icon-replaced-base
+
+kind-icon_()
   $size = utilus_get(arguments, 'size')
   $image = utilus_get_string(arguments)
   $align = utilus_retrieve(arguments, baseline top bottom)
 
-  if !$size and $image
+  if !$size and $image and !(sizeless in arguments)
     $size = image-size($image, true)
 
   if $align
@@ -16,7 +21,6 @@ kind-icon()
     $height = $size[1]
 
     if replace-image in arguments
-      @extends $kind-icon-replaced-base
       padding: 0 $width $height 0
     else
       width: $width
