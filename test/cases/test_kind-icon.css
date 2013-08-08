@@ -1,27 +1,33 @@
-.ico {
+.ico,
+.ico-sized,
+.ico-replaced,
+.ico-with-image,
+.ico-auto-image-size {
   position: relative;
   display: inline-block;
   vertical-align: middle;
   margin-top: -4px;
   background: 50% no-repeat;
 }
+.ico-replaced {
+  content: "";
+  width: 0;
+  height: 0;
+}
 .ico-sized {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: -4px;
-  background: 50% no-repeat;
   width: 10px;
   height: 20px;
 }
 .ico-replaced {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: -4px;
-  background: 50% no-repeat;
-  width: 0;
-  height: 0;
   padding: 0 10px 20px 0;
-  content: "";
+}
+.ico-with-image {
+  width: 10px;
+  height: 20px;
+  background-image: url("lol.png");
+}
+.ico-auto-image-size {
+  width: 19px;
+  height: 19px;
+  background-image: url("test_kind-icon.png");
 }

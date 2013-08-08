@@ -22,7 +22,6 @@ cases.forEach(function(test){
 
     var style = stylus(styl)
       .set('filename', path)
-      .define('url', stylus.url());
 
     style.render(function(err, actual){
       if (err) throw err;
