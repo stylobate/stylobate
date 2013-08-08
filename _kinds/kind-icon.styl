@@ -4,10 +4,12 @@ kind-icon()
   margin-top: -4px // Or this should be in em?
   background: 50% no-repeat
 
-  $width = utilus_get(arguments, 'w')
-  $height = utilus_get(arguments, 'h')
+  $size = utilus_get(arguments, 'size')
 
-  if $width and $height
+  if $size
+    $width = $size[0]
+    $height = $size[1]
+
     if replace-image in arguments
       width: 0
       height 0
