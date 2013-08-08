@@ -2,15 +2,19 @@ kind-clear()
   if !ie
     unless after in arguments
       &:before
-        content: ""
-        display: table
+        @extends $kind-clear-before
 
     unless before in arguments
       &:after
-        content: ""
-        display: table
-        clear: both
+        @extends $kind-clear-after
 
   zoom: 1
 
-// Should the default clearfix only add `:after`?
+$kind-clear-before
+  content: ""
+  display: table
+
+$kind-clear-after
+  content: ""
+  display: table
+  clear: both

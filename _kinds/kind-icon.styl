@@ -1,9 +1,9 @@
 kind-icon()
-  @extends $kind-icon-base
+  @extends $kind-icon
   kind-icon_(arguments)
 
   if replace-image in arguments
-    @extends $kind-icon-replaced-base
+    @extends $kind-icon-replaced
 
 kind-icon_()
   $size = utilus_get(arguments, 'size')
@@ -31,7 +31,7 @@ kind-icon_()
 
 
 // Base styles for all icons
-$kind-icon-base
+$kind-icon
   kind-block(inline middle)
 
   margin-top: -0.25em // http://dabblet.com/gist/6185672
@@ -39,7 +39,7 @@ $kind-icon-base
   background: 50% no-repeat
 
 // Base styles for replaced icons (on `<img/>`)
-$kind-icon-replaced-base
+$kind-icon-replaced
   content: ""
 
   width: 0

@@ -2,7 +2,10 @@ kind-hidden()
   $type = utilus_get_ident(arguments)
 
   if $type == 'visually'
-    position: absolute !important
-    clip: rect(1px,1px,1px,1px) !important
+    @extends $kind-hidden-visually
   else
     display: none !important
+
+$kind-hidden-visually
+  position: absolute !important
+  clip: rect(1px,1px,1px,1px) !important

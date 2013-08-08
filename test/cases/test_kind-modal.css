@@ -1,3 +1,16 @@
+.popup-wrap:after,
+.apupup__helper {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.popup {
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  text-align: left;
+}
 .popup-wrap {
   position: fixed;
   top: 0;
@@ -9,18 +22,8 @@
   text-align: center;
   z-index: 99;
 }
-.popup-wrap:after {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-}
 .popup {
   visibility: visible;
-  display: inline-block;
-  white-space: normal;
-  vertical-align: middle;
-  text-align: left;
   position: relative;
   max-width: 100%;
   max-height: 100%;
@@ -52,10 +55,4 @@
   white-space: nowrap;
   text-align: center;
   z-index: 99;
-}
-.apupup__helper {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
 }

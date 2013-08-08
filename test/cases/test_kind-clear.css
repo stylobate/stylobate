@@ -1,16 +1,9 @@
-.something:before {
-  content: "";
-  display: table;
-}
-.something:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+.something:before,
 .margin-collapsed:before {
   content: "";
   display: table;
 }
+.something:after,
 .just-clear-those-floats:after {
   content: "";
   display: table;
