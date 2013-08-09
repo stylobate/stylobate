@@ -1,5 +1,8 @@
 kind-group()
-  kind: block inline
+  @extends $kind-group
+
+$kind-group
+  kind-block(inline)
   white-space: nowrap
 
 kind-group-item()
@@ -14,31 +17,32 @@ kind-group-item()
       kind-group-end(arguments)
 
 kind-group-start()
-  $selector = utilus_alike(arguments, '')
-  if $selector != ''
-    {$selector}
-      border-top-right-radius: 0
-      border-bottom-right-radius: 0
-  else
+  {utilus_alike(arguments, '')}
+    @extends $kind-group-start
+
+$kind-group-start
+  unless ie
     border-top-right-radius: 0
     border-bottom-right-radius: 0
 
 kind-group-end()
   unless no-margin in arguments
-    margin-left: -1px
+    @extends $kind-group-margin
 
-  $selector = utilus_alike(arguments, '')
-  if $selector != ''
-    {$selector}
-      border-top-left-radius: 0
-      border-bottom-left-radius: 0
-  else
+  {utilus_alike(arguments, '')}
+    @extends $kind-group-end
+
+$kind-group-end
+  unless ie
     border-top-left-radius: 0
     border-bottom-left-radius: 0
 
+$kind-group-margin
+  margin-left: -1px
+
 kind-group-middle()
   unless no-margin in arguments
-    margin-left: -1px
+    @extends $kind-group-margin
 
   $selector = utilus_alike(arguments, '')
   if $selector != ''

@@ -1,34 +1,28 @@
 .radiogroup {
-  kind: block inline;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
   white-space: nowrap;
 }
-.radiogroup__item:first-child {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.radiogroup__item:not(:first-child):not(:last-child) {
-  margin-left: -1px;
-  border-radius: 0;
-}
-.radiogroup__item:last-child {
-  margin-left: -1px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
+.radiogroup__item:first-child,
 .radiogroup > .complex-button:first-child > .complex-button-inner, .radiogroup > .complex-button:first-child > .complex-button-inner:before {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.radiogroup > .complex-button:not(:first-child):not(:last-child) {
-  margin-left: -1px;
-}
-.radiogroup > .complex-button:not(:first-child):not(:last-child) > .complex-button-inner, .radiogroup > .complex-button:not(:first-child):not(:last-child) > .complex-button-inner:before {
-  border-radius: 0;
-}
-.radiogroup > .complex-button:last-child {
-  margin-left: -1px;
-}
+.radiogroup__item:last-child,
 .radiogroup > .complex-button:last-child > .complex-button-inner, .radiogroup > .complex-button:last-child > .complex-button-inner:before {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+.radiogroup__item:not(:first-child):not(:last-child),
+.radiogroup__item:last-child,
+.radiogroup > .complex-button:not(:first-child):not(:last-child),
+.radiogroup > .complex-button:last-child {
+  margin-left: -1px;
+}
+.radiogroup__item:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.radiogroup > .complex-button:not(:first-child):not(:last-child) > .complex-button-inner, .radiogroup > .complex-button:not(:first-child):not(:last-child) > .complex-button-inner:before {
+  border-radius: 0;
 }
