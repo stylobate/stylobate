@@ -1,3 +1,8 @@
+.grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .grid-content {
   display: block;
   overflow: hidden;
@@ -22,6 +27,9 @@
 @-moz-document url-prefix() { .shrinker__content {
   flex-shrink: 1000000000;
 }
+}
+.shrinker__left {
+  float: left;
 }
 .shrinker__right {
   float: right;

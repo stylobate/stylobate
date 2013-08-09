@@ -4,6 +4,7 @@ kind-shrink()
   display: block
   overflow: hidden
 
+  // Can't use extend here 'cause Stylus don't know -moz-doc
   if inline in arguments
     &
       {"@-moz-document url-prefix() {"} &
@@ -17,7 +18,6 @@ kind-shrink-right()
   float: right
 
 kind-shrink-wrap()
-  // insert clearfix in else
   if inline in arguments
     display: inline-block
     white-space: nowrap
@@ -28,4 +28,5 @@ kind-shrink-wrap()
         display: inline-flex
         flex-direction: row-reverse
       unquote("}")
-
+  else
+    kind-clear(after)
