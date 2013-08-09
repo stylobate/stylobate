@@ -1,0 +1,48 @@
+.field,
+.small-field {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  max-width: 100%;
+  cursor: text;
+  vertical-align: baseline;
+}
+.field-content {
+  position: static;
+  display: block;
+  overflow: hidden;
+  height: 100%;
+}
+.field-left,
+.field-label {
+  position: relative;
+  z-index: 9;
+  float: left;
+}
+.field-right {
+  position: relative;
+  z-index: 9;
+  float: right;
+}
+.field {
+  width: 400px;
+  background: #000;
+}
+.field-left {
+  margin: -10px 0 -10px -20px;
+  padding: 10px 20px 10px 20px;
+}
+.field-right {
+  margin: -10px -20px -10px 0;
+  padding: 10px 20px 10px 20px;
+}
+.small-field {
+  width: 400px;
+  background: #fff;
+}
+.field-label {
+  margin: -10px 0 -10px -20px;
+  padding: 10px 20px 10px 20px;
+  background: #f00;
+}
