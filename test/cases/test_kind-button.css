@@ -20,7 +20,7 @@
   text-decoration: none;
   cursor: pointer;
   user-select: none;
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 .middle-button {
   vertical-align: middle;
