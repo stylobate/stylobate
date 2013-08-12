@@ -6,6 +6,14 @@ kind-foo()
 kind-bar()
   height: utilus_alike(arguments, 10px)
 
+kind-bar-subbar()
+  background: utilus_alike(arguments, #000)
+
+  padding-left: utilus_alike(utilus_get(arguments, parent), 10px)
+
+kind-bar__lol()
+  content: ""
+
 kind-baz()
   kind-foo(arguments)
   kind-bar(arguments)
@@ -14,7 +22,7 @@ kind-baz()
   kind: foo
 
 .bar
-  kind: bar
+  kind: bar (-subbar '&-subbar')
 
 .foobar
   kind: foo, bar
@@ -23,7 +31,7 @@ kind-baz()
   kind: foo 11px, bar
 
 .foobar3
-  kind: foo, bar 11px
+  kind: foo, bar 11px (-subbar '&-lol' red) (__lol '&:before')
 
 .foobar4
   kind: foo 11px, bar 11px

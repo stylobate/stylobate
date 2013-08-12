@@ -4,6 +4,10 @@
 .bar {
   height: 10px;
 }
+.bar-subbar {
+  background: #000;
+  padding-left: 10px;
+}
 .foobar {
   width: 10px;
   height: 10px;
@@ -15,6 +19,13 @@
 .foobar3 {
   width: 10px;
   height: 11px;
+}
+.foobar3-lol {
+  background: #f00;
+  padding-left: 11px;
+}
+.foobar3:before {
+  content: "";
 }
 .foobar4 {
   width: 11px;

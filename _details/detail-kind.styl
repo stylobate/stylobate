@@ -1,5 +1,15 @@
 _kind()
-  kind-{arguments[0]}(utilus_remove_first(arguments))
+  $subarguments = utilus_remove_first(arguments)
+  kind-{arguments[0]}($subarguments)
+
+  for $subkind in $subarguments
+    if is_array($subkind)
+      if match('^(\-|__)', $subkind[0])
+        if type($subkind[1]) == 'string'
+          {$subkind[1]}
+            $subkindarguments = remove_first(remove_first($subkind))
+            push($subkindarguments, (parent $subarguments))
+            kind-{arguments[0] + $subkind[0]}($subkindarguments)
 
 kind()
   if utilus_is_comma_list(arguments)

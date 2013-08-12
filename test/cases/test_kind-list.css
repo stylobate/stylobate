@@ -1,0 +1,10 @@
+.list {
+  position: relative;
+  display: block;
+  text-align: left;
+}
+.list-item {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}

@@ -8,7 +8,17 @@ reset-skin-namespace()
   utilus_reassign($skin_namespace, '')
 
 _skin()
-  skin-{$skin_namespace + arguments[0]}(utilus_remove_first(arguments))
+  $subarguments = utilus_remove_first(arguments)
+  skin-{$skin_namespace + arguments[0]}($subarguments)
+
+  for $subskin in $subarguments
+    if is_array($subskin)
+      if match('^(\-|__)', $subskin[0])
+        if type($subskin[1]) == 'string'
+          {$subskin[1]}
+            $subskinarguments = remove_first(remove_first($subskin))
+            push($subskinarguments, (parent $subarguments))
+            skin-{$skin_namespace + arguments[0] + $subskin[0]}($subskinarguments)
 
 skin()
   if utilus_is_comma_list(arguments)

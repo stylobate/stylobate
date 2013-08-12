@@ -10,6 +10,14 @@ skin-bar()
   if baz in arguments
     height: 10px
 
+skin-bar-subbar()
+  background: utilus_alike(arguments, #000)
+
+  padding-left: utilus_alike(utilus_get(arguments, parent), 10px)
+
+skin-bar__lol()
+  content: ""
+
 skin-lol-foo()
   background: red
   content: "OLOLO"
@@ -19,7 +27,7 @@ skin-lol-foo()
   skin: foo
 
 .whitey
-  skin: bar
+  skin: bar (-subbar '&-subbar')
 
 .mergey
   skin: foo, bar
@@ -37,4 +45,4 @@ set-skin-namespace('lol')
 set-skin-namespace('')
 
 .multiparamey
-  skin: foo baz, bar baz
+  skin: foo baz, bar baz (-subbar '&-lol' red) (__lol '&:before')
