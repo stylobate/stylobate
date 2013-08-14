@@ -1,5 +1,6 @@
 .foo {
   width: 10px;
+  height: 10px;
 }
 .foo-bar {
   height: 10px;
@@ -7,6 +8,7 @@
 }
 .foo2 {
   width: 10px;
+  height: 10px;
 }
 .foo2-bar {
   height: 10px;
