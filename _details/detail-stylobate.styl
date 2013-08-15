@@ -1,0 +1,28 @@
+_stylobate($name, $params)
+  $subparams = utilus_remove_first($params)
+  {$name + $params[0]}($subparams)
+
+  for $subitem in $subparams
+    // There shouldn't be an `if` inside a {$selector}, 'cause
+    // there is a crazy stylus bug. When it would be fixed,
+    // revert this version to 669082fb35
+    $selector = ''
+    $foundsubitem = ''
+    if is_array($subitem)
+      if match('^(\-|_)', $subitem[0])
+        if type($subitem[1]) == 'string'
+          $selector = $subitem[1]
+          $foundsubitem = $subitem
+
+    {$selector}
+      content: "" if match(':(after|before)',$selector)
+      $subitemparams = remove_first(remove_first($foundsubitem)) if $selector != ''
+      push($subitemparams, (parent $subparams)) if $selector != ''
+      {$name + $params[0] + $foundsubitem[0]}($subitemparams) if $selector != ''
+
+stylobate($name, $params)
+  if utilus_is_comma_list($params)
+    for $item in $params
+      _stylobate($name, $item)
+  else
+    _stylobate($name, $params)

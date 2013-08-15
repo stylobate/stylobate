@@ -26,6 +26,7 @@
 }
 .foobar3:before {
   content: "";
+  height: 10px;
 }
 .foobar4 {
   width: 11px;

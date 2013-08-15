@@ -23,6 +23,9 @@
   background: #f00;
   content: "OLOLO";
 }
+.limey-namespacey {
+  background: #0f0;
+}
 .multiparamey {
   background: #0f0;
   width: 10px;
@@ -35,4 +38,5 @@
 }
 .multiparamey:before {
   content: "";
+  width: 10px;
 }
