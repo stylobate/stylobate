@@ -1,15 +1,20 @@
 {
   "name": "stylobate",
-  "version": "0.7.0",
-
+  "version": "0.8.0",
   "author": "Roman Komarov <kizmarh@ya.ru> (http://kizu.ru/en/)",
   "licence": "MIT",
-
   "description": "Framework for writing really abstract CSS in Stylus",
-  "keywords": [ "stylus", "css", "oocss", "bem", "smacss" ],
+  "keywords": [
+    "stylus",
+    "css",
+    "oocss",
+    "bem",
+    "smacss"
+  ],
   "homepage": "https://github.com/kizu/stylobate#readme",
-  "bugs": { "url": "http://github.com/kizu/stylobate/issues" },
-
+  "bugs": {
+    "url": "http://github.com/kizu/stylobate/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/kizu/stylobate.git"
@@ -24,10 +29,10 @@
     "mocha": "*",
     "should": "*"
   },
-
   "scripts": {
     "test": "./node_modules/.bin/mocha --require should --reporter list"
   },
-
-  "engines": { "node": ">=0.6" }
+  "engines": {
+    "node": ">=0.6"
+  }
 }
