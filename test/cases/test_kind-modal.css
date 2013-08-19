@@ -31,7 +31,7 @@
 .popup {
   visibility: visible;
 }
-.paranja {
+.overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -39,7 +39,7 @@
   left: 0;
   visibility: visible;
 }
-.local-paranja {
+.local-overlay {
   position: absolute;
   top: 0;
   right: 0;
