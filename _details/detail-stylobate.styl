@@ -18,7 +18,7 @@ _stylobate($name, $params)
       content: "" if match(':(after|before)',$selector)
       $subitemparams = remove_first(remove_first($foundsubitem)) if $selector != ''
       push($subitemparams, (parent $subparams)) if $selector != ''
-      {$name + $params[0] + $foundsubitem[0]}($subitemparams) if $selector != ''
+      {$name + replace('_$','',$params[0]) + $foundsubitem[0]}($subitemparams) if $selector != ''
 
 stylobate($name, $params)
   if utilus_is_comma_list($params)
