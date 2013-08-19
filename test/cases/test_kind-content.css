@@ -1,0 +1,27 @@
+.content {
+  padding: 0 0 0 0;
+}
+.text-content {
+  padding: 1px 1em 1px 1em;
+}
+.text-content:before {
+  content: "";
+  display: block;
+  margin-top: -1px;
+  margin-bottom: 1em;
+}
+.text-content:after {
+  content: "";
+  display: block;
+  margin-bottom: -1px;
+  margin-top: 1em;
+}
+.bottomed-content {
+  padding: 1px 1rem 1px 1rem;
+}
+.bottomed-content-helper {
+  content: "";
+  display: block;
+  margin-bottom: -1px;
+  margin-top: 1rem;
+}
