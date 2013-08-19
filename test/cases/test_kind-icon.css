@@ -1,5 +1,6 @@
 .ico,
 .ico-sized,
+.ico-single,
 .ico-replaced,
 .ico-with-image,
 .ico-auto-image-size,
@@ -18,6 +19,10 @@
 .ico-sized {
   width: 10px;
   height: 20px;
+}
+.ico-single {
+  width: 16px;
+  height: 16px;
 }
 .ico-replaced {
   padding: 0 10px 20px 0;

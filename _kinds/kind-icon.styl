@@ -7,6 +7,7 @@ kind-icon()
 
 kind-icon_()
   $size = utilus_get(arguments, 'size')
+  $size = $size $size if $size and length($size) == 1
   $image = utilus_get_string(arguments)
   $align = utilus_retrieve(arguments, baseline top bottom)
 
