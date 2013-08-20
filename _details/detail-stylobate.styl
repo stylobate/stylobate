@@ -9,16 +9,27 @@ _stylobate($name, $params)
     $selector = ''
     $foundsubitem = ''
     if is_array($subitem)
-      if match('^(\-|_)', $subitem[0])
-        if type($subitem[1]) == 'string'
-          $selector = $subitem[1]
+      if type($subitem[0]) in ('ident' 'string')
+        if match('^(\-|_)', $subitem[0])
+          $foundsubitem = $subitem
+          if type($subitem[1]) == 'string'
+            $selector = $subitem[1]
+    else
+      if type($subitem) in ('ident' 'string')
+        if match('^(\-|_)', $subitem)
           $foundsubitem = $subitem
 
+    call_subitem()
+      $subitemparams = remove_first(remove_first($foundsubitem))
+      push($subitemparams, (parent $subparams))
+      {$name + replace('[_-]+$', '', $params[0]) + $foundsubitem[0]}($subitemparams)
+
     {$selector}
-      content: "" if match(':(after|before)',$selector)
-      $subitemparams = remove_first(remove_first($foundsubitem)) if $selector != ''
-      push($subitemparams, (parent $subparams)) if $selector != ''
-      {$name + replace('_$','',$params[0]) + $foundsubitem[0]}($subitemparams) if $selector != ''
+      content: "" if match(':(after|before)', $selector)
+      call_subitem() if $foundsubitem != '' and $selector != ''
+
+    if $selector == '' and $foundsubitem != ''
+      call_subitem()
 
 stylobate($name, $params)
   if utilus_is_comma_list($params)

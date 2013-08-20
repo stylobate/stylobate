@@ -3,6 +3,13 @@
 kind-foo()
   width: utilus_alike(arguments, 10px)
 
+kind-foo_()
+  // Should have at least some prop content to work
+  z: z if true == false
+
+kind-foo_pseudo()
+  border: 1px solid
+
 kind-bar()
   height: utilus_alike(arguments, 10px)
 
@@ -20,6 +27,12 @@ kind-baz()
 
 .foo
   kind: foo
+
+.pseudo-foo
+  kind: foo _pseudo
+
+.foo_pseudo
+  kind: foo_ _pseudo
 
 .bar
   kind: bar (-subbar '&-subbar')

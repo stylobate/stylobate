@@ -1,6 +1,13 @@
 .foo {
   width: 10px;
 }
+.pseudo-foo {
+  width: 10px;
+  border: 1px solid;
+}
+.foo_pseudo {
+  border: 1px solid;
+}
 .bar {
   height: 10px;
 }
