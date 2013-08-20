@@ -2,26 +2,25 @@
   padding: 0 0 0 0;
 }
 .text-content {
-  padding: 1px 1em 1px 1em;
+  padding: 0 1em 0 1em;
 }
 .text-content:before {
   content: "";
-  display: block;
-  margin-top: -1px;
+  display: table;
   margin-bottom: 1em;
 }
 .text-content:after {
   content: "";
-  display: block;
-  margin-bottom: -1px;
+  display: table;
+  clear: both;
   margin-top: 1em;
 }
 .bottomed-content {
-  padding: 1px 1rem 1px 1rem;
+  padding: 0 1rem 0 1rem;
 }
 .bottomed-content-helper {
   content: "";
-  display: block;
-  margin-bottom: -1px;
+  display: table;
+  clear: both;
   margin-top: 1rem;
 }
