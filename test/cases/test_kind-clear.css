@@ -1,10 +1,12 @@
 .something:before,
-.margin-collapsed:before {
+.margin-collapsed:before,
+.clear-with-helper:before {
   content: "";
   display: table;
 }
 .something:after,
-.just-clear-those-floats:after {
+.just-clear-those-floats:after,
+.clear-with-helper__helper {
   content: "";
   display: table;
   clear: both;

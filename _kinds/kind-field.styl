@@ -2,14 +2,17 @@ kind-field()
   kind-input(no-reset)
 
   unless no-elements in arguments
-    &-content
-      kind-field-content()
+    unless utilus_get(arguments, '-content')
+      &-content
+        kind-field-content()
 
-    &-left
-      kind-field-left(arguments)
+    unless utilus_get(arguments, '-left')
+      &-left
+        kind-field-left(arguments)
 
-    &-right
-      kind-field-right(arguments)
+    unless utilus_get(arguments, '-right')
+      &-right
+        kind-field-right(arguments)
 
 kind-field-content()
   @extends $kind-field-content
@@ -24,7 +27,7 @@ $kind-field-content
 kind-field-left()
   @extends $kind-field-left
 
-  $sides = utilus_get_sides(arguments)
+  $sides = any_get_sides(arguments)
   unless no-margin in arguments
     margin: -1*$sides[0] 0 -1*$sides[2] -1*$sides[3]
 
@@ -39,7 +42,7 @@ $kind-field-left
 kind-field-right()
   @extends $kind-field-right
 
-  $sides = utilus_get_sides(arguments)
+  $sides = any_get_sides(arguments)
   unless no-margin in arguments
     margin: -1*$sides[0] -1*$sides[1] -1*$sides[2] 0
 
