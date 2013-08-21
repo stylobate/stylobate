@@ -22,8 +22,8 @@ kind-group-start()
 
 $kind-group-start
   unless ie
-    border-top-right-radius: 0
-    border-bottom-right-radius: 0
+    border-top-right-radius: 0 !important
+    border-bottom-right-radius: 0 !important
 
 kind-group-end()
   unless no-margin in arguments
@@ -34,8 +34,8 @@ kind-group-end()
 
 $kind-group-end
   unless ie
-    border-top-left-radius: 0
-    border-bottom-left-radius: 0
+    border-top-left-radius: 0 !important
+    border-bottom-left-radius: 0 !important
 
 $kind-group-margin
   margin-left: -1px
@@ -47,6 +47,6 @@ kind-group-middle()
   $selector = utilus_alike(arguments, '')
   if $selector != ''
     {$selector}
-      border-radius: 0
+      border-radius: 0 !important
   else
-    border-radius: 0
+    border-radius: 0 !important
