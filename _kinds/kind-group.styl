@@ -7,13 +7,13 @@ $kind-group
 
 kind-group-item()
   unless no-radius in arguments
-    &:first-child
+    &:first-child:not(:only-child)
       kind-group-start(arguments)
 
     &:not(:first-child):not(:last-child)
       kind-group-middle(arguments)
 
-    &:last-child
+    &:last-child:not(:only-child)
       kind-group-end(arguments)
 
 kind-group-start()
