@@ -1,0 +1,64 @@
+grid-col-count($where)
+  $got_count = utilus_get($where, 'count', 0)
+  $actual_count = 0
+  $have_units = 0
+  for $item in $where
+    $item_col = utilus_get($item, '-col')
+    if $item_col
+      $actual_count = $actual_count + 1
+      unless utilus_get_unit($item_col)
+        $have_units = $have_units + 1
+  
+  if $got_count >= $actual_count
+    return ($got_count) ($got_count - ($actual_count - $have_units))
+  else
+    return $actual_count $have_units
+
+
+
+kind-grid()
+  position: relative
+
+  kind-grid_(arguments)
+
+kind-grid_()
+  kind-grid_gutter(arguments)
+  kind-grid_nowrap(arguments)
+  
+kind-grid_gutter()
+  $gutter = utilus_get(arguments, 'gutter')
+  if $gutter
+    margin-left: -1*$gutter
+    
+    unless utilus_get(arguments, '-content')
+      $count = grid-col-count(arguments)[0]
+      padding-right: $gutter * $count
+      
+      white-space: nowrap
+
+kind-grid_nowrap()
+  if nowrap in arguments
+    white-space: nowrap
+
+kind-grid-col()
+  $width = utilus_get_unit(arguments)
+  unless $width
+    $width = 100% / utilus_or(grid-col-count(utilus_get(arguments, 'parent'))[1], 1)
+    
+  width: $width 
+  
+  unless parent_get(arguments, '-content')
+    $gutter = parent_get(arguments, 'gutter') 
+    if $gutter
+      margin-left: $gutter
+    
+    if utilus_get(arguments, 'nowrap')
+      unless parent_get(arguments, 'nowrap')
+        white-space: nowrap
+    else
+      white-space: normal
+
+kind-grid-content()
+  $gutter = parent_get(arguments, 'gutter') 
+  if $gutter
+    margin-left: $gutter
