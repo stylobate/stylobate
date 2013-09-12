@@ -49,3 +49,25 @@ set-skin-namespace('')
 
 .multiparamey
   skin: foo baz, bar baz (-subbar '&-lol' red) (__lol '&:before')
+
+
+skin-base()
+  width: 10px
+
+  &:hover > {utilus_get_string(utilus_get(arguments, '-subitem'))}
+    background: lime
+
+skin-base-subitem()
+  height: 20px
+
+skin-extended()
+  padding: 30px
+
+  &:hover > {utilus_get_string(utilus_get(arguments, '-subitem'))}
+    background: red
+
+.the-base
+  skin: base (-subitem '&-subitem')
+
+.the-extended
+  skin: extended (-subitem '.the-base-subitem')

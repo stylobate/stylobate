@@ -40,3 +40,18 @@
   content: "";
   width: 10px;
 }
+.the-base {
+  width: 10px;
+}
+.the-base:hover > .the-base-subitem {
+  background: #0f0;
+}
+.the-base-subitem {
+  height: 20px;
+}
+.the-extended {
+  padding: 30px;
+}
+.the-extended:hover > .the-base-subitem {
+  background: #f00;
+}
