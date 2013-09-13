@@ -55,7 +55,10 @@ skin-base()
   width: 10px
 
   &:hover > {utilus_get_string(utilus_get(arguments, '-subitem'))}
-    background: lime
+    if called_from(arguments, skin-base)
+      background: lime
+    else
+      background: red
 
 skin-base-subitem()
   height: 20px

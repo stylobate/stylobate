@@ -4,8 +4,12 @@ stylobate_extends($what, $target)
   $temp = utilus_append($stylobate_extends, utilus_ident($what) utilus_ident($target))
   utilus_reassign($stylobate_extends, $temp)
 
+called_from($where, $what)
+  return utilus_get($where, called_from) == utilus_ident($what)
+
 _stylobate($name, $params)
   $subparams = utilus_remove_first($params)
+  push($subparams, (called_from $name + $params[0]))
   $skin_name = $params[0]
 
   // Check if the called stylobate extends anything, if so, call it first,

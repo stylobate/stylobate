@@ -54,5 +54,5 @@
   padding: 30px;
 }
 .the-extended:hover > .the-base-subitem {
-  background: #0f0;
+  background: #f00;
 }

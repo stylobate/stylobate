@@ -1,6 +1,6 @@
 kind-content()
   $sides = utilus_get_sides(arguments)
-  if ie or arguments == ''
+  if ie or ('' + $sides == '0 0 0 0')
     padding: $sides
   else
     padding: 0 $sides[1] 0 $sides[3]
