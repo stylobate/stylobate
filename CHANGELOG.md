@@ -1,4 +1,5 @@
 ---
+# Stylobate Changelog
 ---
 
 ## v0.13.0 — v0.13.5
@@ -66,6 +67,6 @@
 - Some fixed to buttons in IE.
 - Removed some obsolete stuff.
 
-## pre 0.1.0
+## pre v0.1.0
 
 _A lot of initial stuff_
