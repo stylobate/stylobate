@@ -67,6 +67,6 @@
 - Some fixed to buttons in IE.
 - Removed some obsolete stuff.
 
-## pre v0.1.0
+## Pre v0.1.0
 
 _A lot of initial stuff_
