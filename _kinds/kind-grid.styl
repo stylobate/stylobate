@@ -20,6 +20,7 @@ process-grid-cols($where)
       // Save the indexes for the cols
       push($result[5][1], ($item_col[0] (length($result[5][1]) - 1)))
       
+      // Populate the columns
       $items_unit = utilus_get_unit($item_col)
       if $items_unit
         $index = utilus_get(('px' 1) ('em' 2) ('rem' 3) ('%' 4), unit($items_unit))
@@ -29,12 +30,15 @@ process-grid-cols($where)
         push($result[1][1], -1)
         $without_units = $without_units + 1
 
+    // Get the gaps
     $item_gap = utilus_get($item, 'gap')
     if $item_gap or (!$item_gap and type($item_gap) != 'boolean')
+      // Set the previous gap if there is a gap
       $result[3][1][length($result[5][1]) - 1] = $item_gap
       if $item_gap != $initial_gutter
         $result[6][1] = false
     else if $items_unit
+      // Set the next gap at each column
       $result[3][1][length($result[5][1]) + 1] = clone($initial_gutter)
 
   // If total count is more than cols described, fill the cols with the rest
@@ -86,8 +90,6 @@ get_column($where, $name_or_index)
   return $result
 
 kind-grid()
-  position: relative
-
   kind-grid_(arguments)
 
 kind-grid_()
@@ -102,8 +104,6 @@ kind-grid_gutter()
     
   unless utilus_get(arguments, '-content')
     padding-right: utilus_get($columns, 'shrinkers')[0]
-    
-    white-space: nowrap
 
 kind-grid_nowrap()
   if retrieve(arguments, nowrap ellipsis)
