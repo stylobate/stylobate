@@ -16,10 +16,10 @@ process-grid-cols($where)
     $item_col = utilus_get($item, '-col')
     if $item_col
       $actual_count = $actual_count + 1
-      
+
       // Save the indexes for the cols
       push($result[5][1], ($item_col[0] (length($result[5][1]) - 1)))
-      
+
       // Populate the columns
       $items_unit = utilus_get_unit($item_col)
       if $items_unit
@@ -54,8 +54,8 @@ process-grid-cols($where)
       if $item == -1
         $result[1][1][$index] = unit($width,'%')
         $result[2][4][1] = $result[2][4][1] + $width
-        
-  // Set the proper total count  
+
+  // Set the proper total count
   $result[0][1] = length($result[1][1])
 
   // Calculate shrinkers (total sums of units > 0 including gutters)
@@ -73,14 +73,14 @@ process-grid-cols($where)
 get_column($where, $name_or_index)
   $name = ''
   $index = 0
-  
+
   if type($name_or_index) == 'string'
     $name = $name_or_index
     $index = utilus_get($where[5][1], $name)
   else
     $index = $name_or_index
     $name = $where[5][1][$index + 1][0]
-    
+
   $result = 'name' $name,
             'index' $index,
             'width' $where[1][1][$index],
@@ -95,13 +95,13 @@ kind-grid()
 kind-grid_()
   kind-grid_gutter(arguments)
   kind-grid_nowrap(arguments)
-  
+
 kind-grid_gutter()
   $columns = process-grid-cols(arguments)
-  
+
   if $columns[6][1]
     margin-left: -1*$gutter = utilus_get($columns, 'gutter')
-    
+
   unless utilus_get(arguments, '-content')
     padding-right: utilus_get($columns, 'shrinkers')[0]
 
@@ -116,7 +116,7 @@ kind-grid-col()
 
   if absolute in arguments
     position: absolute
-    
+
   else
     kind-block(inline)
 
@@ -137,6 +137,6 @@ kind-grid-col()
           white-space: normal
 
 kind-grid-content()
-  $gutter = parent_get(arguments, 'gutter') 
+  $gutter = parent_get(arguments, 'gutter')
   if $gutter
     margin-left: $gutter
