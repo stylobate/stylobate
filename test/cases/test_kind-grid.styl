@@ -1,10 +1,13 @@
-// @import "../../index"
+@import "../../index"
 
-// .grid-four
-//   kind: grid (gutter 10px) (-col '&-left' 10em) (-col '&-item') ('count' 4)
-
-// .grid-auto
-//   kind: grid (gutter 10px) (-col '&-left' 10em) (-col '&-middle') (-col '&-right')
-
-// .grid-counless
-//   kind: grid (gutter 10px) (-col '&-left' 10em) (-col '&-item') (-content '&-item-content')
+.abook-entry
+  kind: grid ellipsis ('gutter' 3em) \
+    ('gap' 0) \
+    (-col '&-name' 40%) \
+    ('gap' 1em) \
+    (-col '& > .abook-entry-checkbox' 6em) \
+    ('gap' 1em) \
+    (-col '& > .abook-entry-userpic' 3em) \
+    (-col '&-email') \
+    (-col '&-phone') \
+    (-col '&-label, &-compose')
