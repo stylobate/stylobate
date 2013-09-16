@@ -72,12 +72,27 @@ process-grid-cols($where)
 
   return $result
 
+get_column($where, $name_or_index)
+  $name = ''
+  $index = 0
+  
+  if type($name_or_index) == 'string'
+    $name = $name_or_index
+    $index = utilus_get($where[5][1], $name)
+  else
+    $index = $name_or_index
+    $name = $where[5][1][$index + 1][0]
+    
+  $result = 'name' $name,
+            'index' $index,
+            'width' $where[1][1][$index]
+
+  return $result
+
 kind-grid()
   position: relative
 
   kind-grid_(arguments)
-
-  p(process-grid-cols(arguments))
 
 kind-grid_()
   kind-grid_gutter(arguments)
@@ -102,8 +117,8 @@ kind-grid_nowrap()
 
 kind-grid-col()
   $columns = process-grid-cols(utilus_get(arguments, 'parent'))
-
-  width: $columns[1][1][utilus_get($columns[5][1], utilus_get_string(arguments))]
+  $column_name = utilus_get_string(arguments)
+  width: get_column($columns, $column_name)[2][1]
 
   if absolute in arguments
     position: absolute
