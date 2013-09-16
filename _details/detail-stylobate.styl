@@ -32,10 +32,10 @@ _stylobate($name, $params)
         if match('^(\-|_)', $subitem[0])
           $foundsubitem = $subitem
           if type($subitem[1]) == 'string'
-	    if match('&', $subitem[1])
-	      $selector = $subitem[1]
-	    else
-	      $foundsubitem = ''
+            if match('&', $subitem[1])
+              $selector = $subitem[1]
+            else
+              $foundsubitem = ''
     else
       if type($subitem) in ('ident' 'string')
         if match('^(\-|_)', $subitem)

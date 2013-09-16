@@ -7,7 +7,7 @@ grid-col-count($where)
     if $item_col
       $actual_count = $actual_count + 1
       unless utilus_get_unit($item_col)
-	$have_units = $have_units + 1
+        $have_units = $have_units + 1
 
   if $got_count >= $actual_count
     return ($got_count) ($got_count - ($actual_count - $have_units))
@@ -54,7 +54,7 @@ kind-grid-col()
 
     if utilus_get(arguments, 'nowrap')
       unless parent_get(arguments, 'nowrap')
-	white-space: nowrap
+        white-space: nowrap
     else
       white-space: normal
 
