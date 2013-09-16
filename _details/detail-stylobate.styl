@@ -1,5 +1,24 @@
+$stylobate_extends = ()
+
+stylobate_extends($what, $target)
+  $temp = utilus_append($stylobate_extends, utilus_ident($what) utilus_ident($target))
+  utilus_reassign($stylobate_extends, $temp)
+
+called_from($where, $what)
+  return utilus_get($where, called_from) == utilus_ident($what)
+
 _stylobate($name, $params)
   $subparams = utilus_remove_first($params)
+  push($subparams, (called_from $name + $params[0]))
+  $skin_name = $params[0]
+
+  // Check if the called stylobate extends anything, if so, call it first,
+  // and use the extended stylobate for subitems.
+  $extended_name = utilus_get($stylobate_extends, $name + $skin_name)
+  if $extended_name
+    $skin_name = replace('^' + $name, '', $extended_name)
+    {$name + $skin_name}($subparams)
+
   {$name + $params[0]}($subparams)
 
   for $subitem in $subparams
@@ -25,7 +44,7 @@ _stylobate($name, $params)
     call_subitem()
       $subitemparams = remove_first(remove_first($foundsubitem))
       push($subitemparams, (parent $subparams))
-      {$name + replace('[_-]+$', '', $params[0]) + $foundsubitem[0]}($subitemparams)
+      {$name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]}($subitemparams)
 
     {$selector}
       content: "" if match(':(after|before)', $selector)
