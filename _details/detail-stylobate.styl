@@ -8,6 +8,9 @@ called_from($where, $what)
   return utilus_get($where, called_from) == utilus_ident($what)
 
 _stylobate($name, $params)
+  if not utilus_is_function($name + $params[0])
+    error('No such “' + $name + '” — “' + $params[0] + '”')
+
   $subparams = utilus_remove_first($params)
   push($subparams, (called_from $name + $params[0]))
   $skin_name = $params[0]
