@@ -11,6 +11,7 @@ _stylobate($name, $params)
   $subparams = utilus_remove_first($params)
   push($subparams, (called_from $name + $params[0]))
   $skin_name = $params[0]
+  $context = utilus_get($params, 'context', '')
 
   // Check if the called stylobate extends anything, if so, call it first,
   // and use the extended stylobate for subitems.
@@ -19,7 +20,9 @@ _stylobate($name, $params)
     $skin_name = replace('^' + $name, '', $extended_name)
     {$name + $skin_name}($subparams)
 
-  {$name + $params[0]}($subparams)
+  {$name + $params[0]}($subparams) unless $context
+  {$context}
+    {$name + $params[0]}($subparams) if $context
 
   for $subitem in $subparams
     // There shouldn't be an `if` inside a {$selector}, 'cause
@@ -44,7 +47,11 @@ _stylobate($name, $params)
     call_subitem()
       $subitemparams = remove_first(remove_first($foundsubitem))
       push($subitemparams, (parent $subparams))
-      {$name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]}($subitemparams)
+      $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
+      {$subitemname}($subitemparams) unless $context
+      {$context}
+        {$subitemname}($subitemparams) if $context
+
 
     {$selector}
       content: "" if match(':(after|before)', $selector)

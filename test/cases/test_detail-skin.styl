@@ -72,3 +72,15 @@ skin-extended()
 
 .the-extended
   skin: extended (-subitem '.the-base-subitem')
+
+skin-contextual()
+  width: 10px
+
+skin-contextual_checked()
+  width: 20px
+
+skin-contextual-link()
+  height: 10px
+
+.pysh
+  skin: contextual (context 'body &') (-link 'a&.lol') (_checked 'input:checked + &')

@@ -56,3 +56,12 @@
 .the-extended:hover > .the-base-subitem {
   background: #f00;
 }
+body .pysh {
+  width: 10px;
+}
+body a.pysh.lol {
+  height: 10px;
+}
+body input:checked + .pysh {
+  width: 20px;
+}
