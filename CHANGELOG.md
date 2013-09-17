@@ -2,6 +2,13 @@
 # Stylobate Changelog
 ---
 
+## v0.14.0 (2013-09-17)
+
+- Added `stylobate_extends` function.
+- Added `called_from` auto param to all the stylobates.
+- Can now use existing classes for sub-elements/modifiers of extended things.
+- First prototype for `kind-grid` (kinda slow, need refactoring?).
+
 ## v0.13.0 — v0.13.5
 
 - Fixed the modifiers/subskins.
