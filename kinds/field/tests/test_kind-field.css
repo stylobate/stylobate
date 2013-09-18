@@ -1,0 +1,85 @@
+.field,
+.small-field,
+.custom-field {
+  position: relative;
+
+  display: inline-block;
+
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+
+  cursor: text;
+  vertical-align: baseline;
+}
+
+.field-content,
+.custom-field__inner {
+  position: static;
+
+  display: block;
+  overflow: hidden;
+
+  height: 100%;
+}
+
+.field-left,
+.field-label,
+.custom-field__label {
+  position: relative;
+  z-index: 9;
+
+  float: left;
+}
+
+.field-right,
+.custom-field__input {
+  position: relative;
+  z-index: 9;
+
+  float: right;
+}
+
+.field {
+  width: 400px;
+
+  background: #000;
+}
+
+.field-left {
+  padding: 10px 20px;
+  margin: -10px 0 -10px -20px;
+}
+
+.field-right {
+  padding: 10px 20px;
+  margin: -10px -20px -10px 0;
+}
+
+.small-field {
+  width: 400px;
+
+  background: #FFF;
+}
+
+.field-label {
+  padding: 10px 20px;
+  margin: -10px 0 -10px -20px;
+
+  background: red;
+}
+
+.custom-field {
+  width: 400px;
+}
+
+.custom-field__label {
+  padding: 1em;
+  margin: -1em 0 -1em -1em;
+}
+
+.custom-field__input {
+  padding: 1em;
+  margin: -1em -1em -1em 0;
+}
+

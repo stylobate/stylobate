@@ -1,0 +1,62 @@
+.foo,
+.pseudo-foo {
+  width: 10px;
+}
+
+.pseudo-foo,
+.foo_pseudo {
+  border: 1px solid;
+}
+
+.bar {
+  height: 10px;
+}
+
+.bar-subbar {
+  padding-left: 10px;
+
+  background: #000;
+}
+
+.foobar {
+  width: 10px;
+  height: 10px;
+}
+
+.foobar2 {
+  width: 11px;
+  height: 10px;
+}
+
+.foobar3 {
+  width: 10px;
+  height: 11px;
+}
+
+.foobar3-lol {
+  padding-left: 11px;
+
+  background: red;
+}
+
+.foobar3:before {
+  content: "";
+
+  height: 10px;
+}
+
+.foobar4 {
+  width: 11px;
+  height: 11px;
+}
+
+.baz {
+  width: 10px;
+  height: 10px;
+}
+
+.baz2 {
+  width: 11px;
+  height: 11px;
+}
+

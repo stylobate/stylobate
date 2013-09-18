@@ -1,0 +1,17 @@
+kind-foo()
+  width: 10px
+
+  height: parent_get_color(arguments, 10px)
+
+kind-foo-bar()
+  height: 10px
+  padding-left: parent_alike(arguments, 10px)
+
+  if parent_get_color(arguments)
+    color: parent_get_color(arguments)
+
+.foo
+  kind: foo (-bar '&-bar')
+
+.foo2
+  kind: foo 30px #FFF (-bar '&-bar')

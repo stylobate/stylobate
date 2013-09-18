@@ -1,0 +1,7 @@
+.pill {
+  display: inline-block;
+
+  white-space: nowrap;
+  text-decoration: none;
+}
+

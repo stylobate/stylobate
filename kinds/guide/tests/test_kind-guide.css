@@ -1,0 +1,45 @@
+.guides {
+  position: absolute;
+
+  visibility: hidden;
+}
+
+.guides,
+.guides2 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.guides2,
+.guides3 {
+  position: fixed;
+
+  visibility: hidden;
+}
+
+.guides3 {
+  top: 1em;
+  right: 1em;
+  bottom: 1em;
+  left: 1em;
+}
+
+.visible-guides {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  pointer-events: none;
+}
+
+.guides-item {
+  visibility: visible;
+}
+
+.visible-guides-item {
+  pointer-events: auto;
+}

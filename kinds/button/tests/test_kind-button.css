@@ -1,0 +1,36 @@
+.button,
+.middle-button {
+  padding: 0;
+  border: none;
+  margin: 0;
+
+  background: transparent;
+  -moz-appearance: none;
+  font: inherit;
+}
+
+.button::-moz-focus-inner,
+.middle-button::-moz-focus-inner {
+  padding: 0;
+  border: none;
+}
+
+.button,
+.button-with-no-reset,
+.middle-button {
+  display: inline-block;
+
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.middle-button {
+  vertical-align: middle;
+}
+

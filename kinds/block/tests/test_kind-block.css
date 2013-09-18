@@ -1,0 +1,26 @@
+.item {
+  position: relative;
+
+  display: block;
+}
+
+.item_static {
+  position: static;
+
+  display: block;
+}
+
+.list-item {
+  vertical-align: top;
+}
+
+.list-item,
+.list-item_bottom {
+  position: relative;
+
+  display: inline-block;
+}
+
+.list-item_bottom {
+  vertical-align: bottom;
+}

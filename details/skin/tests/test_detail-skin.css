@@ -1,0 +1,91 @@
+.limey {
+  background: #0F0;
+}
+
+.whitey {
+  color: #FFF;
+}
+
+.whitey-subbar {
+  padding-left: 10px;
+
+  background: #000;
+}
+
+.mergey,
+.oneparamey {
+  color: #FFF;
+
+  background: #0F0;
+}
+
+.oneparamey {
+  overflow: hidden;
+
+  width: 10px;
+  height: 10px;
+}
+
+.lolly {
+  content: "OLOLO";
+
+  background: red;
+}
+
+.limey-namespacey,
+.multiparamey {
+  background: #0F0;
+}
+
+.multiparamey {
+  width: 10px;
+  height: 10px;
+
+  color: #FFF;
+}
+
+.multiparamey-lol {
+  padding-left: 10px;
+
+  background: red;
+}
+
+.multiparamey:before {
+  content: "";
+
+  width: 10px;
+}
+
+.the-base {
+  width: 10px;
+}
+
+.the-base:hover > .the-base-subitem {
+  background: #0F0;
+}
+
+.the-base-subitem {
+  height: 20px;
+}
+
+.the-extended {
+  width: 10px;
+  padding: 30px;
+}
+
+.the-extended:hover > .the-base-subitem {
+  background: red;
+}
+
+body .pysh {
+  width: 10px;
+}
+
+body a.pysh.lol {
+  height: 10px;
+}
+
+body input:checked + .pysh {
+  width: 20px;
+}
+

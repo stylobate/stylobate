@@ -1,0 +1,95 @@
+.paranja {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.button:before {
+  content: "";
+
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+}
+
+.frame {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.frame_inner {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  bottom: 1em;
+  left: 1em;
+}
+
+.sidey {
+  bottom: 1em;
+}
+
+.sidey,
+.triple {
+  position: absolute;
+  top: 1em;
+  right: 0;
+  left: 0;
+}
+
+.triple,
+.fourey {
+  bottom: 2em;
+}
+
+.fourey {
+  right: 0;
+  left: 3em;
+}
+
+.fourey,
+.toppy {
+  position: absolute;
+  top: 1em;
+}
+
+.toppy {
+  right: 1em;
+  bottom: auto;
+  left: 1em;
+}
+
+.paranja_gray {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: rgba(0,0,0,0.5);
+}
+
+.paranja_image {
+  background: url("kitty.png") no-repeat 50%;
+}
+
+.paranja_image,
+.paranja_tiled {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.paranja_tiled {
+  background: url("pattern.png") 50%;
+}
+

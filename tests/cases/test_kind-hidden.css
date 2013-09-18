@@ -1,7 +1,0 @@
-.is-vhidden {
-  position: absolute !important;
-  clip: rect(1px,1px,1px,1px) !important;
-}
-.is-hidden {
-  display: none !important;
-}

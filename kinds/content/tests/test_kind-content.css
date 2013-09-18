@@ -1,0 +1,38 @@
+.content {
+  padding: 0;
+}
+
+.text-content {
+  padding: 0 1em;
+}
+
+.text-content:before {
+  content: "";
+
+  display: table;
+
+  margin-bottom: 1em;
+}
+
+.text-content:after {
+  content: "";
+
+  display: table;
+  clear: both;
+
+  margin-top: 1em;
+}
+
+.bottomed-content {
+  padding: 0 1rem;
+}
+
+.bottomed-content-helper {
+  content: "";
+
+  display: table;
+  clear: both;
+
+  margin-top: 1rem;
+}
+

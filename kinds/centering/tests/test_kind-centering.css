@@ -1,0 +1,23 @@
+.centerer:before {
+  content: "";
+
+  height: 100%;
+}
+
+.centerer:before,
+.centerer-content {
+  display: inline-block;
+
+  vertical-align: middle;
+}
+
+.centerer-content {
+  text-align: left;
+  white-space: normal;
+}
+
+.centerer {
+  text-align: center;
+  white-space: nowrap;
+}
+

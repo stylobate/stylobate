@@ -1,0 +1,55 @@
+.input,
+.input-controller,
+.small-input {
+  padding: 0;
+  border: none;
+  margin: 0;
+
+  font: inherit;
+
+  background: transparent;
+}
+
+.input:focus,
+.input-controller:focus,
+.small-input:focus {
+  outline: none;
+}
+
+.input,
+.input-controller {
+  vertical-align: baseline;
+}
+
+.input,
+.input-controller,
+.small-input {
+  position: relative;
+
+  display: inline-block;
+
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+
+  cursor: text;
+}
+
+.input {
+  width: 400px;
+}
+
+.input-controller {
+  z-index: 9;
+
+  width: 100%;
+  height: 100%;
+}
+
+.small-input {
+  width: 400px;
+
+  vertical-align: bottom;
+
+  font-size: 10px;
+}
