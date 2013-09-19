@@ -2,11 +2,12 @@
 # Stylobate Changelog
 ---
 
-## v0.15.0 (in development)
+## v0.15.0 (2013-09-19)
 
 - Added a way to add context (would work only with described elements atm).
 - Stylobate now would throw an error when it won't find kind/skin/etc.
 - Big renaming and moving and testing happened.
+- Updated if-ie dep.
 
 ## v0.14.0 (2013-09-17)
 

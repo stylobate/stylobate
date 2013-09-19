@@ -20,7 +20,7 @@
     "url": "git://github.com/kizu/stylobate.git"
   },
   "dependencies": {
-    "if-ie.styl": "0.1.x",
+    "if-ie.styl": "0.2.x",
     "utilus.styl": "0.6.x",
     "semver": "2.1.x"
   },
