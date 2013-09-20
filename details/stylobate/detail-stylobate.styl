@@ -52,9 +52,18 @@ _stylobate($name, $params)
       $subitemparams = remove_first(remove_first($foundsubitem))
       push($subitemparams, (parent $subparams))
       $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
-      {$subitemname}($subitemparams) unless $context
+      $subitemname = '' unless utilus_is_function($subitemname)
+
+      // If there is extended subitem function, use it, otherwise
+      $subitemname_extended = ''
+      $subitemname_extended = $name + replace('[_-]+$', '', $params[0]) + $foundsubitem[0] if $extended_name
+      $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
+
+      {$subitemname}($subitemparams) unless $context or $subitemname_extended or !$subitemname
+      {$subitemname_extended}($subitemparams) unless $context or !$subitemname_extended
       {$context}
-        {$subitemname}($subitemparams) if $context
+        {$subitemname}($subitemparams) if $context and !$subitemname_extended and $subitemname
+        {$subitemname_extended}($subitemparams) if $context and $subitemname_extended
 
 
     {$selector}

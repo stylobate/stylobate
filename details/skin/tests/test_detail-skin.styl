@@ -65,11 +65,14 @@ stylobate_extends('skin-extended', 'skin-base')
 skin-extended()
   padding: 30px
 
+skin-extended-subitem()
+  padding: 90px
+
 .the-base
   skin: base (-subitem '&-subitem')
 
 .the-extended
-  skin: extended (-subitem '.the-base-subitem')
+  skin: extended (-subitem '.the-base-subitem') (-subitem '&-subitem')
 
 skin-contextual()
   width: 10px
