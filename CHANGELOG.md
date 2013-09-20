@@ -2,6 +2,11 @@
 # Stylobate Changelog
 ---
 
+## v0.16.0 (in development)
+
+- Added extendability flag.
+- Added extendable subitems.
+
 ## v0.15.0 (2013-09-19)
 
 - Added a way to add context (would work only with described elements atm).
