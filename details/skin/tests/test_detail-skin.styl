@@ -52,7 +52,7 @@ set-skin-namespace('')
 skin-base()
   width: 10px
   &:hover > {utilus_get_string(utilus_get(arguments, '-subitem'))}
-    if called_from(arguments, skin-base)
+    if not is_extended in arguments
       background: lime
     else
       background: red

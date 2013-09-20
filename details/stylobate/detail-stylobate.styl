@@ -20,6 +20,7 @@ _stylobate($name, $params)
   // and use the extended stylobate for subitems.
   $extended_name = utilus_get($stylobate_extends, $name + $skin_name)
   if $extended_name
+    push($subparams, is_extended)
     $skin_name = replace('^' + $name, '', $extended_name)
     {$name + $skin_name}($subparams)
 
