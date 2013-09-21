@@ -1,16 +1,12 @@
-$stylobate_extends = ()
+$stylobate_extends = ('' '') ('' '')
 
 stylobate_extends($what, $target)
-  $temp = utilus_append($stylobate_extends, utilus_ident($what) utilus_ident($target))
-  utilus_reassign($stylobate_extends, $temp)
+  push($stylobate_extends, utilus_ident($what) utilus_ident($target))
 
 called_from($where, $what)
   return utilus_get($where, called_from) == utilus_ident($what)
 
 _stylobate($name, $params)
-  if not utilus_is_function($name + $params[0])
-    error('No such “' + $name + '” — “' + $params[0] + '”')
-
   $subparams = utilus_remove_first($params)
   push($subparams, (called_from $name + $params[0]))
   $skin_name = $params[0]
@@ -22,11 +18,20 @@ _stylobate($name, $params)
   if $extended_name
     push($subparams, is_extended)
     $skin_name = replace('^' + $name, '', $extended_name)
-    {$name + $skin_name}($subparams)
 
-  {$name + $params[0]}($subparams) unless $context
+    if !utilus_is_function($name + $skin_name)
+      error('No such “' + $name + '” — “' + $skin_name + '”')
+
+  {$name + $skin_name}($subparams) if $extended_name and !$context
   {$context}
-    {$name + $params[0]}($subparams) if $context
+    {$name + $skin_name}($subparams) if $extended_name and $context
+
+  if !utilus_is_function($name + $params[0]) and !$extended_name
+    error('No such “' + $name + '” — “' + $params[0] + '”')
+
+  {$name + $params[0]}($subparams) if !$context and utilus_is_function($name + $params[0])
+  {$context}
+    {$name + $params[0]}($subparams) if $context and utilus_is_function($name + $params[0])
 
   for $subitem in $subparams
     // There shouldn't be an `if` inside a {$selector}, 'cause

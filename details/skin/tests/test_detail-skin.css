@@ -81,6 +81,18 @@
   padding: 90px;
 }
 
+.the-extended2 {
+  width: 10px;
+}
+
+.the-extended2:hover > .the-extended2-subitem {
+  background: red;
+}
+
+.the-extended2-subitem {
+  padding: 190px;
+}
+
 body .pysh {
   width: 10px;
 }

@@ -61,6 +61,7 @@ skin-base-subitem()
   height: 20px
 
 stylobate_extends('skin-extended', 'skin-base')
+stylobate_extends('skin-extended2', 'skin-base')
 
 skin-extended()
   padding: 30px
@@ -68,11 +69,17 @@ skin-extended()
 skin-extended-subitem()
   padding: 90px
 
+skin-extended2-subitem()
+  padding: 190px
+
 .the-base
   skin: base (-subitem '&-subitem')
 
 .the-extended
   skin: extended (-subitem '.the-base-subitem') (-subitem '&-subitem')
+
+.the-extended2
+  skin: extended2 (-subitem '&-subitem')
 
 skin-contextual()
   width: 10px
