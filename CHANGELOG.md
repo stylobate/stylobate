@@ -7,6 +7,7 @@
 - Added extendability flag.
 - Added extendable subitems.
 - Extended items can be bodyless now.
+- Allow non-existent modifiers.
 
 ## v0.15.0 (2013-09-19)
 

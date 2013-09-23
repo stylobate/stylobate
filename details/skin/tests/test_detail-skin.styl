@@ -61,13 +61,14 @@ skin-base-subitem()
   height: 20px
 
 stylobate_extends('skin-extended', 'skin-base')
-stylobate_extends('skin-extended2', 'skin-base')
 
 skin-extended()
   padding: 30px
 
 skin-extended-subitem()
   padding: 90px
+
+stylobate_extends('skin-extended2', 'skin-base')
 
 skin-extended2-subitem()
   padding: 190px
@@ -78,11 +79,17 @@ skin-extended2-newsub()
 .the-base
   skin: base (-subitem '&-subitem')
 
+.the-base_modified
+  skin: base_ (-subitem '&-subitem')
+
 .the-extended
   skin: extended (-subitem '.the-base-subitem') (-subitem '&-subitem')
 
 .the-extended2
   skin: extended2 (-subitem '&-subitem') (-newsub '&-newsub')
+
+.the-extended2_modified
+  skin: extended2_ (-subitem '&-subitem')
 
 skin-contextual()
   width: 10px

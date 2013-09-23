@@ -26,7 +26,7 @@ _stylobate($name, $params)
   {$context}
     {$name + $skin_name}($subparams) if $extended_name and $context
 
-  if !utilus_is_function($name + $params[0]) and !$extended_name
+  if !utilus_is_function($name + $params[0]) and !$extended_name and !match('[_-]$',$params[0])
     error('No such “' + $name + '” — “' + $params[0] + '”')
 
   {$name + $params[0]}($subparams) if !$context and utilus_is_function($name + $params[0])

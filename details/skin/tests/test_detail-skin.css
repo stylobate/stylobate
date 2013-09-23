@@ -64,7 +64,8 @@
   background: #0F0;
 }
 
-.the-base-subitem {
+.the-base-subitem,
+.the-base_modified-subitem {
   height: 20px;
 }
 
@@ -95,6 +96,10 @@
 
 .the-extended2-newsub {
   margin: 190px;
+}
+
+.the-extended2_modified-subitem {
+  padding: 190px;
 }
 
 body .pysh {
