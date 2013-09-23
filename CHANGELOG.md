@@ -8,6 +8,7 @@
 - Added extendable subitems.
 - Extended items can be bodyless now.
 - Allow non-existent modifiers.
+- Proper modifiers for extended objects.
 
 ## v0.15.0 (2013-09-19)
 

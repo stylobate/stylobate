@@ -57,6 +57,8 @@
 }
 
 .the-base {
+  overflow: hidden;
+
   width: 10px;
 }
 
@@ -96,6 +98,10 @@
 
 .the-extended2-newsub {
   margin: 190px;
+}
+
+.the-extended2_modified {
+  overflow: hidden;
 }
 
 .the-extended2_modified-subitem {

@@ -8,23 +8,25 @@ called_from($where, $what)
 
 _stylobate($name, $params)
   $subparams = utilus_remove_first($params)
-  push($subparams, (called_from $name + $params[0]))
+  push($subparams, called_from $name + $params[0])
   $skin_name = $params[0]
   $context = utilus_get($params, 'context', '')
 
   // Check if the called stylobate extends anything, if so, call it first,
   // and use the extended stylobate for subitems.
-  $extended_name = utilus_get($stylobate_extends, $name + $skin_name)
+  $extended_name_ending = replace('.*[^-_]+', '', $skin_name)
+  $extended_name = utilus_or(utilus_get($stylobate_extends, $name + $skin_name), utilus_get($stylobate_extends, $name + replace('[_-]+$', '', $skin_name)))
+  $extended_name = $extended_name + $extended_name_ending if $extended_name
   if $extended_name
     push($subparams, is_extended)
     $skin_name = replace('^' + $name, '', $extended_name)
 
-    if !utilus_is_function($name + $skin_name)
+    if !utilus_is_function($name + $skin_name) and $extended_name_ending == ''
       error('No such “' + $name + '” — “' + $skin_name + '”')
 
-  {$name + $skin_name}($subparams) if $extended_name and !$context
+  {$name + $skin_name}($subparams) if $extended_name and !$context and $extended_name_ending == ''
   {$context}
-    {$name + $skin_name}($subparams) if $extended_name and $context
+    {$name + $skin_name}($subparams) if $extended_name and $context and $extended_name_ending == ''
 
   if !utilus_is_function($name + $params[0]) and !$extended_name and !match('[_-]$',$params[0])
     error('No such “' + $name + '” — “' + $params[0] + '”')

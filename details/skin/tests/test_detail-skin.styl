@@ -60,6 +60,9 @@ skin-base()
 skin-base-subitem()
   height: 20px
 
+skin-base_mod()
+  overflow: hidden
+
 stylobate_extends('skin-extended', 'skin-base')
 
 skin-extended()
@@ -77,7 +80,7 @@ skin-extended2-newsub()
   margin: 190px
 
 .the-base
-  skin: base (-subitem '&-subitem')
+  skin: base (-subitem '&-subitem') _mod
 
 .the-base_modified
   skin: base_ (-subitem '&-subitem')
@@ -89,7 +92,7 @@ skin-extended2-newsub()
   skin: extended2 (-subitem '&-subitem') (-newsub '&-newsub')
 
 .the-extended2_modified
-  skin: extended2_ (-subitem '&-subitem')
+  skin: extended2_ (-subitem '&-subitem') _mod
 
 skin-contextual()
   width: 10px
