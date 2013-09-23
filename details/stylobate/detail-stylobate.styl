@@ -6,6 +6,15 @@ stylobate_extends($what, $target)
 called_from($where, $what)
   return utilus_get($where, called_from) == utilus_ident($what)
 
+stylobate_defaults($where, $defaults...)
+  $origin = utilus_get($where, called_from) + '_'
+  $new = clone($defaults)
+  prepend($new, $origin)
+  for $param, $index in $new
+    if utilus_get($where, $param[0])
+      $new[$index] = ''
+  _stylobate('', $new)
+
 _stylobate($name, $params)
   $subparams = utilus_remove_first($params)
   push($subparams, called_from $name + $params[0])

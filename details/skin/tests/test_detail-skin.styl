@@ -57,6 +57,11 @@ skin-base()
     else
       background: red
 
+  stylobate_defaults(arguments, -subitem '&-defitem', _supermod)
+
+skin-base_supermod()
+  position: absolute
+
 skin-base-subitem()
   height: 20px
 
@@ -80,13 +85,13 @@ skin-extended2-newsub()
   margin: 190px
 
 .the-base
-  skin: base (-subitem '&-subitem') _mod
+  skin: base _mod (-subitem '&-subitem')
 
 .the-base_modified
   skin: base_ (-subitem '&-subitem')
 
 .the-extended
-  skin: extended (-subitem '.the-base-subitem') (-subitem '&-subitem')
+  skin: extended (-subitem '.the-base-subitem') (-subitem '&-subitem') (_supermod '&+&')
 
 .the-extended2
   skin: extended2 (-subitem '&-subitem') (-newsub '&-newsub')
