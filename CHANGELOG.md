@@ -2,7 +2,7 @@
 # Stylobate Changelog
 ---
 
-## v0.16.0 (in development)
+## v0.16.0 (2013-09-23)
 
 - Added extendability flag.
 - Added extendable subitems.
