@@ -72,6 +72,9 @@ skin-extended-subitem()
 skin-extended2-subitem()
   padding: 190px
 
+skin-extended2-newsub()
+  margin: 190px
+
 .the-base
   skin: base (-subitem '&-subitem')
 
@@ -79,7 +82,7 @@ skin-extended2-subitem()
   skin: extended (-subitem '.the-base-subitem') (-subitem '&-subitem')
 
 .the-extended2
-  skin: extended2 (-subitem '&-subitem')
+  skin: extended2 (-subitem '&-subitem') (-newsub '&-newsub')
 
 skin-contextual()
   width: 10px
