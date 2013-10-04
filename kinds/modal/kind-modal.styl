@@ -1,21 +1,21 @@
-kind-modal-wrap()
-  kind-guide(arguments)
-  kind-centering(arguments)
+kind-modal-wrap($this)
+  kind-guide($this)
+  kind-centering($this)
 
   z-index: 99
 
-  unless no-elements in arguments
-    unless no-helper in arguments or utilus_get(arguments, '-helper')
+  unless no-elements in $this['params']
+    unless no-helper in $this['params'] or '-helper' in $this['params']
       &:after
-        kind-modal-wrap-helper(arguments)
+        kind-modal-wrap-helper($this)
 
 
-kind-modal-wrap-helper()
-  kind-centering-helper(arguments)
+kind-modal-wrap-helper($this)
+  kind-centering-helper($this)
 
-kind-modal()
-  kind-guide-item(arguments)
-  kind-centering-item(arguments)
+kind-modal($this)
+  kind-guide-item($this)
+  kind-centering-item($this)
 
   @extends $kind-modal
 
@@ -29,6 +29,6 @@ $kind-modal
   // Should it be moved to -content?
   // overflow: auto
 
-kind-modal-overlay()
-  kind-fill(arguments)
-  kind-guide-item(arguments)
+kind-modal-overlay($this)
+  kind-fill($this)
+  kind-guide-item($this)

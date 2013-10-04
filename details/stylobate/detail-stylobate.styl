@@ -1,3 +1,5 @@
+// use('detail-stylobate.js')
+
 $stylobate_extends = {}
 
 stylobate_extends($what, $target)
@@ -69,6 +71,7 @@ parse_stylobate_option($options, $options_params, $call_stack, $item)
   $options['colors'] = $options['rgbas']
 
 _stylobate($name = '', $params = (), $defaults = ())
+
   // Basic options that would be passed to the item
   $options_params = {} // trying to overcome one bug
   $options = {
@@ -130,7 +133,6 @@ _stylobate($name = '', $params = (), $defaults = ())
   if $call_stack.origin
     $call_name_origin = $call_stack.origin.name
     $call_selector = $call_stack.origin.selector
-
 
   call_item($call_name_origin, $call_selector, $call_stack.current.options) if $call_name_origin and $name != ''
   call_item($call_stack.current.name, $call_stack.current.selector, $call_stack.current.options) if $name != ''

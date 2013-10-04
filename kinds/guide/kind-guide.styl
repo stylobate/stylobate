@@ -1,13 +1,13 @@
-kind-guide()
-  kind-fill(arguments)
+kind-guide($this)
+  kind-fill($this)
 
-  if visible in arguments
+  if visible in $this.params
     pointer-events: none
   else
     visibility: hidden
 
-kind-guide-item()
-  if visible in arguments
+kind-guide-item($this)
+  if visible in $this.params
     // It would be super cool to be able to somehow get this from the parental `guide`
     pointer-events: auto
   else

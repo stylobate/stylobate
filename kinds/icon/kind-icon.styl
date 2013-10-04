@@ -1,17 +1,17 @@
-kind-icon()
+kind-icon($this)
   @extends $kind-icon
   kind-icon_(arguments)
 
-  if replace-image in arguments
+  if replace-image in $this.params
     @extends $kind-icon-replaced
 
-kind-icon_()
-  $size = utilus_get(arguments, 'size')
+kind-icon_($this)
+  $size = $this.params.size
   $size = $size $size if $size and length($size) == 1
-  $image = utilus_get_string(arguments)
-  $align = utilus_retrieve(arguments, baseline top bottom)
+  $image = $this.strings[0]
+  $align = utilus_retrieve($this.params, baseline top bottom)
 
-  if !$size and $image and !(sizeless in arguments)
+  if !$size and $image and !(sizeless in $this.params)
     $size = image-size($image, true)
 
   if $align
@@ -21,7 +21,7 @@ kind-icon_()
     $width = $size[0]
     $height = $size[1]
 
-    if replace-image in arguments
+    if replace-image in $this.params
       padding: 0 $width $height 0
     else
       width: $width
