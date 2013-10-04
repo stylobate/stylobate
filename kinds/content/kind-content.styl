@@ -24,7 +24,11 @@ kind-content-before($this)
   content: ""
   display: table
 
-  $sides = utilus_get_sides($this.units)
+  $par = $this.parent
+  if $par
+    $par = $par.units
+  $sides = utilus_get_sides($this.units) || utilus_get_sides($par)
+
   margin-bottom: $sides[0]
 
 kind-content-after($this)
@@ -36,4 +40,5 @@ kind-content-after($this)
   if $par
     $par = $par.units
   $sides = utilus_get_sides($this.units) || utilus_get_sides($par)
+
   margin-top: $sides[2]

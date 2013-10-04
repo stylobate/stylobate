@@ -6,6 +6,13 @@ stylobate_extends($what, $target)
 called_from($where, $what)
   return utilus_get($where, called_from) == utilus_ident($what)
 
+any_get_sides($this)
+  $par = $this.parent
+  if $par
+    $par = $par.units
+  return utilus_get_sides($this.units) || utilus_get_sides($par)
+
+
 stylobate_defaults($this, $defaults...)
   $new = clone($defaults)
   for $param, $index in $new
