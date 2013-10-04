@@ -1,15 +1,15 @@
-skin-foo()
+skin-foo($this)
   background: lime
-  if baz in arguments
+  if baz in $this.params
     width: 10px
 
-skin-bar()
+skin-bar($this)
   color: #FFF
-  if baz in arguments
+  if baz in $this.params
     height: 10px
 
-skin-bar-subbar()
-  background: utilus_alike(arguments, #000)
+skin-bar-subbar($this)
+  background: $this.colors[0] || #000
 
   padding-left: utilus_alike(utilus_get(arguments, parent), 10px)
 
@@ -22,7 +22,7 @@ skin-lol-foo()
 
 
 .limey
-  skin: foo
+  skin: foo #FFF 10px 30px
 
 .whitey
   skin: bar (-subbar '&-subbar')
@@ -49,15 +49,15 @@ set-skin-namespace('')
   skin: foo baz, bar baz (-subbar '&-lol' red) (__lol '&:before')
 
 
-skin-base()
+skin-base($this)
   width: 10px
-  &:hover > {utilus_get_string(utilus_get(arguments, '-subitem'))}
-    if not is_extended in arguments
+  &:hover > {$this['params']['-subitem']['selector']}
+    if not $this.is_extended
       background: lime
     else
       background: red
 
-  stylobate_defaults(arguments, -subitem '&-defitem', _supermod)
+  stylobate_defaults($this, -subitem '&-defitem', _supermod)
 
 skin-base_supermod()
   position: absolute

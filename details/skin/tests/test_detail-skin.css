@@ -82,6 +82,7 @@
   background: red;
 }
 
+.the-extended .the-base-subitem,
 .the-extended-subitem {
   padding: 90px;
 }

@@ -6,88 +6,159 @@ stylobate_extends($what, $target)
 called_from($where, $what)
   return utilus_get($where, called_from) == utilus_ident($what)
 
-stylobate_defaults($where, $defaults...)
-  $origin = utilus_get($where, called_from) + '_'
+stylobate_defaults($this, $defaults...)
   $new = clone($defaults)
-  prepend($new, $origin)
   for $param, $index in $new
-    if utilus_get($where, $param[0])
+    if $param[0] in $this.params
       $new[$index] = ''
-  _stylobate('', $new)
+  _stylobate('', $this.called_from, $defaults: $new)
 
-_stylobate($name, $params)
-  $subparams = utilus_remove_first($params)
-  push($subparams, called_from $name + $params[0])
-  $skin_name = $params[0]
-  $context = utilus_get($params, 'context', '')
+// Bugs if placed inside of _stylobate
+parse_stylobate_option($options, $options_params, $call_stack, $item)
+  // Managing stringy params
 
-  // Check if the called stylobate extends anything, if so, call it first,
-  // and use the extended stylobate for subitems.
-  $extended_name_ending = replace('.*[^-_]+', '', $skin_name)
-  $extended_name = $stylobate_extends[$name + $skin_name] || $stylobate_extends[$name + replace('[_-]+$', '', $skin_name)]
-  $extended_name = $extended_name + $extended_name_ending if $extended_name
-  if $extended_name
-    push($subparams, is_extended)
-    $skin_name = replace('^' + $name, '', $extended_name)
-
-    if !utilus_is_function($name + $skin_name) and $extended_name_ending == ''
-      error('No such “' + $name + '” — “' + $skin_name + '”')
-
-  {$name + $skin_name}($subparams) if $extended_name and !$context and $extended_name_ending == ''
-  {$context}
-    {$name + $skin_name}($subparams) if $extended_name and $context and $extended_name_ending == ''
-
-  if !utilus_is_function($name + $params[0]) and !$extended_name and !match('[_-]$',$params[0])
-    error('No such “' + $name + '” — “' + $params[0] + '”')
-
-  {$name + $params[0]}($subparams) if !$context and utilus_is_function($name + $params[0])
-  {$context}
-    {$name + $params[0]}($subparams) if $context and utilus_is_function($name + $params[0])
-
-  for $subitem in $subparams
-    // There shouldn't be an `if` inside a {$selector}, 'cause
-    // there is a crazy stylus bug. When it would be fixed,
-    // revert this version to 669082fb35
-    $selector = ''
-    $foundsubitem = ''
-    if is_array($subitem)
-      if type($subitem[0]) in ('ident' 'string')
-        if match('^(\-|_)', $subitem[0])
-          $foundsubitem = $subitem
-          if type($subitem[1]) == 'string'
-            if match('&', $subitem[1])
-              $selector = $subitem[1]
+  if type($item[0]) in ('ident' 'string')
+    // Managing modifiers/elements
+    if match('^(\-|_)', $item[0])
+      $stack_item = { name: $item[0], params: () }
+      if length($item) > 1
+        for $j, $index in $item
+          if $index > 0
+            if $index == 1 and type($j) == 'string'
+              // TODO: are all non-& strings are not selectors? What about `.foo`?
+              if match('&|^\.', $j)
+                $stack_item['selector'] = $j
+              else
+                $stack_item['do_not_call'] = true
+                push($stack_item['params'], $j)
             else
-              $foundsubitem = ''
+              push($stack_item['params'], $j)
+
+      unless $stack_item['do_not_call']
+        push($call_stack['elements'], $stack_item)
+
+      // Add the elements/modifiers to options
+      if !$options_params[''+$stack_item.name]
+        $options_params[''+$stack_item.name] = {
+          selector: $stack_item.selector,
+          params: $stack_item.params
+        }
+
     else
-      if type($subitem) in ('ident' 'string')
-        if match('^(\-|_)', $subitem)
-          $foundsubitem = $subitem
+      if length($item) > 1
+        $param_values = ()
+        for $j in 1..(length($item) - 1)
+          push($param_values, $item[$j])
+        $options_params[''+$item[0]] = $param_values if $item[0] != ''
+      else
+        $options_params[''+$item] = true if $item != ''
 
-    call_subitem()
-      $subitemparams = remove_first(remove_first($foundsubitem))
-      push($subitemparams, (parent $subparams))
-      $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
-      $subitemname = '' unless utilus_is_function($subitemname)
+  // Fill the types with the content
+  if length($item) > 1 and type($item) != 'object'
+    push($options['arrays'], $item)
+  else
+    push($options[type($item) + 's'], $item)
 
-      // If there is extended subitem function, use it, otherwise
-      $subitemname_extended = ''
-      $subitemname_extended = $name + replace('[_-]+$', '', $params[0]) + $foundsubitem[0] if $extended_name
-      $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
+  $options['colors'] = $options['rgbas']
 
-      {$subitemname}($subitemparams) unless $context or $subitemname_extended or !$subitemname
-      {$subitemname_extended}($subitemparams) unless $context or !$subitemname_extended
-      {$context}
-        {$subitemname}($subitemparams) if $context and !$subitemname_extended and $subitemname
-        {$subitemname_extended}($subitemparams) if $context and $subitemname_extended
+_stylobate($name = '', $params = (), $defaults = ())
+  // Basic options that would be passed to the item
+  $options_params = {} // trying to overcome one bug
+  $options = {
+    type: $name,
+    name: $params[0],
+    called_from: $name + $params[0],
+    params: $options_params,
+
+    strings: (),
+    idents: (),
+    units: (),
+    rgbas: (),
+    booleans: (),
+    functions: (),
+    objects: (),
+    arrays: ()
+  }
+
+  // List of what to call
+  $call_stack = {
+    current: { name: $name + $params[0], options: $options },
+    elements: ()
+  }
+
+  $origin_name = $stylobate_extends[$name + $params[0]] || $stylobate_extends[$name + replace('[_-]+$', '', $params[0])]
+  if $origin_name
+    $call_stack['origin'] = {
+      name: $name + replace( '^' + $name, '', $origin_name + replace('.*[^-_]+', '', $params[0]) ),
+      options: $options
+    }
+    $options['is_extended'] = true
+
+  // Use the options from the defaults
+  if length($defaults)
+    for $option in $defaults
+      parse_stylobate_option($options, $options_params, $call_stack, $option)
+
+  // Filling up the options list
+  for $i in 1..(length($params) - 1)
+    parse_stylobate_option($options, $options_params, $call_stack, $params[$i])
 
 
-    {$selector}
-      content: "" if match(':(after|before)', $selector)
-      call_subitem() if $foundsubitem != '' and $selector != ''
+  call_item($item_name, $item_selector, $options)
+    $item_name = '' unless utilus_is_function($item_name)
+    $item_context = $options.params.context
+    $item_context = $item_context || $options.parent.params.context if $options.parent
+    $item_selector = $item_selector || ''
+    if $item_context
+      if !$item_selector
+        $item_selector = $item_context
+      else
+        $item_selector = replace('&', $item_selector, $item_context)
+    {$item_name}($options) if $item_name and !$item_selector
+    {$item_selector}
+      content: "" if match(':(after|before)$', $item_selector)
+      {$item_name}($options) if $item_name and $item_selector
 
-    if $selector == '' and $foundsubitem != ''
-      call_subitem()
+  $call_name_origin = ''
+  if $call_stack.origin
+    $call_name_origin = $call_stack.origin.name
+    $call_selector = $call_stack.origin.selector
+
+
+  call_item($call_name_origin, $call_selector, $call_stack.current.options) if $call_name_origin and $name != ''
+  call_item($call_stack.current.name, $call_stack.current.selector, $call_stack.current.options) if $name != ''
+
+
+  for $k in 0..length($call_stack.elements)
+    $el = ''
+    $el_name_origin = ''
+    $el_name_current = ''
+    $el = $call_stack.elements[$k - 1] if $k != 0
+    if $el
+      $el_name_origin = $call_stack.origin.name if $call_stack.origin
+      $el_name_origin = replace('[_-]+$', '', $el_name_origin) + $el.name if $call_stack.origin
+      $el_name_current = replace('[_-]+$', '', $call_stack.current.name) + $el.name
+      $el_selector = $el['selector']
+      $el_params = $el['params']
+
+      $el_options_params = {}
+      $el_options = {
+        params: $el_options_params,
+        parent: $options,
+        strings: (),
+        idents: (),
+        units: (),
+        rgbas: (),
+        booleans: (),
+        functions: (),
+        objects: (),
+        arrays: ()
+      }
+      parse_stylobate_option($el_options, $el_options_params, {}, $el_params)
+
+    call_item($el_name_origin, $el_selector, $el_options) if $el_name_origin and !utilus_is_function($el_name_current)
+    call_item($el_name_current, $el_selector, $el_options) if $el_name_current
+
 
 stylobate($name, $params)
   if utilus_is_comma_list($params)
