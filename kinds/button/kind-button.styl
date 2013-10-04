@@ -1,15 +1,15 @@
-kind-button()
+kind-button($this)
   @extends $kind-button
 
-  $align = utilus_retrieve(arguments, middle top bottom)
+  $align = utilus_retrieve($this.params, middle top bottom)
   vertical-align: $align if $align
 
-  unless no-reset in arguments
+  unless $this.params.no-reset
     reset('button')
 
 $kind-button
   // Should be a less-style `use` of $kind-pill
-  kind-pill()
+  kind(pill)
 
   cursor: pointer
   user-select: none

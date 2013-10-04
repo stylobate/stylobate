@@ -1,11 +1,11 @@
-kind-clear()
+kind-clear($this)
   if !ie
-    unless after in arguments or utilus_get(arguments, '-before')
+    unless $this.params.after or $this.params['-before']
       &:before
-        kind-clear-before(arguments)
-    unless before in arguments or utilus_get(arguments, '-after')
+        kind-clear-before()
+    unless $this.params.before or $this.params['-after']
       &:after
-        kind-clear-after(arguments)
+        kind-clear-after()
 
   zoom: 1
 
