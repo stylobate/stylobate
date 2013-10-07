@@ -2,10 +2,10 @@ kind-fill($this)
   position: utilus_retrieve($this['params'], fixed static sticky, absolute)
 
   $sides = utilus_get_sides($this['units'])
-  top: $sides[0]
-  right: $sides[1]
-  bottom: $sides[2]
-  left: $sides[3]
+  top: $sides[0] unless $this.params.bottom
+  right: $sides[1] unless $this.params.left
+  bottom: $sides[2] unless $this.params.top
+  left: $sides[3] unless $this.params.right
 
   $bg = $this.strings[0]
   $bg_color = $this.colors[0]
