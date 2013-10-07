@@ -7,73 +7,78 @@ process-grid-cols($where)
 
   // Otherwise do all those things
   $initial_gutter = $where['params']['gutter']
-  $result = 'total_count' 0,
-            'cols_widths' (),
-            'total_units' ('px' 0px) ('em' 0em) ('rem' 0rem) ('%' 0),
-            'gutter' (clone($initial_gutter)),
-            'shrinkers' (),
-            'cols_indexes' (false),
-            'even_gaps' true
+
+  $result = {
+    total_count: 0,
+    cols_widths: (),
+    total_units: { px: 0px, em: 0em, rem: 0rem, '%': 0},
+    gutter: clone($initial_gutter),
+    shrinkers: (),
+    cols_indexes: {},
+    even_gaps: true
+  }
 
   $got_count = $where['params']['count'] || 0
   $actual_count = 0
   $without_units = 0
 
-  for $item in $where
-    $item_col = utilus_get($item, '-col')
+  for $item in $where.arrays
+    $item_col = ($item)[0] == unquote('-col') ? $item : false
+
     if $item_col
       $actual_count = $actual_count + 1
 
       // Save the indexes for the cols
-      push($result[5][1], ($item_col[0] (length($result[5][1]) - 1)))
+      $result['cols_indexes'][''+$item_col[1]] = length($result['cols_indexes'])
 
       // Populate the columns
       $items_unit = utilus_get_unit($item_col)
       if $items_unit
-        $index = utilus_get(('px' 1) ('em' 2) ('rem' 3) ('%' 4), unit($items_unit))
-        push($result[1][1], $items_unit)
-        $result[2][$index][1] = $result[2][$index][1] + unit($items_unit,'')
+        push($result.cols_widths, $items_unit)
+        $result['total_units'][unit($items_unit)] = $result['total_units'][unit($items_unit)] + unit($items_unit,'')
       else
-        push($result[1][1], -1)
+        push($result.cols_widths, -1)
         $without_units = $without_units + 1
 
     // Get the gaps
-    $item_gap = utilus_get($item, 'gap')
-    if $item_gap or (!$item_gap and type($item_gap) != 'boolean')
+    $item_gap = ($item)[0] == 'gap' ? $item : false
+
+    if $item_gap
       // Set the previous gap if there is a gap
-      $result[3][1][length($result[5][1]) - 1] = $item_gap
-      if $item_gap != $initial_gutter
-        $result[6][1] = false
-    else if $items_unit
-      // Set the next gap at each column
-      $result[3][1][length($result[5][1]) + 1] = clone($initial_gutter)
+      $result['gutter'][length($result.cols_indexes) - 1] = $item_gap[1]
+      p($result['gutter'])
+  //     if $item_gap != $initial_gutter
+  //       $result[6][1] = false
+  //   else if $items_unit
+  //     // Set the next gap at each column
+  //     $result[3][1][length($result[5][1]) + 1] = clone($initial_gutter)
 
-  // If total count is more than cols described, fill the cols with the rest
-  if $got_count > $actual_count
-    for $item in 1..($got_count - $actual_count)
-      push($result[1][1], -1)
-      $without_units = $without_units + 1
+  // // If total count is more than cols described, fill the cols with the rest
+  // if $got_count > $actual_count
+  //   for $item in 1..($got_count - $actual_count)
+  //     push($result[1][1], -1)
+  //     $without_units = $without_units + 1
 
-  // Calculate unset percents
-  if $without_units
-    $width = ((100 - $result[2][4][1]) / $without_units)
-    for $item, $index in $result[1][1]
-      if $item == -1
-        $result[1][1][$index] = unit($width,'%')
-        $result[2][4][1] = $result[2][4][1] + $width
+  // // Calculate unset percents
+  // if $without_units
+  //   $width = ((100 - $result[2][4][1]) / $without_units)
+  //   for $item, $index in $result[1][1]
+  //     if $item == -1
+  //       $result[1][1][$index] = unit($width,'%')
+  //       $result[2][4][1] = $result[2][4][1] + $width
 
-  // Set the proper total count
-  $result[0][1] = length($result[1][1])
+  // // Set the proper total count
+  // $result[0][1] = length($result[1][1])
 
-  // Calculate shrinkers (total sums of units > 0 including gutters)
-  for $unit in utilus_get($result, 'total_units')
-    if not unit($unit[1]) in ('' '%')
-      $current_unit_width = $unit[1]
-      for $gap in $result[3][1]
-        if unit($gap) == unit($unit[1])
-          $current_unit_width = round($current_unit_width + $gap, 9)
-      if $current_unit_width > 0
-        push($result[4][1], $current_unit_width)
+  // // Calculate shrinkers (total sums of units > 0 including gutters)
+  // for $unit in utilus_get($result, 'total_units')
+  //   if not unit($unit[1]) in ('' '%')
+  //     $current_unit_width = $unit[1]
+  //     for $gap in $result[3][1]
+  //       if unit($gap) == unit($unit[1])
+  //         $current_unit_width = round($current_unit_width + $gap, 9)
+  //     if $current_unit_width > 0
+  //       push($result[4][1], $current_unit_width)
 
   $process-grid-cols_cache['' + $where] = $result
 
@@ -85,16 +90,18 @@ get_column($where, $name_or_index)
 
   if type($name_or_index) == 'string'
     $name = $name_or_index
-    $index = utilus_get($where[5][1], $name)
+    $index = $where.cols_indexes[$name]
   else
     $index = $name_or_index
-    $name = $where[5][1][$index + 1][0]
+    $name = 'ololo'
 
-  $result = 'name' $name,
-            'index' $index,
-            'width' $where[1][1][$index],
-            'left_gap' $where[3][1][$index],
-            'right_gap' utilus_or($where[3][1][$index + 1], 0)
+    result = {
+      name: $name,
+      index: $index,
+      width: $where.cols_widths[$index],
+      left_gap: $where.gutter[$index],
+      right_gap: $where.gutter[$index + 1] || 0
+    }
 
   return $result
 
@@ -105,14 +112,14 @@ kind-grid_()
   kind-grid_gutter(arguments)
   kind-grid_nowrap(arguments)
 
-kind-grid_gutter()
+kind-grid_gutter($this)
   $columns = process-grid-cols(arguments)
 
-  if $columns[6][1]
+  if $columns.even_gaps
     margin-left: -1*$gutter = $this['params']['gutter']
 
   unless '-content' in $this['params']
-    padding-right: utilus_get($columns, 'shrinkers')[0]
+    padding-right: $columns.shrinkers
 
 kind-grid_nowrap($this)
   if retrieve($this['params'], nowrap ellipsis)
@@ -120,8 +127,8 @@ kind-grid_nowrap($this)
 
 kind-grid-col($this)
   $columns = process-grid-cols($this['parent'])
-  $column = get_column($columns, utilus_get_string(arguments))
-  width: $column[2][1]
+  $column = get_column($columns, $this.strings[0])
+  width: $column.width
 
   if absolute in $this['params']
     position: absolute
@@ -130,7 +137,7 @@ kind-grid-col($this)
     kind(block inline)
 
     unless '-content' in $this['parent']['params']
-      $gap = $column[3][1]
+      $gap = $column.left_gap
       if $gap
         margin-left: $gap
 
@@ -145,7 +152,7 @@ kind-grid-col($this)
         else
           white-space: normal
 
-kind-grid-content()
+kind-grid-content($this)
   $gutter = $this['parent']['params']['gutter']
   if $gutter
     margin-left: $gutter
