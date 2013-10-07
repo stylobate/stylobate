@@ -5,9 +5,6 @@ $stylobate_extends = {}
 stylobate_extends($what, $target)
   $stylobate_extends[''+utilus_ident($what)] = $target
 
-called_from($where, $what)
-  return utilus_get($where, called_from) == utilus_ident($what)
-
 any_get_sides($this)
   $par = $this.parent
   if $par
