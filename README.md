@@ -6,3 +6,4 @@
 
 
 Docs coming soon (or not that soon)
+[Документация на русском](http://stylobate.github.io/ru/)
