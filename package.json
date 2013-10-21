@@ -1,6 +1,6 @@
 {
   "name": "stylobate",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "author": "Roman Komarov <kizmarh@ya.ru> (http://kizu.ru/en/)",
   "licence": "MIT",
   "description": "Framework for writing really abstract CSS in Stylus",
@@ -11,13 +11,13 @@
     "bem",
     "smacss"
   ],
-  "homepage": "https://github.com/kizu/stylobate#readme",
+  "homepage": "https://github.com/stylobate/stylobate#readme",
   "bugs": {
-    "url": "http://github.com/kizu/stylobate/issues"
+    "url": "http://github.com/stylobate/stylobate/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/kizu/stylobate.git"
+    "url": "git://github.com/stylobate/stylobate.git"
   },
   "dependencies": {
     "if-ie.styl": "0.2.x",
