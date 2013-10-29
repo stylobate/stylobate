@@ -4,6 +4,10 @@ kind-shrink($this)
   display: block
   overflow: hidden
 
+  if ellipsis in arguments
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
   // Can't use extend here 'cause Stylus don't know -moz-doc
   if inline in $this['params']
     &
