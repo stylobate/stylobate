@@ -56,3 +56,44 @@
 .shrinker__right {
   float: right;
 }
+
+.shrinker1 {
+  display: inline-block;
+
+  max-width: 100%;
+
+  white-space: nowrap;
+}
+
+@-moz-document url-prefix() {
+    .shrinker1 {
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    }
+}
+
+.shrinker1__left {
+  display: block;
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@-moz-document url-prefix() {
+    .shrinker1__left {
+    -webkit-flex-shrink: 1000000000;
+    -ms-flex: 0 1000000000;
+    flex-shrink: 1000000000;
+    }
+}
+
+.shrinker1__right {
+  float: right;
+}
