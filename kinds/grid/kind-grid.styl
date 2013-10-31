@@ -45,7 +45,8 @@ process-grid-cols($where)
 
     if $item_gap
       // Set the previous gap if there is a gap
-      $result['gutter'][length($result.cols_indexes) - 1] = $item_gap[1]
+      $ololo = length($result.cols_indexes) - 1
+      $result['gutter'][$ololo] = $item_gap[1]
       p($result['gutter'])
   //     if $item_gap != $initial_gutter
   //       $result[6][1] = false
