@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.19.1 (2013-11-06)
+
+- Fix for IE bug in file inputs.
+
 ## v0.18.0 — v0.19.0 (2013-10-31)
 
 - Using the latest Stylus with hashes.
