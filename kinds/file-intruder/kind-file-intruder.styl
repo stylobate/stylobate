@@ -11,9 +11,14 @@ $kind-file-intruder
   kind: fill
   z-index: 11
 
+  // In IE we could live without focus
+  if ie
+    overflow: hidden
+
 kind-file-intruder-inner()
   @extends $kind-file-intruder-inner
 
+// This block shouldn't have `oh`, so focus could be properly positioned over parent
 $kind-file-intruder-inner
   float: right
   text-align:right
