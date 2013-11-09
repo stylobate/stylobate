@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.19.2 (2013-11-09)
+
+- Fix for another IE bug in file inputs, #54.
+
 ## v0.19.1 (2013-11-06)
 
 - Fix for IE bug in file inputs.
