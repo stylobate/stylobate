@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.19.3 (2013-11-14)
+
+- Fixed input align in IE
+
 ## v0.19.2 (2013-11-09)
 
 - Fix for another IE bug in file inputs, #54.
