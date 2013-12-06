@@ -2,18 +2,25 @@
 	"folders":
 	[
 		{
-			"path": ".",
-            "folder_exclude_patterns": ["node_modules"],
-            "file_exclude_patterns": ["*.sublime-workspace"]
+			"file_exclude_patterns":
+			[
+				"*.sublime-workspace"
+			],
+			"folder_exclude_patterns":
+			[
+				"node_modules"
+			],
+			"follow_symlinks": true,
+			"path": "/Users/kizu/Projects/stylobate.github.io/s/stylobate"
 		}
 	],
-    "settings":
-    {
-        "hayaku_CSS_syntax_autoguess":
-        [
-            "    selector {            ",
-            "      property: value;    ",
-            "    }                     "
-        ]
-    }
+	"settings":
+	{
+		"hayaku_CSS_syntax_autoguess":
+		[
+			"    selector {            ",
+			"      property: value;    ",
+			"    }                     "
+		]
+	}
 }
