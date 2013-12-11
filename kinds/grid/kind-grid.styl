@@ -109,51 +109,51 @@ get_column($where, $name_or_index)
 kind-grid()
   kind-grid_(arguments)
 
-kind-grid_()
-  kind-grid_gutter(arguments)
-  kind-grid_nowrap(arguments)
+// kind-grid_()
+//   kind-grid_gutter(arguments)
+//   kind-grid_nowrap(arguments)
 
-kind-grid_gutter($this)
-  $columns = process-grid-cols(arguments)
+// kind-grid_gutter($this)
+//   $columns = process-grid-cols(arguments)
 
-  if $columns.even_gaps
-    margin-left: -1*$gutter = $this['params']['gutter']
+//   if $columns.even_gaps
+//     margin-left: -1*$gutter = $this['params']['gutter']
 
-  unless '-content' in $this['params']
-    padding-right: $columns.shrinkers
+//   unless '-content' in $this['params']
+//     padding-right: $columns.shrinkers
 
-kind-grid_nowrap($this)
-  if retrieve($this['params'], nowrap ellipsis)
-    white-space: nowrap
+// kind-grid_nowrap($this)
+//   if retrieve($this['params'], nowrap ellipsis)
+//     white-space: nowrap
 
-kind-grid-col($this)
-  $columns = process-grid-cols($this['parent'])
-  $column = get_column($columns, $this.strings[0])
-  width: $column.width
+// kind-grid-col($this)
+//   $columns = process-grid-cols($this['parent'])
+//   $column = get_column($columns, $this.strings[0])
+//   width: $column.width
 
-  if absolute in $this['params']
-    position: absolute
+//   if absolute in $this['params']
+//     position: absolute
 
-  else
-    kind(block inline)
+//   else
+//     kind(block inline)
 
-    unless '-content' in $this['parent']['params']
-      $gap = $column.left_gap
-      if $gap
-        margin-left: $gap
+//     unless '-content' in $this['parent']['params']
+//       $gap = $column.left_gap
+//       if $gap
+//         margin-left: $gap
 
-      if 'nowrap' in $this['params']
-        unless 'nowrap' in $this['parent']['params']
-          white-space: nowrap
-      else
-        if 'ellipsis' in $this['parent']['params']
-          white-space: nowrap unless 'nowrap' in $this['parent']['params']
-          overflow: hidden
-          text-overflow: ellipsis
-        else
-          white-space: normal
+//       if 'nowrap' in $this['params']
+//         unless 'nowrap' in $this['parent']['params']
+//           white-space: nowrap
+//       else
+//         if 'ellipsis' in $this['parent']['params']
+//           white-space: nowrap unless 'nowrap' in $this['parent']['params']
+//           overflow: hidden
+//           text-overflow: ellipsis
+//         else
+//           white-space: normal
 
-kind-grid-content($this)
-  $gutter = $this['parent']['params']['gutter']
-  if $gutter
-    margin-left: $gutter
+// kind-grid-content($this)
+//   $gutter = $this['parent']['params']['gutter']
+//   if $gutter
+//     margin-left: $gutter
