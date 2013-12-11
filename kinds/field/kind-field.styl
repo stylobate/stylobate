@@ -24,7 +24,7 @@ $kind-field-content
 
   height: 100%
 
-kind-field-left()
+kind-field-left($this)
   @extends $kind-field-left
 
   $sides = any_get_sides($this)
@@ -39,7 +39,7 @@ $kind-field-left
   z-index: 9
   float: left
 
-kind-field-right()
+kind-field-right($this)
   @extends $kind-field-right
 
   $sides = any_get_sides($this)

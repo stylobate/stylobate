@@ -6,10 +6,10 @@ stylobate_extends($what, $target)
   $stylobate_extends[''+utilus_ident($what)] = $target
 
 any_get_sides($this)
-  $par = $this.parent
-  if $par
-    $par = $par.units
-  return utilus_get_sides($this.units) || utilus_get_sides($par)
+  if $this.parent
+    return utilus_get_sides($this.parent.units)
+  else
+    return utilus_get_sides($this.units)
 
 
 stylobate_defaults($this, $defaults...)
