@@ -4,9 +4,11 @@
   border: none;
   margin: 0;
 
-  background: transparent;
-  -moz-appearance: none;
   font: inherit;
+
+  background: transparent;
+
+  -moz-appearance: none;
 }
 
 .button::-moz-focus-inner,

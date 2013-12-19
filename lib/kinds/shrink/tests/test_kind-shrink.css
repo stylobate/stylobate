@@ -24,16 +24,17 @@
 }
 
 @-moz-document url-prefix() {
-    .shrinker {
+  .shrinker {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
+    flex-direction: row-reverse;
+
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse;
-    }
+  }
 }
 
 .shrinker__content {
@@ -42,11 +43,11 @@
 }
 
 @-moz-document url-prefix() {
-    .shrinker__content {
+  .shrinker__content {
     -webkit-flex-shrink: 1000000000;
     -ms-flex: 0 1000000000;
     flex-shrink: 1000000000;
-    }
+  }
 }
 
 .shrinker__left {
@@ -66,16 +67,17 @@
 }
 
 @-moz-document url-prefix() {
-    .shrinker1 {
+  .shrinker1 {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
+    flex-direction: row-reverse;
+
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse;
-    }
+  }
 }
 
 .shrinker1__left {
@@ -87,11 +89,11 @@
 }
 
 @-moz-document url-prefix() {
-    .shrinker1__left {
+  .shrinker1__left {
     -webkit-flex-shrink: 1000000000;
     -ms-flex: 0 1000000000;
     flex-shrink: 1000000000;
-    }
+  }
 }
 
 .shrinker1__right {

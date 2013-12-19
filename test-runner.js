@@ -30,7 +30,6 @@ glob.sync("./lib/*/" + whatToTest + "/tests/*.styl").forEach(function(test){
       actual = comb.processString(actual);
 
       // Remove those hardfixes when there would be a way to do this in csscomb
-      actual = actual.replace(/([^\+>])([\+>])\./g,'$1 $2 .');
       actual = actual.replace(/\)(,?)([^:\)\s,;])/g,')$1 $2');
       actual = actual.replace(/,sans-serif/g,', sans-serif');
       actual = actual.replace(/,#/g,', #');

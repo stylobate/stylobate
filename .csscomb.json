@@ -1,12 +1,13 @@
 {
     "always-semicolon": true,
-    "block-indent": true,
-    "colon-space": true,
+    "block-indent": "  ",
+    "colon-space": ["", " "],
+    "combinator-space": [" ", " "],
     "color-case": "upper",
     "color-shorthand": true,
     "leading-zero": true,
-    "rule-indent": 2,
-    "stick-brace": true,
+    "rule-indent": "  ",
+    "stick-brace": " ",
     "strip-spaces": true,
     "unitless-zero": true,
 
