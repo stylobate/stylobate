@@ -6,6 +6,8 @@
 
 - Restructured code in repo.
 - Removed and deprecated version checker.
+- Updated deps.
+- Replaced imports with requires.
 
 ## v0.19.3 (2013-11-14)
 
