@@ -26,12 +26,14 @@ glob.sync("./lib/*/" + whatToTest + "/tests/*.styl").forEach(function(test){
       // Change the order of csso and autoprefixer when
       // we would able to set selector list code style
       actual = csso.justDoIt(actual);
-      actual = autoprefixer.compile(actual);
+      actual = autoprefixer.process(actual).css;
       actual = comb.processString(actual);
 
       // Remove those hardfixes when there would be a way to do this in csscomb
       actual = actual.replace(/\)(,?)([^:\)\s,;])/g,')$1 $2');
       actual = actual.replace(/,sans-serif/g,', sans-serif');
+      actual = actual.replace(/, ?\./g,',\n.');
+      actual = actual.replace(/([^ ])\}/g,'$1}\n');
       actual = actual.replace(/,#/g,', #');
       actual = actual.replace(/,red/g,', red');
       actual = actual.replace(/,transparent/g,', transparent');

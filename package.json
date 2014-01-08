@@ -24,8 +24,8 @@
     "utilus.styl": "0.8.0"
   },
   "devDependencies": {
-    "stylus": "0.41.x",
-    "autoprefixer": "0.7.x",
+    "stylus": "0.42.x",
+    "autoprefixer": "1.0.x",
     "csso": "1.3.x",
     "csscomb": "2.0.x",
     "glob": "3.2.x",
