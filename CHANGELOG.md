@@ -2,7 +2,7 @@
 # Stylobate Changelog
 ---
 
-## v0.20.0 (in development)
+## v0.20.0 (2014-01-09)
 
 - Restructured code in repo.
 - Added `pseudo-with-content` detail.
