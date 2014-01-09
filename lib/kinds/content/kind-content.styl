@@ -9,10 +9,10 @@ kind-content()
       -before (no-before in arguments or no-elements in arguments ? '' : '&:before'),
       -after (no-after in arguments or no-elements in arguments ? '' : '&:after'))
 
-    if no-before in arguments
+    if no-before in arguments or (-before '') in arguments
       padding-top: $sides[0]
 
-    if no-after in arguments
+    if no-after in arguments or (-after '') in arguments
       padding-top: $sides[2]
 
   // Deprecating no-…
