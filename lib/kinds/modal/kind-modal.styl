@@ -1,5 +1,7 @@
 kind-modal-wrap()
-  kind-guide(arguments)
+  $args = arguments
+  prepend($args, guide)
+  kind(arguments)
   kind(centering (-helper ''))
 
   z-index: 99

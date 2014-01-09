@@ -1,14 +1,13 @@
 kind-guide()
-  kind-fill(arguments)
-
   if visible in arguments
     pointer-events: none
   else
     visibility: hidden
 
+stylobate_extends('kind-guide', 'kind-fill')
+
 kind-guide-item()
-  if visible in arguments
-    // It would be super cool to be able to somehow get this from the parental `guide`
+  if visible in arguments or visible in utilus_get(arguments, parent)
     pointer-events: auto
   else
     visibility: visible
