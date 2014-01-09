@@ -1,11 +1,11 @@
 kind-clear()
   if !ie
-    unless after in arguments or utilus_get(arguments, '-before')
-      &:before
-        kind-clear-before(arguments)
-    unless before in arguments or utilus_get(arguments, '-after')
-      &:after
-        kind-clear-after(arguments)
+    stylobate_defaults(arguments,
+      -before (after in arguments ? '' : '&:before'),
+      -after (before in arguments ? '' : '&:after'))
+
+    deprecate(arguments, after)
+    deprecate(arguments, before)
 
   zoom: 1
 
