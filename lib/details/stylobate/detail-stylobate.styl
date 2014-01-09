@@ -3,9 +3,6 @@ $stylobate_extends = {}
 stylobate_extends($what, $target)
   $stylobate_extends[''+utilus_ident($what)] = $target
 
-called_from($where, $what)
-  return utilus_get($where, called_from) == utilus_ident($what)
-
 stylobate_defaults($where, $defaults...)
   $origin = utilus_get($where, called_from) + '_'
   $parent = clone($where)
@@ -18,7 +15,7 @@ stylobate_defaults($where, $defaults...)
   for $param, $index in $where
     $testparam = $param
     $testparam = '' unless type($param) in ('ident' 'string')
-    unless match('^[-_]', $testparam) or type($param) == 'function'
+    unless match('^[-_]', $testparam)
       push($new, $param)
   _stylobate('', $new)
 
@@ -81,6 +78,10 @@ _stylobate($name, $params)
       $subitemname_extended = ''
       $subitemname_extended = $name + replace('[_-]+$', '', $params[0]) + $foundsubitem[0] if $extended_name
       $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
+
+      // Push proper `called_from`
+      push($subitemparams, called_from $subitemname) unless $subitemname_extended or !$subitemname
+      push($subitemparams, called_from $subitemname_extended) if $subitemname_extended
 
       {$subitemname}($subitemparams) unless $context or $subitemname_extended or !$subitemname
       {$subitemname_extended}($subitemparams) unless $context or !$subitemname_extended

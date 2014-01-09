@@ -10,9 +10,11 @@
 - Refactored some skins to use defaults.
 - Fixed empty defaults.
 - Fixed parental subparams in defaults.
+- Fixed default subitems of subitems.
 - Removed and deprecated version checker.
-- Updated deps.
+- Removed unneeded `called_from` function.
 - Replaced imports with requires.
+- Updated deps.
 
 ## v0.19.3 (2013-11-14)
 

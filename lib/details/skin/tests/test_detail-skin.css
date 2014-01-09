@@ -71,6 +71,8 @@
 .the-base-subitem,
 .the-base_modified-subitem {
   height: 20px;
+
+  text-align: justify;
 }
 
 .the-extended {
