@@ -28,8 +28,6 @@
 }
 
 .bottomed-content-helper {
-  content: "";
-
   display: table;
   clear: both;
 

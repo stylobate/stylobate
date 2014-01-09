@@ -5,29 +5,32 @@ kind-content()
   else
     padding: 0 $sides[1] 0 $sides[3]
 
-    unless no-elements in arguments
-      unless utilus_get(arguments, '-before')
-        if no-before in arguments
-          padding-top: $sides[0]
-        else
-          &:before
-            kind-content-before(arguments)
+    stylobate_defaults(arguments,
+      -before (no-before in arguments or no-elements in arguments ? '' : '&:before'),
+      -after (no-after in arguments or no-elements in arguments ? '' : '&:after'))
 
-      unless utilus_get(arguments, '-after')
-        if no-after in arguments
-          padding-top: $sides[2]
-        else
-          &:after
-            kind-content-after(arguments)
+    if no-before in arguments
+      padding-top: $sides[0]
+
+    if no-after in arguments
+      padding-top: $sides[2]
+
+  // Deprecating no-…
+  deprecate(arguments, no-before)
+  deprecate(arguments, no-after)
+  depecate_removed(arguments, no-elements)
+
 
 kind-content-before()
-  content: ""
+  pseudo-with-content()
+
   display: table
 
   margin-bottom: any_get_sides(arguments)[0]
 
 kind-content-after()
-  content: ""
+  pseudo-with-content()
+
   display: table
   clear: both
 

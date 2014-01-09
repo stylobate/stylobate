@@ -8,11 +8,18 @@ called_from($where, $what)
 
 stylobate_defaults($where, $defaults...)
   $origin = utilus_get($where, called_from) + '_'
+  $parent = clone($where)
   $new = clone($defaults)
   prepend($new, $origin)
   for $param, $index in $new
-    if utilus_get($where, $param[0])
+    $found_param = utilus_get($where, $param[0])
+    if $found_param or (type($found_param) == 'string' and $found_param == '')
       $new[$index] = ''
+  for $param, $index in $where
+    $testparam = $param
+    $testparam = '' unless type($param) in ('ident' 'string')
+    unless match('^[-_]', $testparam) or type($param) == 'function'
+      push($new, $param)
   _stylobate('', $new)
 
 _stylobate($name, $params)
@@ -37,7 +44,7 @@ _stylobate($name, $params)
   {$context}
     {$name + $skin_name}($subparams) if $extended_name and $context and $extended_name_ending == ''
 
-  if !utilus_is_function($name + $params[0]) and !$extended_name and !match('[_-]$',$params[0])
+  if ($name + join('',$params) != '') and !utilus_is_function($name + $params[0]) and !$extended_name and !match('[_-]$',$params[0])
     error('No such “' + $name + '” — “' + $params[0] + '”')
 
   {$name + $params[0]}($subparams) if !$context and utilus_is_function($name + $params[0])
@@ -83,7 +90,6 @@ _stylobate($name, $params)
 
 
     {$selector}
-      content: "" if match(':(after|before)', $selector)
       call_subitem() if $foundsubitem != '' and $selector != ''
 
     if $selector == '' and $foundsubitem != ''

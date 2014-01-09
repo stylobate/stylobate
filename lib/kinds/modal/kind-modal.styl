@@ -4,11 +4,8 @@ kind-modal-wrap()
 
   z-index: 99
 
-  unless no-elements in arguments
-    unless no-helper in arguments or utilus_get(arguments, '-helper')
-      &:after
-        kind-modal-wrap-helper(arguments)
-
+  stylobate_defaults(arguments,
+    -helper '&:after')
 
 kind-modal-wrap-helper()
   kind-centering-helper(arguments)

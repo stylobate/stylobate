@@ -5,6 +5,11 @@
 ## v0.20.0 (in development)
 
 - Restructured code in repo.
+- Added `pseudo-with-content` detail.
+- Added `deprecate` detail.
+- Refactored some skins to use defaults.
+- Fixed empty defaults.
+- Fixed parental subparams in defaults.
 - Removed and deprecated version checker.
 - Updated deps.
 - Replaced imports with requires.
