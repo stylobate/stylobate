@@ -6,6 +6,7 @@
 
 - Added `baseliner` kind.
 - Added `ellipsis` kind.
+- Added `disabled` kind.
 - Deprecated `ellipsis` param at `shrink` kind in favor of `ellipsis` kind.
 
 ## v0.20.0 (2014-01-09)
