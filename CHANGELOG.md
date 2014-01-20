@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.21.0 (in development)
+
+- Added `baseliner` kind.
+
 ## v0.20.0 (2014-01-09)
 
 - Restructured code in repo.
