@@ -1,0 +1,16 @@
+.ellipsis,
+.inline-ellipsis {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.inline-ellipsis {
+  display: inline-block;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+}
