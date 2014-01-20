@@ -1,6 +1,6 @@
 {
   "name": "stylobate",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "author": "Roman Komarov <kizmarh@ya.ru> (http://kizu.ru/en/)",
   "licence": "MIT",
   "description": "Framework for writing really abstract CSS in Stylus",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "if-ie.styl": "0.2.x",
-    "utilus.styl": "0.8.0"
+    "utilus.styl": "0.9.0"
   },
   "devDependencies": {
     "stylus": "0.42.x",
