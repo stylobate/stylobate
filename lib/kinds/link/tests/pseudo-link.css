@@ -1,0 +1,12 @@
+.pseudo-link {
+  border-bottom: 1px dotted;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  color: #00F;
+}
+
+.pseudo-link:hover {
+  color: red;
+}

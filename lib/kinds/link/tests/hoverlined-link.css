@@ -1,0 +1,12 @@
+.hoverlined-link {
+  cursor: pointer;
+  text-decoration: none;
+
+  color: #00F;
+}
+
+.hoverlined-link:hover {
+  text-decoration: underline;
+
+  color: red;
+}

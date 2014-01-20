@@ -1,0 +1,31 @@
+.complex-link {
+  cursor: pointer;
+  text-decoration: none;
+
+  color: #00F;
+}
+
+.complex-link:hover {
+  color: red;
+}
+
+.complex-link-inner {
+  text-decoration: underline;
+}
+
+.complex-pseudo-link {
+  cursor: pointer;
+  text-decoration: none;
+
+  color: #00F;
+}
+
+.complex-pseudo-link:hover {
+  color: red;
+}
+
+.complex-pseudo-link-inner {
+  border-bottom: 1px dotted;
+
+  text-decoration: none;
+}

@@ -1,0 +1,6 @@
+.link_no-hover {
+  cursor: pointer;
+  text-decoration: underline;
+
+  color: #00F;
+}
