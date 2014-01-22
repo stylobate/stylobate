@@ -143,3 +143,14 @@ body input:checked + .pysh {
 .superlink-inner {
   text-decoration: underline;
 }
+
+.extended-disabled {
+  cursor: default !important;
+  pointer-events: none;
+
+  opacity: 0.75;
+}
+
+.extended-disabled:focus {
+  outline: 0;
+}
