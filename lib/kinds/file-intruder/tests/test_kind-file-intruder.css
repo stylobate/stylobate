@@ -7,6 +7,10 @@
   left: 0;
 }
 
+.file-intruder-input:focus + .file-intruder-focus {
+  background: red;
+}
+
 .file-intruder-inner {
   float: right;
   overflow: hidden;
@@ -35,10 +39,6 @@
   opacity: 0;
 }
 
-.file-intruder-input:focus + .file-intruder-focus {
-  background: red;
-}
-
 .file-intruder-focus {
   position: absolute;
   top: 0;
@@ -46,4 +46,3 @@
   bottom: 0;
   left: 0;
 }
-

@@ -6,6 +6,7 @@
 
 - Added way to cross-extend different stylobate namespaces.
 - Added a way to redefine defaults on extending (far from ideal though).
+- Refactored most extends, replacing them with cache mixin.
 
 ## v0.21.0 (2014-01-21)
 

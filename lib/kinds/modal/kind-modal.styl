@@ -16,17 +16,15 @@ kind-modal()
   kind-guide-item(arguments)
   kind-centering-item(arguments)
 
-  @extends $kind-modal
+  +cache('kind-modal')
+    position: relative
+    max-width: 100%
+    max-height: 100%
+    // use calc like this here?
+    //   max-width: unquote("-webkit-calc(100% - " + 2*$l + ")")
 
-$kind-modal
-  position: relative
-  max-width: 100%
-  max-height: 100%
-  // use calc like this here?
-  //   max-width: unquote("-webkit-calc(100% - " + 2*$l + ")")
-
-  // Should it be moved to -content?
-  // overflow: auto
+    // Should it be moved to -content?
+    // overflow: auto
 
 kind-modal-overlay()
   kind-fill(arguments)

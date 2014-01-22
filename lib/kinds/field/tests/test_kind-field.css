@@ -1,3 +1,9 @@
+.field {
+  width: 400px;
+
+  background: #000;
+}
+
 .field,
 .small-field,
 .custom-field {
@@ -24,6 +30,11 @@
   height: 100%;
 }
 
+.field-left {
+  padding: 10px 20px;
+  margin: -10px 0 -10px -20px;
+}
+
 .field-left,
 .field-label,
 .custom-field__label {
@@ -33,28 +44,17 @@
   float: left;
 }
 
+.field-right {
+  padding: 10px 20px;
+  margin: -10px -20px -10px 0;
+}
+
 .field-right,
 .custom-field__input {
   position: relative;
   z-index: 9;
 
   float: right;
-}
-
-.field {
-  width: 400px;
-
-  background: #000;
-}
-
-.field-left {
-  padding: 10px 20px;
-  margin: -10px 0 -10px -20px;
-}
-
-.field-right {
-  padding: 10px 20px;
-  margin: -10px -20px -10px 0;
 }
 
 .small-field {
@@ -83,4 +83,3 @@
   padding: 1em;
   margin: -1em -1em -1em 0;
 }
-
