@@ -129,3 +129,17 @@ body input:checked + .pysh {
   width: 20px;
 }
 
+.superlink {
+  cursor: pointer;
+  text-decoration: none;
+
+  color: #FFF;
+}
+
+.superlink:hover {
+  color: #000;
+}
+
+.superlink-inner {
+  text-decoration: underline;
+}

@@ -2,7 +2,11 @@
 # Stylobate Changelog
 ---
 
-## v0.21.0 (in development)
+## v0.22.0 (2014-01-22)
+
+- Added way to cross-extend different stylobate namespaces.
+
+## v0.21.0 (2014-01-21)
 
 - Added `baseliner` kind.
 - Added `ellipsis` kind.

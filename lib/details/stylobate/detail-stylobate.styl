@@ -34,12 +34,12 @@ _stylobate($name, $params)
     push($subparams, is_extended)
     $skin_name = replace('^' + $name, '', $extended_name)
 
-    if !utilus_is_function($name + $skin_name) and $extended_name_ending == ''
-      error('No such “' + $name + '” — “' + $skin_name + '”')
+    if !utilus_is_function($extended_name) and $extended_name_ending == ''
+      error('No stylobate function “' + $extended_name + '”')
 
-  {$name + $skin_name}($subparams) if $extended_name and !$context and $extended_name_ending == ''
+  {$extended_name}($subparams) if $extended_name and !$context and $extended_name_ending == ''
   {$context}
-    {$name + $skin_name}($subparams) if $extended_name and $context and $extended_name_ending == ''
+    {$extended_name}($subparams) if $extended_name and $context and $extended_name_ending == ''
 
   if ($name + join('',$params) != '') and !utilus_is_function($name + $params[0]) and !$extended_name and !match('[_-]$',$params[0])
     error('No such “' + $name + '” — “' + $params[0] + '”')
@@ -72,6 +72,7 @@ _stylobate($name, $params)
       $subitemparams = remove_first(remove_first($foundsubitem))
       push($subitemparams, (parent $subparams))
       $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
+      $subitemname = replace('[_-]+$', '', $extended_name) + $foundsubitem[0] if $extended_name
       $subitemname = '' unless utilus_is_function($subitemname)
 
       // If there is extended subitem function, use it, otherwise
