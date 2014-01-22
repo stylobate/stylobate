@@ -119,10 +119,12 @@ skin-contextual-link()
 .pysh
   skin: contextual (context 'body &') (-link 'a&.lol') (_checked 'input:checked + &')
 
-stylobate_extends('skin-superlink', 'kind-link')
+stylobate_extends('skin-superlink', 'kind-link', false)
 
 skin-superlink()
   color: #FFF
+
+  stylobate_new_defaults(arguments, _hover '&.is-hovered')
 
 skin-superlink_hover()
   color: #000

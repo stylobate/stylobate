@@ -136,7 +136,7 @@ body input:checked + .pysh {
   color: #FFF;
 }
 
-.superlink:hover {
+.superlink.is-hovered {
   color: #000;
 }
 

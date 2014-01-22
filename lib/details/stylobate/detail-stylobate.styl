@@ -1,13 +1,26 @@
 $stylobate_extends = {}
+$stylobate_extends_without_defaults = {}
 
-stylobate_extends($what, $target)
+stylobate_extends($what, $target, $defaults = true)
   $stylobate_extends[''+utilus_ident($what)] = $target
 
+  if !$defaults
+    $stylobate_extends_without_defaults[''+utilus_ident($what)] = true
+
+// Far from ideal (can't redefine defaults for already redefined defaults)
+// Dunno if it is possible to make proper refedining in Stylus' stylobate
+stylobate_new_defaults($where, $defaults...)
+  _stylobate_defaults($where, $defaults)
+
 stylobate_defaults($where, $defaults...)
-  $origin = utilus_get($where, called_from) + '_'
+  if !(utilus_get($where, is_extended) and utilus_get($where, called_from) in $stylobate_extends_without_defaults)
+    _stylobate_defaults($where, $defaults)
+
+_stylobate_defaults($where, $defaults)
+  $origin = utilus_get($where, called_from)
   $parent = clone($where)
   $new = clone($defaults)
-  prepend($new, $origin)
+  prepend($new, $origin + '_')
   for $param, $index in $new
     $found_param = utilus_get($where, $param[0])
     if $found_param or (type($found_param) == 'string' and $found_param == '')
