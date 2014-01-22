@@ -42,7 +42,7 @@ _stylobate($name, $params)
   // and use the extended stylobate for subitems.
   $extended_name_ending = replace('.*[^-_]+', '', $skin_name)
   $extended_name = $stylobate_extends[$name + $skin_name] || $stylobate_extends[$name + replace('[_-]+$', '', $skin_name)]
-  $extended_name = $extended_name + $extended_name_ending if $extended_name
+  $extended_name = utilus_ident($extended_name) + $extended_name_ending if $extended_name
   if $extended_name
     push($subparams, is_extended)
     $skin_name = replace('^' + $name, '', $extended_name)
