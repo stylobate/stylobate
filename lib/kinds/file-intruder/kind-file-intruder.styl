@@ -2,15 +2,12 @@ kind-file-intruder()
   +cache('kind-file-intruder')
     kind-fill()
     z-index: 11
+    color: red
 
     // In IE we could live without focus
     if ie
       overflow: hidden
 
-  $focus = utilus_get(arguments, '-focus')
-  $focus-skin = utilus_get_string($focus, $index: 1)
-  {utilus_get(arguments, '-input')}:focus + {utilus_get_string($focus)}
-    skin-{$focus-skin}() if $focus-skin
 
 
 // This block shouldn't have `por`, so focus could be properly positioned over parent
@@ -41,4 +38,4 @@ kind-file-intruder-input()
     opacity: 0
 
 kind-file-intruder-focus()
-  kind-fill()
+  kind(fill)

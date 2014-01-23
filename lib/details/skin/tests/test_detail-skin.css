@@ -147,10 +147,12 @@ body input:checked + .pysh {
 .extended-disabled {
   cursor: default !important;
   pointer-events: none;
-
-  opacity: 0.75;
 }
 
 .extended-disabled:focus {
   outline: 0;
+}
+
+.extended-disabled {
+  opacity: 0.75;
 }

@@ -1,8 +1,11 @@
 kind-block()
-  position: utilus_retrieve(arguments, static, relative)
+  $position = utilus_retrieve(arguments, static, relative)
+  $valign = utilus_retrieve(arguments, middle baseline bottom, top)
+  +cache('kind-block' + $position + $valign + (inline in arguments))
+    position: $position
 
-  if inline in arguments
-    display: inline-block
-    vertical-align: utilus_retrieve(arguments, middle baseline bottom, top)
-  else
-    display: unquote('block')
+    if inline in arguments
+      display: inline-block
+      vertical-align: $valign
+    else
+      display: unquote('block')

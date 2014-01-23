@@ -1,16 +1,21 @@
 kind-disabled()
-  cursor: default !important
+  $with-events = with-events in arguments
+  $opacity = utilus_alike(arguments, 0.5)
+  +cache('kind-disabled' + $with-events + $opacity)
+    cursor: default !important
 
-  opacity: utilus_alike(arguments, 0.5)
+    opacity: $opacity
 
-  &:focus
-    outline: 0
+    // Prevent different states in most browsers
+    unless $with-events
+      pointer-events: none
 
-  // Prevent different states in most browsers
-  unless with-events in arguments
-    pointer-events: none
+  +cache('kind-disabled-focus')
+    &:focus
+      outline: 0
 
   stylobate_defaults(arguments, -nested '& &')
 
 kind-disabled-nested()
-  opacity: 1
+  +cache('kind-disabled-nested')
+    opacity: 1

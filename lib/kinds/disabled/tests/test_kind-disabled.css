@@ -1,15 +1,23 @@
-.is-disabled {
+.is-disabled,
+.is-slightly-disabled,
+.is-fully-disabled,
+.is-disabled-with-events {
   cursor: default !important;
   pointer-events: none;
 
   opacity: 0.5;
 }
 
-.is-disabled:focus {
+.is-disabled:focus,
+.is-slightly-disabled:focus,
+.is-fully-disabled:focus,
+.is-disabled-with-events:focus {
   outline: 0;
 }
 
-.is-disabled .is-disabled {
+.is-disabled .is-disabled,
+.is-slightly-disabled .is-slightly-disabled,
+.is-disabled-with-events .is-disabled-with-events {
   opacity: 1;
 }
 
@@ -20,35 +28,8 @@
   opacity: 0.75;
 }
 
-.is-slightly-disabled:focus {
-  outline: 0;
-}
-
-.is-slightly-disabled .is-slightly-disabled {
-  opacity: 1;
-}
-
-.is-fully-disabled {
-  cursor: default !important;
-  pointer-events: none;
-
-  opacity: 0.5;
-}
-
-.is-fully-disabled:focus {
-  outline: 0;
-}
-
 .is-disabled-with-events {
   cursor: default !important;
 
   opacity: 0.5;
-}
-
-.is-disabled-with-events:focus {
-  outline: 0;
-}
-
-.is-disabled-with-events .is-disabled-with-events {
-  opacity: 1;
 }

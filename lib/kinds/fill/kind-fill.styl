@@ -1,11 +1,13 @@
 kind-fill()
-  position: utilus_retrieve(arguments, fixed static sticky, absolute)
-
+  $position = utilus_retrieve(arguments, fixed static sticky, absolute)
   $sides = utilus_get_sides(arguments)
-  top: $sides[0]
-  right: $sides[1]
-  bottom: $sides[2]
-  left: $sides[3]
+  +cache('kind-fill' + $position + $sides)
+    position: $position
+
+    top: $sides[0]
+    right: $sides[1]
+    bottom: $sides[2]
+    left: $sides[3]
 
   $bg = utilus_get_string(arguments)
   $bg_color = utilus_get_color(arguments)

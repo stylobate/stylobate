@@ -138,7 +138,8 @@ $normal-link
 stylobate_extends(skin-disabled, kind-disabled, false)
 
 skin-disabled()
-  opacity: 0.75
+  +cache('skin-disabled')
+    opacity: 0.75
 
 .extended-disabled
   skin: disabled

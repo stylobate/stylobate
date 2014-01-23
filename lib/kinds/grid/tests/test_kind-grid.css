@@ -5,31 +5,16 @@
 }
 
 .abook-entry-name {
-  width: 40%;
-}
-
-.abook-entry-name,
-.abook-entry > .abook-entry-checkbox {
-  position: relative;
-
-  display: inline-block;
   overflow: hidden;
 
-  vertical-align: top;
+  width: 40%;
+
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.abook-entry > .abook-entry-checkbox {
-  width: 6em;
-  margin-left: 1em;
-}
-
-.abook-entry > .abook-entry-userpic {
-  width: 3em;
-  margin-left: 1em;
-}
-
+.abook-entry-name,
+.abook-entry > .abook-entry-checkbox,
 .abook-entry > .abook-entry-userpic,
 .abook-entry-email,
 .abook-entry-phone,
@@ -38,17 +23,37 @@
   position: relative;
 
   display: inline-block;
-  overflow: hidden;
 
   vertical-align: top;
+}
+
+.abook-entry > .abook-entry-checkbox {
+  width: 6em;
+}
+
+.abook-entry > .abook-entry-checkbox,
+.abook-entry > .abook-entry-userpic {
+  overflow: hidden;
+
+  margin-left: 1em;
+
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.abook-entry > .abook-entry-userpic {
+  width: 3em;
 }
 
 .abook-entry-email,
 .abook-entry-phone,
 .abook-entry-label,
 .abook-entry-compose {
+  overflow: hidden;
+
   width: 20%;
   margin-left: 3em;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
