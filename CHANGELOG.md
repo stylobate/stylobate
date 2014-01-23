@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.22.1 (2014-01-23)
+
+- Fixed bug with stylobate params equal to the functions.
+
 ## v0.22.0 (2014-01-23)
 
 - Added way to cross-extend different stylobate namespaces.

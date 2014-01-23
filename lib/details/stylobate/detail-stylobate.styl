@@ -35,7 +35,7 @@ _stylobate_defaults($where, $defaults)
 _stylobate($name, $params)
   $subparams = utilus_remove_first($params)
   push($subparams, called_from $name + $params[0])
-  $skin_name = $params[0]
+  $skin_name = utilus_ident($params[0])
   $context = utilus_get($params, 'context', '')
 
   // Check if the called stylobate extends anything, if so, call it first,
@@ -54,12 +54,12 @@ _stylobate($name, $params)
   {$context}
     {$extended_name}($subparams) if $extended_name and $context and $extended_name_ending == ''
 
-  if ($name + join('',$params) != '') and !utilus_is_function($name + $params[0]) and !$extended_name and !match('[_-]$',$params[0])
-    error('No such “' + $name + '” — “' + $params[0] + '”')
+  if ($name + join('',$params) != '') and !utilus_is_function($name + utilus_ident($params[0])) and !$extended_name and !match('[_-]$', utilus_ident($params[0]))
+    error('No such “' + $name + '” — “' + utilus_ident($params[0]) + '”')
 
-  {$name + $params[0]}($subparams) if !$context and utilus_is_function($name + $params[0])
+  {$name + utilus_ident($params[0])}($subparams) if !$context and utilus_is_function($name + utilus_ident($params[0]))
   {$context}
-    {$name + $params[0]}($subparams) if $context and utilus_is_function($name + $params[0])
+    {$name + utilus_ident($params[0])}($subparams) if $context and utilus_is_function($name + utilus_ident($params[0]))
 
   for $subitem in $subparams
     // There shouldn't be an `if` inside a {$selector}, 'cause
@@ -90,7 +90,7 @@ _stylobate($name, $params)
 
       // If there is extended subitem function, use it, otherwise
       $subitemname_extended = ''
-      $subitemname_extended = $name + replace('[_-]+$', '', $params[0]) + $foundsubitem[0] if $extended_name
+      $subitemname_extended = $name + replace('[_-]+$', '', utilus_ident($params[0])) + $foundsubitem[0] if $extended_name
       $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
 
       // Push proper `called_from`
