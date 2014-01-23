@@ -2,7 +2,7 @@
 # Stylobate Changelog
 ---
 
-## v0.22.0 (2014-01-22)
+## v0.22.0 (2014-01-23)
 
 - Added way to cross-extend different stylobate namespaces.
 - Added a way to redefine defaults on extending (far from ideal though).
