@@ -46,8 +46,8 @@ parse_stylobate_option($options, $options_params, $call_stack, $item)
       // Add the elements/modifiers to options
       if !$options_params[''+$stack_item.name]
         $options_params[''+$stack_item.name] = {
-          selector: $stack_item.selector,
-          params: $stack_item.params
+          selector: $stack_item['selector'],
+          params: $stack_item['params']
         }
 
     else
