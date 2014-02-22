@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.22.3 (2014-02-22)
+
+- Fixed error when default have no `called_from`.
+
 ## v0.22.2 (2014-02-22)
 
 - Fixed different box-sizing at `button` and `a` buttons.
