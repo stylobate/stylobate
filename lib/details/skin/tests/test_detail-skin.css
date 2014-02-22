@@ -150,7 +150,3 @@ body input:checked + .pysh {
 
   opacity: 0.75;
 }
-
-.extended-disabled:focus {
-  outline: 0;
-}

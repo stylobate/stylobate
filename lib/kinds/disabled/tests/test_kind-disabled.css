@@ -5,10 +5,6 @@
   opacity: 0.5;
 }
 
-.is-disabled:focus {
-  outline: 0;
-}
-
 .is-disabled .is-disabled {
   opacity: 1;
 }
@@ -20,25 +16,15 @@
   opacity: 0.75;
 }
 
-.is-slightly-disabled:focus {
-  outline: 0;
-}
-
 .is-slightly-disabled .is-slightly-disabled {
   opacity: 1;
 }
 
 .is-fully-disabled {
-  cursor: default !important;
   pointer-events: none;
-
-  opacity: 0.5;
 }
 
-.is-fully-disabled:focus {
-  outline: 0;
-}
-
+.is-fully-disabled,
 .is-disabled-with-events {
   cursor: default !important;
 
