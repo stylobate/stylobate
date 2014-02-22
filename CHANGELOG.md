@@ -2,9 +2,11 @@
 # Stylobate Changelog
 ---
 
-## v0.22.2 (in development)
+## v0.22.2 (2014-02-22)
 
 - Fixed different box-sizing at `button` and `a` buttons.
+- Fixed unneeded `:focus` reset for disabled things without events.
+- Updated utilus and if-ie deps.
 
 ## v0.22.1 (2014-01-23)
 
