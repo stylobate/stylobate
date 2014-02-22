@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.22.2 (in development)
+
+- Fixed different box-sizing at `button` and `a` buttons.
+
 ## v0.22.1 (2014-01-23)
 
 - Fixed bug with stylobate params equal to the functions.
