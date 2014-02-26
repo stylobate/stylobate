@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.22.4 (2014-02-26)
+
+- Updated `if-ie.styl` to `0.3.1`.
+
 ## v0.22.3 (2014-02-22)
 
 - Fixed error when default have no `called_from`.
