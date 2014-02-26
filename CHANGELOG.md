@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.22.5 (2014-02-26)
+
+- Updated `if-ie.styl` to `0.4.0`.
+
 ## v0.22.4 (2014-02-26)
 
 - Updated `if-ie.styl` to `0.3.1`.
