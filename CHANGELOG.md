@@ -2,6 +2,11 @@
 # Stylobate Changelog
 ---
 
+## v0.23.0 (2014-03-24)
+
+- Added `justifier` kind.
+- Added `vertical` param to groups.
+
 ## v0.22.5 (2014-02-26)
 
 - Updated `if-ie.styl` to `0.4.0`.

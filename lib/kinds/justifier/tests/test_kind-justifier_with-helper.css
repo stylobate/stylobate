@@ -1,0 +1,9 @@
+.justifier2 {
+  text-align: justify;
+}
+
+.justifier2-helper {
+  display: inline-block;
+
+  width: 100%;
+}

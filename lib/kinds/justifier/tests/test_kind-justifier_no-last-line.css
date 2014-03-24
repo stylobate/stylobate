@@ -1,0 +1,14 @@
+.justifier_no-last-line {
+  text-align: justify;
+
+  font-size: 0;
+  line-height: 0;
+}
+
+.justifier_no-last-line:after {
+  content: "";
+
+  display: inline-block;
+
+  width: 100%;
+}
