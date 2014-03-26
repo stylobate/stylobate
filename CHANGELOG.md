@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.23.1 (2014-03-26)
+
+- Fixed vertical groups lol.
+
 ## v0.23.0 (2014-03-24)
 
 - Added `justifier` kind.

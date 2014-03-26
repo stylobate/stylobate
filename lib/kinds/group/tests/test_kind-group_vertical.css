@@ -10,15 +10,15 @@
 .radiogroup__item:first-child:not(:only-child),
 .radiogroup > .complex-button:first-child:not(:only-child) > .complex-button-inner,
 .radiogroup > .complex-button:first-child:not(:only-child) > .complex-button-inner:before {
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 .radiogroup__item:last-child:not(:only-child),
 .radiogroup > .complex-button:last-child:not(:only-child) > .complex-button-inner,
 .radiogroup > .complex-button:last-child:not(:only-child) > .complex-button-inner:before {
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 
 .radiogroup__item:not(:first-child):not(:last-child),
