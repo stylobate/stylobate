@@ -1,11 +1,11 @@
-kind-clear()
+kind-clear($this)
   if !ie
-    stylobate_defaults(arguments,
-      -before (after in arguments ? '' : '&:before'),
-      -after (before in arguments ? '' : '&:after'))
+    stylobate_defaults($this.arguments,
+      -before (after in $this.arguments ? '' : '&:before'),
+      -after (before in $this.arguments ? '' : '&:after'))
 
-    deprecate(arguments, after)
-    deprecate(arguments, before)
+    deprecate($this.arguments, after)
+    deprecate($this.arguments, before)
 
   zoom: 1
 

@@ -1,13 +1,13 @@
-kind-file-input()
+kind-file-input($this)
   @extends $kind-file-input
 
-  $extrude = utilus_get_unit(arguments)
+  $extrude = utilus_get_unit($this.arguments)
   if $extrude
     padding: $extrude
     margin: $extrude * -1
 
 $kind-file-input
-  kind-block(inline)
+  kind(block inline)
 
   overflow: hidden
 

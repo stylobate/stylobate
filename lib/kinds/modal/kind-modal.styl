@@ -1,12 +1,12 @@
-kind-modal-wrap()
-  $args = arguments
+kind-modal-wrap($this)
+  $args = $this.arguments
   prepend($args, guide)
-  kind(arguments)
+  kind($args)
   kind(centering (-helper ''))
 
   z-index: 99
 
-  stylobate_defaults(arguments,
+  stylobate_defaults($this.arguments,
     -helper '&:after')
 
 kind-modal-wrap-helper()

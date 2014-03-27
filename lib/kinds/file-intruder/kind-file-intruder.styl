@@ -1,9 +1,9 @@
-kind-file-intruder()
+kind-file-intruder($this)
   @extends $kind-file-intruder
 
-  $focus = utilus_get(arguments, '-focus')
+  $focus = utilus_get($this.arguments, '-focus')
   $focus-skin = utilus_get_string($focus, $index: 1)
-  {utilus_get(arguments, '-input')}:focus + {utilus_get_string($focus)}
+  {utilus_get($this.arguments, '-input')}:focus + {utilus_get_string($focus)}
     skin-{$focus-skin}() if $focus-skin
 
 
@@ -47,4 +47,4 @@ $kind-file-intruder-input
   opacity: 0
 
 kind-file-intruder-focus()
-  kind-fill()
+  kind(fill)

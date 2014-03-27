@@ -1,17 +1,17 @@
-kind-icon()
+kind-icon($this)
   @extends $kind-icon
-  kind-icon_(arguments)
+  kind-icon_($this)
 
-  if replace-image in arguments
+  if replace-image in $this.arguments
     @extends $kind-icon-replaced
 
-kind-icon_()
-  $size = utilus_get(arguments, 'size')
+kind-icon_($this)
+  $size = utilus_get($this.arguments, 'size')
   $size = $size $size if $size and length($size) == 1
-  $image = utilus_get_string(arguments)
-  $align = utilus_retrieve(arguments, baseline top bottom)
+  $image = utilus_get_string($this.arguments)
+  $align = utilus_retrieve($this.arguments, baseline top bottom)
 
-  if !$size and $image and !(sizeless in arguments)
+  if !$size and $image and !(sizeless in $this.arguments)
     $size = image-size($image, true)
 
   if $align
@@ -21,7 +21,7 @@ kind-icon_()
     $width = $size[0]
     $height = $size[1]
 
-    if replace-image in arguments
+    if replace-image in $this.arguments
       padding: 0 $width $height 0
     else
       width: $width
@@ -33,7 +33,7 @@ kind-icon_()
 
 // Base styles for all icons
 $kind-icon
-  kind-block(inline middle)
+  kind(block inline middle)
 
   margin-top: -0.2em // http://dabblet.com/gist/6185672
 

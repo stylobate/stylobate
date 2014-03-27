@@ -1,14 +1,14 @@
-kind-foo()
+kind-foo($this)
   width: 10px
 
-  height: parent_get_color(arguments, 10px)
+  height: parent_get_color($this.arguments, 10px)
 
-kind-foo-bar()
+kind-foo-bar($this)
   height: 10px
-  padding-left: parent_alike(arguments, 10px)
+  padding-left: parent_alike($this.arguments, 10px)
 
-  if parent_get_color(arguments)
-    color: parent_get_color(arguments)
+  if parent_get_color($this.arguments)
+    color: parent_get_color($this.arguments)
 
 .foo
   kind: foo (-bar '&-bar')

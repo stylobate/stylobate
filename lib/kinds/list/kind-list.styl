@@ -1,5 +1,5 @@
 kind-list()
-  kind-block()
+  kind(block)
 
   // Getting the nowrap
   if utilus_retrieve(arguments, nowrap nobr)
@@ -17,7 +17,7 @@ kind-list()
 kind-list-item()
   // Getting the valign
   $valign = utilus_retrieve(arguments, middle baseline bottom, top)
-  kind-block(inline, $valign)
+  kind(block inline $valign)
 
   // get the gap from the parent
   $gap = parent_get(arguments, 'gap')

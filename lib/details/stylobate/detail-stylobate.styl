@@ -50,17 +50,19 @@ _stylobate($name, $params)
 
     if !utilus_is_function($extended_name) and $extended_name_ending == ''
       error('No stylobate function “' + $extended_name + '”')
-
-  {$extended_name}($subparams) if $extended_name and !$context and $extended_name_ending == ''
+  $hashed_subparams = {
+    arguments: $subparams
+  }
+  {$extended_name}($hashed_subparams) if $extended_name and !$context and $extended_name_ending == ''
   {$context}
-    {$extended_name}($subparams) if $extended_name and $context and $extended_name_ending == ''
+    {$extended_name}($hashed_subparams) if $extended_name and $context and $extended_name_ending == ''
 
   if ($name + join('',$params) != '') and !utilus_is_function($name + utilus_ident($params[0])) and !$extended_name and !match('[_-]$', utilus_ident($params[0]))
     error('No such “' + $name + '” — “' + utilus_ident($params[0]) + '”')
 
-  {$name + utilus_ident($params[0])}($subparams) if !$context and utilus_is_function($name + utilus_ident($params[0]))
+  {$name + utilus_ident($params[0])}($hashed_subparams) if !$context and utilus_is_function($name + utilus_ident($params[0]))
   {$context}
-    {$name + utilus_ident($params[0])}($subparams) if $context and utilus_is_function($name + utilus_ident($params[0]))
+    {$name + utilus_ident($params[0])}($hashed_subparams) if $context and utilus_is_function($name + utilus_ident($params[0]))
 
   for $subitem in $subparams
     // There shouldn't be an `if` inside a {$selector}, 'cause
@@ -98,12 +100,15 @@ _stylobate($name, $params)
       push($subitemparams, called_from $subitemname) unless $subitemname_extended or !$subitemname
       push($subitemparams, called_from $subitemname_extended) if $subitemname_extended
 
-      {$subitemname}($subitemparams) unless $context or $subitemname_extended or !$subitemname
-      {$subitemname_extended}($subitemparams) unless $context or !$subitemname_extended
-      {$context}
-        {$subitemname}($subitemparams) if $context and !$subitemname_extended and $subitemname
-        {$subitemname_extended}($subitemparams) if $context and $subitemname_extended
+      $hashed_subitemparams = {
+        arguments: $subitemparams
+      }
 
+      {$subitemname}($hashed_subitemparams) unless $context or $subitemname_extended or !$subitemname
+      {$subitemname_extended}($hashed_subitemparams) unless $context or !$subitemname_extended
+      {$context}
+        {$subitemname}($hashed_subitemparams) if $context and !$subitemname_extended and $subitemname
+        {$subitemname_extended}($hashed_subitemparams) if $context and $subitemname_extended
 
     {$selector}
       call_subitem() if $foundsubitem != '' and $selector != ''

@@ -1,5 +1,5 @@
-kind-hidden()
-  $type = utilus_get_ident(arguments)
+kind-hidden($this)
+  $type = utilus_get_ident($this.arguments)
 
   if $type == 'visually'
     @extends $kind-hidden-visually
