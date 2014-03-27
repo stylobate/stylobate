@@ -33,40 +33,42 @@ _stylobate_defaults($this, $defaults)
   _stylobate('', $new)
 
 _stylobate($name, $params)
-  $hashed_subparams = {
+  $this = {
     parent: {},
+    arguments: clone($params),
     called_from: $name + $params[0]
   }
-  $subparams = utilus_remove_first($params)
-  push($subparams, '')
-  $skin_name = utilus_ident($params[0])
-  $context = utilus_get($params, 'context', '')
+  // Remove the item's name from the arguments
+  $this['arguments'][0] = unquote('')
 
   // Check if the called stylobate extends anything, if so, call it first,
   // and use the extended stylobate for subitems.
+  $skin_name = utilus_ident($params[0])
   $extended_name_ending = replace('.*[^-_]+', '', $skin_name)
   $extended_name = $stylobate_extends[$name + $skin_name] || $stylobate_extends[$name + replace('[_-]+$', '', $skin_name)]
   $extended_name = utilus_ident($extended_name) + $extended_name_ending if $extended_name
   if $extended_name
-    $hashed_subparams['is_extended'] = true
+    $this['is_extended'] = true
     $skin_name = replace('^' + $name, '', $extended_name)
 
     if !utilus_is_function($extended_name) and $extended_name_ending == ''
       error('No stylobate function “' + $extended_name + '”')
-  $hashed_subparams['arguments'] = $subparams
 
-  {$extended_name}($hashed_subparams) if $extended_name and !$context and $extended_name_ending == ''
+  // Why do we need context in the first place
+  $context = utilus_get($params, 'context', '')
+
+  {$extended_name}($this) if $extended_name and !$context and $extended_name_ending == ''
   {$context}
-    {$extended_name}($hashed_subparams) if $extended_name and $context and $extended_name_ending == ''
+    {$extended_name}($this) if $extended_name and $context and $extended_name_ending == ''
 
   if ($name + join('',$params) != '') and !utilus_is_function($name + utilus_ident($params[0])) and !$extended_name and !match('[_-]$', utilus_ident($params[0]))
     error('No such “' + $name + '” — “' + utilus_ident($params[0]) + '”')
 
-  {$name + utilus_ident($params[0])}($hashed_subparams) if !$context and utilus_is_function($name + utilus_ident($params[0]))
+  {$name + utilus_ident($params[0])}($this) if !$context and utilus_is_function($name + utilus_ident($params[0]))
   {$context}
-    {$name + utilus_ident($params[0])}($hashed_subparams) if $context and utilus_is_function($name + utilus_ident($params[0]))
+    {$name + utilus_ident($params[0])}($this) if $context and utilus_is_function($name + utilus_ident($params[0]))
 
-  for $subitem in $subparams
+  for $subitem in $this.arguments
     // There shouldn't be an `if` inside a {$selector}, 'cause
     // there is a crazy stylus bug. When it would be fixed,
     // revert this version to 669082fb35
@@ -87,7 +89,12 @@ _stylobate($name, $params)
           $foundsubitem = $subitem
 
     call_subitem()
-      $subitemparams = remove_first(remove_first($foundsubitem))
+      $this-subitem = {
+        parent: $this,
+        arguments: clone($foundsubitem)
+      }
+      $this-subitem['arguments'][0] = unquote('')
+
       $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
       $subitemname = replace('[_-]+$', '', $extended_name) + $foundsubitem[0] if $extended_name
       $subitemname = '' unless utilus_is_function($subitemname)
@@ -97,20 +104,16 @@ _stylobate($name, $params)
       $subitemname_extended = $name + replace('[_-]+$', '', utilus_ident($params[0])) + $foundsubitem[0] if $extended_name
       $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
 
-      $hashed_subitemparams = {
-        parent: $hashed_subparams,
-        arguments: $subitemparams
-      }
 
       // Push proper `called_from`
-      $hashed_subitemparams['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
-      $hashed_subitemparams['called_from'] = $subitemname_extended if $subitemname_extended
+      $this-subitem['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
+      $this-subitem['called_from'] = $subitemname_extended if $subitemname_extended
 
-      {$subitemname}($hashed_subitemparams) unless $context or $subitemname_extended or !$subitemname
-      {$subitemname_extended}($hashed_subitemparams) unless $context or !$subitemname_extended
+      {$subitemname}($this-subitem) unless $context or $subitemname_extended or !$subitemname
+      {$subitemname_extended}($this-subitem) unless $context or !$subitemname_extended
       {$context}
-        {$subitemname}($hashed_subitemparams) if $context and !$subitemname_extended and $subitemname
-        {$subitemname_extended}($hashed_subitemparams) if $context and $subitemname_extended
+        {$subitemname}($this-subitem) if $context and !$subitemname_extended and $subitemname
+        {$subitemname_extended}($this-subitem) if $context and $subitemname_extended
 
     {$selector}
       call_subitem() if $foundsubitem != '' and $selector != ''
