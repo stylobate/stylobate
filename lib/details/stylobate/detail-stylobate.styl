@@ -9,24 +9,23 @@ stylobate_extends($what, $target, $defaults = true)
 
 // Far from ideal (can't redefine defaults for already redefined defaults)
 // Dunno if it is possible to make proper refedining in Stylus' stylobate
-stylobate_new_defaults($where, $defaults...)
-  _stylobate_defaults($where, $defaults)
+stylobate_new_defaults($this, $defaults...)
+  _stylobate_defaults($this, $defaults)
 
-stylobate_defaults($where, $defaults...)
-  if !(utilus_get($where, is_extended) and utilus_get($where, called_from) in $stylobate_extends_without_defaults)
-    _stylobate_defaults($where, $defaults)
+stylobate_defaults($this, $defaults...)
+  if !($this.is_extended and $this.called_from in $stylobate_extends_without_defaults)
+    _stylobate_defaults($this, $defaults)
 
-_stylobate_defaults($where, $defaults)
-  $origin = utilus_get($where, called_from)
+_stylobate_defaults($this, $defaults)
+  $origin = $this.called_from
   return false if not $origin
-  $parent = clone($where)
   $new = clone($defaults)
   prepend($new, $origin + '_')
   for $param, $index in $new
-    $found_param = utilus_get($where, $param[0])
+    $found_param = utilus_get($this['arguments'], $param[0])
     if $found_param or (type($found_param) == 'string' and $found_param == '')
       $new[$index] = ''
-  for $param, $index in $where
+  for $param, $index in $this.arguments
     $testparam = $param
     $testparam = '' unless type($param) in ('ident' 'string')
     unless match('^[-_]', $testparam)
@@ -34,8 +33,11 @@ _stylobate_defaults($where, $defaults)
   _stylobate('', $new)
 
 _stylobate($name, $params)
+  $hashed_subparams = {
+    called_from: $name + $params[0]
+  }
   $subparams = utilus_remove_first($params)
-  push($subparams, called_from $name + $params[0])
+  push($subparams, '')
   $skin_name = utilus_ident($params[0])
   $context = utilus_get($params, 'context', '')
 
@@ -45,14 +47,13 @@ _stylobate($name, $params)
   $extended_name = $stylobate_extends[$name + $skin_name] || $stylobate_extends[$name + replace('[_-]+$', '', $skin_name)]
   $extended_name = utilus_ident($extended_name) + $extended_name_ending if $extended_name
   if $extended_name
-    push($subparams, is_extended)
+    $hashed_subparams['is_extended'] = true
     $skin_name = replace('^' + $name, '', $extended_name)
 
     if !utilus_is_function($extended_name) and $extended_name_ending == ''
       error('No stylobate function “' + $extended_name + '”')
-  $hashed_subparams = {
-    arguments: $subparams
-  }
+  $hashed_subparams['arguments'] = $subparams
+
   {$extended_name}($hashed_subparams) if $extended_name and !$context and $extended_name_ending == ''
   {$context}
     {$extended_name}($hashed_subparams) if $extended_name and $context and $extended_name_ending == ''
@@ -96,13 +97,13 @@ _stylobate($name, $params)
       $subitemname_extended = $name + replace('[_-]+$', '', utilus_ident($params[0])) + $foundsubitem[0] if $extended_name
       $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
 
-      // Push proper `called_from`
-      push($subitemparams, called_from $subitemname) unless $subitemname_extended or !$subitemname
-      push($subitemparams, called_from $subitemname_extended) if $subitemname_extended
-
       $hashed_subitemparams = {
         arguments: $subitemparams
       }
+
+      // Push proper `called_from`
+      $hashed_subitemparams['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
+      $hashed_subitemparams['called_from'] = $subitemname_extended if $subitemname_extended
 
       {$subitemname}($hashed_subitemparams) unless $context or $subitemname_extended or !$subitemname
       {$subitemname_extended}($hashed_subitemparams) unless $context or !$subitemname_extended

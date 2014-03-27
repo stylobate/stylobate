@@ -16,10 +16,10 @@ kind-link($this)
   deprecate($this.arguments, nested, true '`nested` param for link is deprecated, use the proper mechanism for nesting')
 
   unless no-hover in $this.arguments
-    stylobate_defaults($this.arguments, _hover '&:hover')
+    stylobate_defaults($this, _hover '&:hover')
 
   unless utilus_get($this.arguments, _pseudo)
-    stylobate_defaults($this.arguments, _underline)
+    stylobate_defaults($this, _underline)
 
 kind-link_pseudo()
   text-decoration: none

@@ -54,12 +54,12 @@ set-skin-namespace('')
 skin-base($this)
   width: 10px
   &:hover > {utilus_get_string(utilus_get($this.arguments, '-subitem'))}
-    if not is_extended in $this.arguments
+    if not $this.is_extended
       background: lime
     else
       background: red
 
-  stylobate_defaults($this.arguments, -subitem '&-defitem', _supermod)
+  stylobate_defaults($this, -subitem '&-defitem', _supermod)
 
 skin-base_supermod()
   position: absolute
@@ -68,7 +68,7 @@ skin-base-subitem($this)
   height: 20px
 
   // stylobate_defaults(arguments, -subitem-subsub) — works
-  stylobate_defaults($this.arguments, -subsub)
+  stylobate_defaults($this, -subsub)
 
 skin-base-subitem-subsub()
   text-align: justify
@@ -124,7 +124,7 @@ stylobate_extends('skin-superlink', 'kind-link', false)
 skin-superlink($this)
   color: #FFF
 
-  stylobate_new_defaults($this.arguments, _hover '&.is-hovered')
+  stylobate_new_defaults($this, _hover '&.is-hovered')
 
 skin-superlink_hover()
   color: #000
