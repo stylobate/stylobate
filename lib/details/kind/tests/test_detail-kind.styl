@@ -1,5 +1,5 @@
 kind-foo($this)
-  width: utilus_alike($this.arguments, 10px)
+  width: $this.units[0] or 10px
 
 kind-foo_()
   // Should have at least some prop content to work
@@ -9,12 +9,12 @@ kind-foo_pseudo()
   border: 1px solid
 
 kind-bar($this)
-  height: utilus_alike($this.arguments, 10px)
+  height: $this.units[0] or 10px
 
 kind-bar-subbar($this)
-  background: utilus_alike($this.arguments, #000)
+  background: $this.colors[0] or #000
 
-  padding-left: utilus_alike($this.parent.arguments, 10px)
+  padding-left: $this.parent.units[0] or 10px
 
 kind-bar__lol()
   pseudo-with-content()

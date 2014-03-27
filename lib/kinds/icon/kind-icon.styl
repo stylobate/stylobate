@@ -8,7 +8,7 @@ kind-icon($this)
 kind-icon_($this)
   $size = utilus_get($this.arguments, 'size')
   $size = $size $size if $size and length($size) == 1
-  $image = utilus_get_string($this.arguments)
+  $image = $this.strings[0]
   $align = utilus_retrieve($this.arguments, baseline top bottom)
 
   if !$size and $image and !(sizeless in $this.arguments)

@@ -17,7 +17,7 @@ kind-group-item($this)
       kind-group-end($this)
 
 kind-group-start($this)
-  {utilus_alike($this.arguments, '')}
+  {$this.strings[0] or ''}
     $placeholder = vertical in $this.arguments ? '$kind-group-start_vertical' : '$kind-group-start'
     @extends {$placeholder}
 
@@ -36,7 +36,7 @@ kind-group-end($this)
     $placeholder = vertical in $this.arguments ? '$kind-group-margin_vertical' : '$kind-group-margin'
     @extends {$placeholder}
 
-  {utilus_alike($this.arguments, '')}
+  {$this.strings[0] or ''}
     $placeholder = vertical in $this.arguments ? '$kind-group-end_vertical' : '$kind-group-end'
     @extends {$placeholder}
 
@@ -61,7 +61,7 @@ kind-group-middle($this)
     $placeholder = vertical in $this.arguments ? '$kind-group-margin_vertical' : '$kind-group-margin'
     @extends {$placeholder}
 
-  $selector = utilus_alike($this.arguments, '')
+  $selector = $this.strings[0] or ''
   if $selector != ''
     {$selector}
       border-radius: 0 !important

@@ -1,7 +1,7 @@
 kind-file-input($this)
   @extends $kind-file-input
 
-  $extrude = utilus_get_unit($this.arguments)
+  $extrude = $this.units[0]
   if $extrude
     padding: $extrude
     margin: $extrude * -1

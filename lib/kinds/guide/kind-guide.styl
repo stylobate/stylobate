@@ -7,7 +7,7 @@ kind-guide($this)
 stylobate_extends('kind-guide', 'kind-fill')
 
 kind-guide-item($this)
-  if visible in $this.arguments or visible in utilus_get($this.arguments, parent)
+  if visible in $this.arguments or visible in $this['parent']['arguments']
     pointer-events: auto
   else
     visibility: visible

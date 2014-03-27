@@ -2,7 +2,7 @@ kind-link($this)
   unless nested in $this.arguments
     cursor: pointer
 
-    color: utilus_alike($this.arguments, blue)
+    color: $this.colors[0] or blue
 
   if utilus_get($this.arguments, _pseudo) or utilus_get($this.arguments, _underline) or utilus_get($this.arguments, _underline) == ''
     text-decoration: none
@@ -30,9 +30,9 @@ kind-link_underline()
 
 kind-link_hover($this)
   // Remove the compleity when `no-hover` is deprecated
-  color: utilus_alike($this.arguments, red)
+  color: $this.colors[0] or red
 
-  if utilus_get_color($this.arguments, false, 1)
+  if $this.colors[1]
     error('Setting color to the link using two color arguments is depraceted and removed, use `_hover` modifier')
 
 

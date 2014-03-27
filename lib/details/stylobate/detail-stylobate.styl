@@ -41,6 +41,10 @@ _stylobate($name, $params)
   // Remove the item's name from the arguments
   $this['arguments'][0] = unquote('')
 
+  $collected = utilus_collect_by_type($this['arguments'])
+  for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
+    $this[$key] = $collected[$key]
+
   // Check if the called stylobate extends anything, if so, call it first,
   // and use the extended stylobate for subitems.
   $skin_name = utilus_ident($params[0])
@@ -89,11 +93,15 @@ _stylobate($name, $params)
           $foundsubitem = $subitem
 
     call_subitem()
-      $this-subitem = {
+      $this_subitem = {
         parent: $this,
         arguments: clone($foundsubitem)
       }
-      $this-subitem['arguments'][0] = unquote('')
+      $this_subitem['arguments'][0] = unquote('')
+
+      $collected = utilus_collect_by_type($this_subitem['arguments'])
+      for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
+        $this_subitem[$key] = $collected[$key]
 
       $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
       $subitemname = replace('[_-]+$', '', $extended_name) + $foundsubitem[0] if $extended_name
@@ -106,14 +114,14 @@ _stylobate($name, $params)
 
 
       // Push proper `called_from`
-      $this-subitem['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
-      $this-subitem['called_from'] = $subitemname_extended if $subitemname_extended
+      $this_subitem['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
+      $this_subitem['called_from'] = $subitemname_extended if $subitemname_extended
 
-      {$subitemname}($this-subitem) unless $context or $subitemname_extended or !$subitemname
-      {$subitemname_extended}($this-subitem) unless $context or !$subitemname_extended
+      {$subitemname}($this_subitem) unless $context or $subitemname_extended or !$subitemname
+      {$subitemname_extended}($this_subitem) unless $context or !$subitemname_extended
       {$context}
-        {$subitemname}($this-subitem) if $context and !$subitemname_extended and $subitemname
-        {$subitemname_extended}($this-subitem) if $context and $subitemname_extended
+        {$subitemname}($this_subitem) if $context and !$subitemname_extended and $subitemname
+        {$subitemname_extended}($this_subitem) if $context and $subitemname_extended
 
     {$selector}
       call_subitem() if $foundsubitem != '' and $selector != ''

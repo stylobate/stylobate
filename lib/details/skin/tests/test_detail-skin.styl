@@ -9,9 +9,9 @@ skin-bar($this)
     height: 10px
 
 skin-bar-subbar($this)
-  background: utilus_alike($this.arguments, #000)
+  background: $this.colors[0] or #000
 
-  padding-left: utilus_alike(utilus_get($this.arguments, parent), 10px)
+  padding-left: $this.parent.units[0] or 10px
 
 skin-bar__lol()
   pseudo-with-content()

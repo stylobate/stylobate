@@ -7,8 +7,8 @@ kind-fill($this)
   bottom: $sides[2]
   left: $sides[3]
 
-  $bg = utilus_get_string($this.arguments)
-  $bg_color = utilus_get_color($this.arguments)
+  $bg = $this.strings[0]
+  $bg_color = $this.colors[0]
   if $bg
     $bg_color = unquote('') unless $bg_color
     background: $bg_color url($bg) utilus_retrieve($this.arguments, repeat repeat-x repeat-y , no-repeat) 50%

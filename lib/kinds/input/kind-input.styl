@@ -1,7 +1,7 @@
 kind-input($this)
   @extends $kind-input
 
-  width: utilus_alike($this.arguments, 400px)
+  width: $this.units[0] or 400px
 
   $align = utilus_retrieve($this.arguments, middle top bottom)
   vertical-align: $align if $align
