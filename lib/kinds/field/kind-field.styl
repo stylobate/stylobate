@@ -27,7 +27,7 @@ $kind-field-content
 kind-field-left($this)
   @extends $kind-field-left
 
-  $sides = any_get_sides($this.arguments)
+  $sides = any_get_sides($this)
   unless no-margin in $this.arguments
     margin: -1*$sides[0] 0 -1*$sides[2] -1*$sides[3]
 
@@ -42,7 +42,7 @@ $kind-field-left
 kind-field-right($this)
   @extends $kind-field-right
 
-  $sides = any_get_sides($this.arguments)
+  $sides = any_get_sides($this)
   unless no-margin in $this.arguments
     margin: -1*$sides[0] -1*$sides[1] -1*$sides[2] 0
 

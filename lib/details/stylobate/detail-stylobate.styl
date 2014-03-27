@@ -34,6 +34,7 @@ _stylobate_defaults($this, $defaults)
 
 _stylobate($name, $params)
   $hashed_subparams = {
+    parent: {},
     called_from: $name + $params[0]
   }
   $subparams = utilus_remove_first($params)
@@ -87,7 +88,6 @@ _stylobate($name, $params)
 
     call_subitem()
       $subitemparams = remove_first(remove_first($foundsubitem))
-      push($subitemparams, (parent $subparams))
       $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
       $subitemname = replace('[_-]+$', '', $extended_name) + $foundsubitem[0] if $extended_name
       $subitemname = '' unless utilus_is_function($subitemname)
@@ -98,6 +98,7 @@ _stylobate($name, $params)
       $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
 
       $hashed_subitemparams = {
+        parent: $hashed_subparams,
         arguments: $subitemparams
       }
 

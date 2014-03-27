@@ -14,7 +14,7 @@ kind-bar($this)
 kind-bar-subbar($this)
   background: utilus_alike($this.arguments, #000)
 
-  padding-left: utilus_alike(utilus_get($this.arguments, parent), 10px)
+  padding-left: utilus_alike($this.parent.arguments, 10px)
 
 kind-bar__lol()
   pseudo-with-content()
