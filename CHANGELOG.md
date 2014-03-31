@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.23.2 (2014-03-31)
+
+- Updated `if-ie.styl` to `0.5.0`.
+
 ## v0.23.1 (2014-03-26)
 
 - Fixed vertical groups lol.
