@@ -1,25 +1,8 @@
-.popup-wrap:after,
-.apupup__helper {
-  content: "";
-
-  display: inline-block;
-
-  height: 100%;
-
-  vertical-align: middle;
-}
-
 .popup {
   position: relative;
 
-  display: inline-block;
-
   max-width: 100%;
   max-height: 100%;
-
-  text-align: left;
-  vertical-align: middle;
-  white-space: normal;
 }
 
 .popup-wrap {
@@ -36,8 +19,24 @@
   white-space: nowrap;
 }
 
+.popup-wrap:after,
+.apupup__helper {
+  content: "";
+
+  display: inline-block;
+
+  height: 100%;
+
+  vertical-align: middle;
+}
+
 .popup {
+  display: inline-block;
   visibility: visible;
+
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
 }
 
 .overlay {
