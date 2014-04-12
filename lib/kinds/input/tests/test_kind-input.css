@@ -16,6 +16,10 @@
   outline: none;
 }
 
+.input {
+  width: 400px;
+}
+
 .input,
 .input-controller {
   vertical-align: baseline;
@@ -34,10 +38,6 @@
   max-width: 100%;
 
   cursor: text;
-}
-
-.input {
-  width: 400px;
 }
 
 .input-controller {
