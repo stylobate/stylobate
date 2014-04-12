@@ -14,6 +14,12 @@
   vertical-align: baseline;
 }
 
+.field {
+  width: 400px;
+
+  background: #000;
+}
+
 .field-content,
 .custom-field__inner {
   position: static;
@@ -22,6 +28,11 @@
   overflow: hidden;
 
   height: 100%;
+}
+
+.field-left {
+  padding: 10px 20px;
+  margin: -10px 0 -10px -20px;
 }
 
 .field-left,
@@ -33,28 +44,17 @@
   float: left;
 }
 
+.field-right {
+  padding: 10px 20px;
+  margin: -10px -20px -10px 0;
+}
+
 .field-right,
 .custom-field__input {
   position: relative;
   z-index: 9;
 
   float: right;
-}
-
-.field {
-  width: 400px;
-
-  background: #000;
-}
-
-.field-left {
-  padding: 10px 20px;
-  margin: -10px 0 -10px -20px;
-}
-
-.field-right {
-  padding: 10px 20px;
-  margin: -10px -20px -10px 0;
 }
 
 .small-field {
