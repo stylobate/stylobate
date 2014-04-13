@@ -1,3 +1,8 @@
+.centerer {
+  text-align: center;
+  white-space: nowrap;
+}
+
 .centerer:before {
   content: "";
 
@@ -15,9 +20,3 @@
   text-align: left;
   white-space: normal;
 }
-
-.centerer {
-  text-align: center;
-  white-space: nowrap;
-}
-

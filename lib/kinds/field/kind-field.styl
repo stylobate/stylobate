@@ -15,17 +15,18 @@ kind-field($this)
         kind-field-right($this)
 
 kind-field-content()
-  @extends $kind-field-content
+  +cache()
+    kind('block' static)
 
-$kind-field-content
-  kind(block static)
+    overflow: hidden
 
-  overflow: hidden
-
-  height: 100%
+    height: 100%
 
 kind-field-left($this)
-  @extends $kind-field-left
+  +cache()
+    position: relative
+    z-index: 9
+    float: left
 
   $sides = any_get_sides($this)
   unless no-margin in $this.arguments
@@ -34,13 +35,11 @@ kind-field-left($this)
   unless no-padding in $this.arguments
     padding: $sides
 
-$kind-field-left
-  position: relative
-  z-index: 9
-  float: left
-
 kind-field-right($this)
-  @extends $kind-field-right
+  +cache()
+    position: relative
+    z-index: 9
+    float: right
 
   $sides = any_get_sides($this)
   unless no-margin in $this.arguments
@@ -48,8 +47,3 @@ kind-field-right($this)
 
   unless no-padding in $this.arguments
     padding: $sides
-
-$kind-field-right
-  position: relative
-  z-index: 9
-  float: right
