@@ -1,13 +1,4 @@
 kind-input($this)
-  width: $this.units[0] or 400px
-
-  $align = utilus_retrieve($this.arguments, middle top bottom)
-  vertical-align: $align if $align
-
-  unless no-reset in $this.arguments
-    reset('input')
-    // It would be nice to have a way to insert it without extends
-
   +cache()
     kind('block' inline)
 
@@ -21,3 +12,12 @@ kind-input($this)
       vertical-align: middle
     else
       vertical-align: baseline
+
+  width: $this.units[0] or 400px
+
+  $align = utilus_retrieve($this.arguments, middle top bottom)
+  vertical-align: $align if $align
+
+  unless no-reset in $this.arguments
+    reset('input')
+    // It would be nice to have a way to insert it without extends
