@@ -30,9 +30,9 @@ kind-link_underline()
 
 kind-link_hover($this)
   // Remove the compleity when `no-hover` is deprecated
-  color: $this.colors[0] or red
+  color: utilus_get_color($this.arguments) or red
 
-  if $this.colors[1]
+  if utilus_get_color($this.parent.arguments)[1]
     error('Setting color to the link using two color arguments is depraceted and removed, use `_hover` modifier')
 
 

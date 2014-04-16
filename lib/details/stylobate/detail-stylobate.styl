@@ -57,10 +57,11 @@ _stylobate_collect_arguments($this)
       $this[$key] = $collected[$key]
       if type($this[$key]) == 'object'
         for $subkey, $subvalue in $this.parent[$key]
-          $this[$subkey] = $subvalue
+          $workaround = $this[$key]
+          $workaround[$subkey] = $subvalue
       else
         for $subvalue in $this.parent[$key]
-          push($this[$subkey], $subvalue)
+          push($this[$key], $subvalue)
     else
       $this[$key] = $collected[$key]
 
@@ -108,12 +109,11 @@ _stylobate_collect_arguments($this)
         $workaround['' + $key] = $rest
 
 
-_stylobate($name, $params)
-  $this = {
+_stylobate($name, $params, $this = {
     parent: {},
     arguments: clone($params),
     called_from: $name + $params[0]
-  }
+  })
 
   _stylobate_collect_arguments($this)
 
