@@ -1,8 +1,8 @@
 kind-block($this)
-  position: utilus_retrieve($this.arguments, static, relative)
+  position: utilus_retrieve($this.params, static, relative)
 
-  if inline in $this.arguments
+  if $this.params.inline
     display: inline-block
-    vertical-align: utilus_retrieve($this.arguments, middle baseline bottom, top)
+    vertical-align: utilus_retrieve($this.params, middle baseline bottom, top)
   else
     display: unquote('block')

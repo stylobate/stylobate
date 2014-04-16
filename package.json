@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "if-ie.styl": "0.5.0",
-    "utilus.styl": "0.13.0"
+    "utilus.styl": "0.14.0"
   },
   "devDependencies": {
     "stylus": "0.44.0-beta",

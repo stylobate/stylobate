@@ -36,10 +36,10 @@
   pointer-events: none;
 }
 
-.guides-item {
-  visibility: visible;
-}
-
 .visible-guides-item {
   pointer-events: auto;
+}
+
+.guides-item {
+  visibility: visible;
 }

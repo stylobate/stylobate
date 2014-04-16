@@ -1,10 +1,10 @@
 kind-input($this)
   width: $this.units[0] or 400px
 
-  $align = utilus_retrieve($this.arguments, middle top bottom)
+  $align = utilus_retrieve($this.params, middle top bottom)
   vertical-align: $align if $align
 
-  unless no-reset in $this.arguments
+  unless $this.params.no-reset
     reset('input')
     // It would be nice to have a way to insert it without extends
 

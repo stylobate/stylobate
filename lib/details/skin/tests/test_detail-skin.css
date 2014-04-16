@@ -80,7 +80,7 @@
   padding: 30px;
 }
 
-.the-extended:hover > .the-base-subitem {
+.the-extended:hover > .the-extended-subitem {
   background: red;
 }
 

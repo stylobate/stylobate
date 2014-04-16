@@ -32,18 +32,90 @@ _stylobate_defaults($this, $defaults)
       push($new, $param)
   _stylobate('', $new)
 
+_stylobate_collect_arguments($this)
+  if length($this.parent)
+    $this['params'] = $this['parent']['params']
+    $this['modifiers'] = $this['parent']['modifiers']
+    $this['elements'] = $this['parent']['elements']
+    $this['urls'] = $this['parent']['urls']
+    $this['selectors'] = $this['parent']['selectors']
+  else
+    $this['params'] = {}
+    $this['modifiers'] = {}
+    $this['elements'] = {}
+    $this['urls'] = ()
+    $this['selectors'] = ()
+
+  // Remove the item's name from the arguments
+  $this['arguments'][0] = unquote('')
+
+  // Collect the arguments, first step
+  $collected = utilus_collect_by_type($this['arguments'])
+  for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
+    if length($this.parent)
+      // Merging all subitems
+      $this[$key] = $collected[$key]
+      if type($this[$key]) == 'object'
+        for $subkey, $subvalue in $this.parent[$key]
+          $this[$subkey] = $subvalue
+      else
+        for $subvalue in $this.parent[$key]
+          push($this[$subkey], $subvalue)
+    else
+      $this[$key] = $collected[$key]
+
+  // Getting different params and stuff
+  if length($this['strings']) > 0
+    for $key in $this['strings']
+      // replace those checks with functions
+      if match('\.(png|jpg|svg|gif)\b|https?:\/\/', $key)
+        push($this['urls'], $key)
+      else if match('&|^[\/\.]', $key)
+        push($this['selectors'], $key)
+      else if $key != ''
+        // workaround for strange clone? bug
+        $workaround = $this['params']
+        $workaround[$key] = $key
+
+  if length($this['idents']) > 0
+    for $key in $this['idents']
+      // workaround for strange clone? bug
+      $workaround = $this['params']
+      $workaround['' + utilus_ident($key)] = utilus_ident($key)
+
+      if match('^(__|-[^\-])', $key)
+        $workaround = $this['elements']
+        $workaround['' + utilus_ident($key)] = '&'
+      else if match('^(_|--)', $key)
+        $workaround = $this['modifiers']
+        $workaround['' + utilus_ident($key)] = '&'
+
+  if length($this['arrays']) > 0
+    for $index, $array in $this['arrays']
+      $key = $array[0]
+      $rest = ()
+      for $item, $index in $array
+        $rest = utilus_append($rest, $item) if $index > 0
+
+      $workaround = $this['params']
+      $workaround['' + $key] = $rest if $rest
+
+      if match('^(__|-[^\-])', $key) and $rest
+        $workaround = $this['elements']
+        $workaround['' + $key] = $rest
+      else if match('^(_|--)', $key) and $rest
+        $workaround = $this['modifiers']
+        $workaround['' + $key] = $rest
+
+
 _stylobate($name, $params)
   $this = {
     parent: {},
     arguments: clone($params),
     called_from: $name + $params[0]
   }
-  // Remove the item's name from the arguments
-  $this['arguments'][0] = unquote('')
 
-  $collected = utilus_collect_by_type($this['arguments'])
-  for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
-    $this[$key] = $collected[$key]
+  _stylobate_collect_arguments($this)
 
   // Check if the called stylobate extends anything, if so, call it first,
   // and use the extended stylobate for subitems.
@@ -97,11 +169,8 @@ _stylobate($name, $params)
         parent: $this,
         arguments: clone($foundsubitem)
       }
-      $this_subitem['arguments'][0] = unquote('')
 
-      $collected = utilus_collect_by_type($this_subitem['arguments'])
-      for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
-        $this_subitem[$key] = $collected[$key]
+      _stylobate_collect_arguments($this_subitem)
 
       $subitemname = $name + replace('[_-]+$', '', $skin_name) + $foundsubitem[0]
       $subitemname = replace('[_-]+$', '', $extended_name) + $foundsubitem[0] if $extended_name

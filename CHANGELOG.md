@@ -2,6 +2,11 @@
 # Stylobate Changelog
 ---
 
+## v0.24.0 (in development)
+
+- Major breaking change: refactored Stylobate mixins to recieve Stylobate object as argument.
+- New Stylobate object with collected params and other stuff.
+
 ## v0.23.2 (2014-03-31)
 
 - Updated `if-ie.styl` to `0.5.0`.

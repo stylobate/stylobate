@@ -7,9 +7,9 @@ kind-file-intruder($this)
     if ie
       overflow: hidden
 
-  $focus = utilus_get($this.arguments, '-focus')
+  $focus = $this.elements.-focus
   $focus-skin = utilus_get_string($focus, $index: 1)
-  {utilus_get($this.arguments, '-input')}:focus + {utilus_get_string($focus)}
+  {$this.elements.-input[0]}:focus + {utilus_get_string($focus)}
     skin-{$focus-skin}() if $focus-skin
 
 kind-file-intruder-inner()

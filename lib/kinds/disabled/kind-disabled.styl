@@ -4,7 +4,7 @@ kind-disabled($this)
   opacity: $this.units[0] or 0.5
 
   // Prevent different states in most browsers
-  if with-events in $this.arguments
+  if $this.params.with-events
     &:focus
       outline: 0
   else

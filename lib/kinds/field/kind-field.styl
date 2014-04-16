@@ -1,16 +1,16 @@
 kind-field($this)
   kind(input no-reset)
 
-  unless no-elements in $this.arguments
-    unless utilus_get($this.arguments, '-content')
+  unless $this.params.no-elements
+    unless $this.elements.-content
       &-content
         kind-field-content()
 
-    unless utilus_get($this.arguments, '-left')
+    unless $this.elements.-left
       &-left
         kind-field-left($this)
 
-    unless utilus_get($this.arguments, '-right')
+    unless $this.elements.-right
       &-right
         kind-field-right($this)
 
@@ -29,10 +29,10 @@ kind-field-left($this)
     float: left
 
   $sides = any_get_sides($this)
-  unless no-margin in $this.arguments
+  unless $this.params.no-margin
     margin: -1*$sides[0] 0 -1*$sides[2] -1*$sides[3]
 
-  unless no-padding in $this.arguments
+  unless $this.params.no-padding
     padding: $sides
 
 kind-field-right($this)
@@ -42,8 +42,8 @@ kind-field-right($this)
     float: right
 
   $sides = any_get_sides($this)
-  unless no-margin in $this.arguments
+  unless $this.params.no-margin
     margin: -1*$sides[0] -1*$sides[1] -1*$sides[2] 0
 
-  unless no-padding in $this.arguments
+  unless $this.params.no-padding
     padding: $sides

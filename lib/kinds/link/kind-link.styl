@@ -1,24 +1,24 @@
 kind-link($this)
-  unless nested in $this.arguments
+  unless $this.params.nested
     cursor: pointer
 
     color: $this.colors[0] or blue
 
-  if utilus_get($this.arguments, _pseudo) or utilus_get($this.arguments, _underline) or utilus_get($this.arguments, _underline) == ''
+  if $this.modifiers._pseudo or $this.modifiers._underline != ''
     text-decoration: none
 
-  if pseudo in $this.arguments
+  if $this.params.pseudo
     kind-link_pseudo()
 
-  deprecate($this.arguments, pseudo)
-  deprecate($this.arguments, no-hover)
-  deprecate($this.arguments, underline)
-  deprecate($this.arguments, nested, true '`nested` param for link is deprecated, use the proper mechanism for nesting')
+  deprecate($this.params, pseudo)
+  deprecate($this.params, no-hover)
+  deprecate($this.params, underline)
+  deprecate($this.params, nested, true '`nested` param for link is deprecated, use the proper mechanism for nesting')
 
-  unless no-hover in $this.arguments
+  unless $this.params.no-hover
     stylobate_defaults($this, _hover '&:hover')
 
-  unless utilus_get($this.arguments, _pseudo)
+  unless $this.modifiers._pseudo
     stylobate_defaults($this, _underline)
 
 kind-link_pseudo()

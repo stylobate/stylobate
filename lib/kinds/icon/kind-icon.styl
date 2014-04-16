@@ -9,7 +9,7 @@ kind-icon($this)
   kind-icon_($this)
 
   // Base styles for replaced icons (on `<img/>`)
-  if replace-image in $this.arguments
+  if $this.params.replace-image
     +cache('replace-image')
       content: ""
 
@@ -17,12 +17,12 @@ kind-icon($this)
       height 0
 
 kind-icon_($this)
-  $size = utilus_get($this.arguments, 'size')
+  $size = $this.params.size
   $size = $size $size if $size and length($size) == 1
-  $image = $this.strings[0]
-  $align = utilus_retrieve($this.arguments, baseline top bottom)
+  $image = $this.urls[0]
+  $align = utilus_retrieve($this.params, baseline top bottom)
 
-  if !$size and $image and !(sizeless in $this.arguments)
+  if !$size and $image and !($this.params.sizeless)
     $size = image-size($image, true)
 
   if $align
@@ -32,7 +32,7 @@ kind-icon_($this)
     $width = $size[0]
     $height = $size[1]
 
-    if replace-image in $this.arguments
+    if $this.params.replace-image
       padding: 0 $width $height 0
     else
       width: $width

@@ -4,13 +4,13 @@ kind-shrink($this)
   display: block
   overflow: hidden
 
-  if ellipsis in $this.arguments
+  if $this.params.ellipsis
     kind(ellipsis)
 
-  deprecate($this.arguments, ellipsis, false, '`ellipsis` param for shrink kind is deprecated, use ellipsis kind instead.')
+  deprecate($this.params, ellipsis, false, '`ellipsis` param for shrink kind is deprecated, use ellipsis kind instead.')
 
   // Can't use extend here 'cause Stylus don't know -moz-doc
-  if inline in $this.arguments
+  if $this.params.inline
     &
       {"@-moz-document url-prefix() {"} &
         flex-shrink: 1000000000
@@ -23,7 +23,7 @@ kind-shrink-right()
   float: right
 
 kind-shrink-wrap($this)
-  if inline in $this.arguments
+  if $this.params.inline
     display: inline-block
     white-space: nowrap
     max-width: 100%

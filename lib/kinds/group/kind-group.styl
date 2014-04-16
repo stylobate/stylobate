@@ -4,7 +4,7 @@ kind-group()
     white-space: nowrap
 
 kind-group-item($this)
-  unless no-radius in $this.arguments
+  unless $this.params.no-radius
     &:first-child:not(:only-child)
       kind-group-start($this)
 
@@ -16,7 +16,7 @@ kind-group-item($this)
 
 kind-group-start($this)
   {$this.strings[0] or ''}
-    $placeholder = vertical in $this.arguments ? '$kind-group-start_vertical' : '$kind-group-start'
+    $placeholder = $this.params.vertical ? '$kind-group-start_vertical' : '$kind-group-start'
     @extends {$placeholder}
 
 $kind-group-start
@@ -30,12 +30,12 @@ $kind-group-start_vertical
     border-bottom-left-radius: 0 !important
 
 kind-group-end($this)
-  unless no-margin in $this.arguments
-    $placeholder = vertical in $this.arguments ? '$kind-group-margin_vertical' : '$kind-group-margin'
+  unless $this.params.no-margin
+    $placeholder = $this.params.vertical ? '$kind-group-margin_vertical' : '$kind-group-margin'
     @extends {$placeholder}
 
   {$this.strings[0] or ''}
-    $placeholder = vertical in $this.arguments ? '$kind-group-end_vertical' : '$kind-group-end'
+    $placeholder = $this.params.vertical ? '$kind-group-end_vertical' : '$kind-group-end'
     @extends {$placeholder}
 
 $kind-group-end
@@ -55,8 +55,8 @@ $kind-group-margin_vertical
   margin-top: -1px
 
 kind-group-middle($this)
-  unless no-margin in $this.arguments
-    $placeholder = vertical in $this.arguments ? '$kind-group-margin_vertical' : '$kind-group-margin'
+  unless $this.params.no-margin
+    $placeholder = $this.params.vertical ? '$kind-group-margin_vertical' : '$kind-group-margin'
     @extends {$placeholder}
 
   $selector = $this.strings[0] or ''

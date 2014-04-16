@@ -6,19 +6,19 @@ kind-content($this)
     padding: 0 $sides[1] 0 $sides[3]
 
     stylobate_defaults($this,
-      -before (no-before in $this.arguments or no-elements in $this.arguments ? '' : '&:before'),
-      -after (no-after in $this.arguments or no-elements in $this.arguments ? '' : '&:after'))
+      -before ($this.params.no-before or $this.params.no-elements ? '' : '&:before'),
+      -after ($this.params.no-after or $this.params.no-elements ? '' : '&:after'))
 
-    if no-before in $this.arguments or (-before '') in $this.arguments
+    if $this.params.no-before or $this.params.-before
       padding-top: $sides[0]
 
-    if no-after in $this.arguments or (-after '') in $this.arguments
+    if $this.params.no-after or $this.params.-after
       padding-top: $sides[2]
 
   // Deprecating no-…
-  deprecate($this.arguments, no-before)
-  deprecate($this.arguments, no-after)
-  depecate_removed($this.arguments, no-elements)
+  deprecate($this.params, no-before)
+  deprecate($this.params, no-after)
+  depecate_removed($this.params, no-elements)
 
 
 kind-content-before($this)
