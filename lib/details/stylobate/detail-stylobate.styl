@@ -68,7 +68,7 @@ _stylobate_collect_arguments($this)
   if length($this['strings']) > 0
     for $key in $this['strings']
       // replace those checks with functions
-      if match('\.(png|jpg|svg|gif)\b|https?:\/\/', $key)
+      if match('\.(png|jpg|svg|gif)\b|https?:\/\/|^data:', $key)
         push($this['urls'], $key)
       else if match('&|^[\/\.]', $key)
         push($this['selectors'], $key)
