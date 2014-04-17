@@ -19,8 +19,30 @@ stylobate_defaults($this, $defaults...)
 _stylobate_defaults($this, $defaults)
   $origin = $this.called_from
   return false if not $origin
+
+  $newthis = clone($this)
+  $newthis['called_from'] = $origin + '_'
+  $newthis['defaulted'] = true
+  $newthis['modifiers'] = {}
+  $newthis['elements'] = {}
+
+  $defaults_collected = {
+    parent: {},
+    arguments: clone($defaults)
+  }
+
+  _stylobate_collect_arguments($defaults_collected)
+  if $defaults_collected.modifiers
+    for $key, $value in $defaults_collected.modifiers
+      unless $key in $newthis.params
+        $newthis['modifiers'][$key] = $value
+
+  if $defaults_collected.elements
+    for $key, $value in $defaults_collected.elements
+      unless $key in $newthis.params
+        $newthis['elements'][$key] = $value
+
   $new = clone($defaults)
-  prepend($new, $origin + '_')
   for $param, $index in $new
     $found_param = utilus_get($this['arguments'], $param[0])
     if $found_param or (type($found_param) == 'string' and $found_param == '')
@@ -30,7 +52,9 @@ _stylobate_defaults($this, $defaults)
     $testparam = '' unless type($param) in ('ident' 'string')
     unless match('^[-_]', $testparam)
       push($new, $param)
-  _stylobate('', $new)
+
+  $newthis['arguments'] = clone($new)
+  _stylobate('', $origin + '_', $newthis)
 
 _stylobate_collect_arguments($this)
   if length($this.parent)
@@ -115,7 +139,7 @@ _stylobate($name, $params, $this = {
     called_from: $name + $params[0]
   })
 
-  _stylobate_collect_arguments($this)
+  _stylobate_collect_arguments($this) unless $this.defaulted
 
   // Check if the called stylobate extends anything, if so, call it first,
   // and use the extended stylobate for subitems.
