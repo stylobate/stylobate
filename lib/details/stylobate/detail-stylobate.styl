@@ -16,6 +16,21 @@ stylobate_defaults($this, $defaults...)
   if !($this.is_extended and $this.called_from in $stylobate_extends_without_defaults)
     _stylobate_defaults($this, $defaults)
 
+stylobate_this()
+  $this = {
+    'parent': {}
+    'arguments': ()
+    'params': {}
+    'modifiers': {}
+    'elements': {}
+    'urls': ()
+    'selectors': ()
+  }
+  $null_collected = utilus_collect_by_type(())
+  for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
+    $this[$key] = $null_collected[$key]
+  return $this
+
 _stylobate_defaults($this, $defaults)
   $origin = $this.called_from
   return false if not $origin

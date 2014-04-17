@@ -6,6 +6,7 @@
 
 - Major breaking change: refactored Stylobate mixins to recieve Stylobate object as argument.
 - New Stylobate object with collected params and other stuff.
+- Added `stylobate_this` function to return empty `$this` to allow param getters in called functions.
 
 ## v0.23.2 (2014-03-31)
 
