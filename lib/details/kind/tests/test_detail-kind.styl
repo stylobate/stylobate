@@ -1,5 +1,5 @@
-kind-foo()
-  width: utilus_alike(arguments, 10px)
+kind-foo($this)
+  width: $this.units[0] or 10px
 
 kind-foo_()
   // Should have at least some prop content to work
@@ -8,22 +8,22 @@ kind-foo_()
 kind-foo_pseudo()
   border: 1px solid
 
-kind-bar()
-  height: utilus_alike(arguments, 10px)
+kind-bar($this)
+  height: $this.units[0] or 10px
 
-kind-bar-subbar()
-  background: utilus_alike(arguments, #000)
+kind-bar-subbar($this)
+  background: $this.colors[0] or #000
 
-  padding-left: utilus_alike(utilus_get(arguments, parent), 10px)
+  padding-left: $this.parent.units[0] or 10px
 
 kind-bar__lol()
   pseudo-with-content()
 
   height: 10px
 
-kind-baz()
-  kind-foo(arguments)
-  kind-bar(arguments)
+kind-baz($this)
+  kind-foo($this)
+  kind-bar($this)
 
 .foo
   kind: foo
@@ -54,3 +54,6 @@ kind-baz()
 
 .baz2
   kind: baz 11px
+
+.call-all-the-things
+  kind: foo 'string' 'image.png' 'asdasd' '&:selector' '.class' '.class2' '/a.selector2' 'http://lol/'

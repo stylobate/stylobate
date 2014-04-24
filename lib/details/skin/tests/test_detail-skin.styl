@@ -1,17 +1,17 @@
-skin-foo()
+skin-foo($this)
   background: lime
-  if baz in arguments
+  if $this.params.baz
     width: 10px
 
-skin-bar()
+skin-bar($this)
   color: #FFF
-  if baz in arguments
+  if $this.params.baz
     height: 10px
 
-skin-bar-subbar()
-  background: utilus_alike(arguments, #000)
+skin-bar-subbar($this)
+  background: $this.colors[0] or #000
 
-  padding-left: utilus_alike(utilus_get(arguments, parent), 10px)
+  padding-left: $this.units[0] or 10px
 
 skin-bar__lol()
   pseudo-with-content()
@@ -51,24 +51,24 @@ set-skin-namespace('')
   skin: foo baz, bar baz (-subbar '&-lol' red) (__lol '&:before')
 
 
-skin-base()
+skin-base($this)
   width: 10px
-  &:hover > {utilus_get_string(utilus_get(arguments, '-subitem'))}
-    if not is_extended in arguments
+  &:hover > {$this.elements['-subitem'][0]}
+    if not $this.is_extended
       background: lime
     else
       background: red
 
-  stylobate_defaults(arguments, -subitem '&-defitem', _supermod)
+  stylobate_defaults($this, -subitem '&-defitem', _supermod)
 
 skin-base_supermod()
   position: absolute
 
-skin-base-subitem()
+skin-base-subitem($this)
   height: 20px
 
   // stylobate_defaults(arguments, -subitem-subsub) — works
-  stylobate_defaults(arguments, -subsub)
+  stylobate_defaults($this, -subsub)
 
 skin-base-subitem-subsub()
   text-align: justify
@@ -99,7 +99,7 @@ skin-extended2-newsub()
   skin: base_ (-subitem '&-subitem')
 
 .the-extended
-  skin: extended (-subitem '.the-base-subitem') (-subitem '&-subitem') (_supermod '&+&')
+  skin: extended (-subitem '&-subitem') (_supermod '&+&')
 
 .the-extended2
   skin: extended2 (-subitem '&-subitem') (-newsub '&-newsub')
@@ -121,10 +121,10 @@ skin-contextual-link()
 
 stylobate_extends('skin-superlink', 'kind-link', false)
 
-skin-superlink()
+skin-superlink($this)
   color: #FFF
 
-  stylobate_new_defaults(arguments, _hover '&.is-hovered')
+  stylobate_new_defaults($this, _hover '&.is-hovered')
 
 skin-superlink_hover()
   color: #000

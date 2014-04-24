@@ -16,13 +16,6 @@
   background: 50% no-repeat;
 }
 
-.ico-replaced {
-  content: "";
-
-  width: 0;
-  height: 0;
-}
-
 .ico-sized {
   width: 10px;
   height: 20px;
@@ -34,6 +27,10 @@
 }
 
 .ico-replaced {
+  content: "";
+
+  width: 0;
+  height: 0;
   padding: 0 10px 20px 0;
 }
 
