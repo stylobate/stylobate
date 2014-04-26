@@ -2,6 +2,11 @@
 # Stylobate Changelog
 ---
 
+## v0.24.1 (2014-04-26)
+
+- Removed cache from modal (CSS order issue).
+- Updated utilus to 0.15.
+
 ## v0.24.0 (2014-04-24)
 
 - Major breaking change: refactored Stylobate mixins to recieve Stylobate object as argument.
