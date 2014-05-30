@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.24.2 (2014-05-30)
+
+- Fixes selector order problems in `icon` kind.
+
 ## v0.24.1 (2014-04-26)
 
 - Removed cache from modal (CSS order issue).
