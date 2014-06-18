@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.24.3 (2014-06-18)
+
+- Allow defining `rem` before including stylobate.
+
 ## v0.24.2 (2014-05-30)
 
 - Fixes selector order problems in `icon` kind.
