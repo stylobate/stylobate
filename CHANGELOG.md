@@ -2,6 +2,10 @@
 # Stylobate Changelog
 ---
 
+## v0.25.0 (2014-06-18)
+
+- Updated deps: Stylus, utilus, if-ie.
+
 ## v0.24.3 (2014-06-18)
 
 - Allow defining `rem` before including stylobate.

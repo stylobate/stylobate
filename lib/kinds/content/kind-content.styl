@@ -5,8 +5,8 @@ kind-content($this)
   else
     padding: 0 $sides[1] 0 $sides[3]
 
-    stylobate_defaults($this,
-      -before ($this.params.no-before or $this.params.no-elements ? '' : '&:before'),
+    stylobate_defaults($this, \
+      -before ($this.params.no-before or $this.params.no-elements ? '' : '&:before'), \
       -after ($this.params.no-after or $this.params.no-elements ? '' : '&:after'))
 
     if $this.params.no-before or $this.params.-before
