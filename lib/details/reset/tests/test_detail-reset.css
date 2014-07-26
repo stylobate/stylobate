@@ -1,4 +1,5 @@
-ol,article,
+ol,
+article,
 .list {
   padding: 0;
   border: 0;
@@ -10,7 +11,8 @@ ol,article,
   font-size: 100%;
 }
 
-.btn,button {
+.btn,
+button {
   padding: 0;
   border: none;
   margin: 0;
@@ -22,7 +24,8 @@ ol,article,
   -moz-appearance: none;
 }
 
-.btn::-moz-focus-inner,button::-moz-focus-inner {
+.btn::-moz-focus-inner,
+button::-moz-focus-inner {
   padding: 0;
   border: none;
 }
