@@ -227,10 +227,11 @@ _stylobate($name, $params, $this = {
       $subitemname = $subitemname_prefix + $subitemname_connector + $subitemname_postfix
       $subitemname = '' unless utilus_is_function($subitemname)
       if $subitemname == ''
-        $subitemname = $subitemname_prefix + $subitemname_connector_substitutes['' + $subitemname_connector] + $subitemname_postfix
+        $subitemname_connector = $subitemname_connector_substitutes['' + $subitemname_connector]
+        $subitemname = $subitemname_prefix + $subitemname_connector + $subitemname_postfix
         $subitemname = '' unless utilus_is_function($subitemname)
         if $stylobate_options.warn_on_incorrect_notation
-          warn('' + 'Incorrect notation for %s, ' % 'OLOL') unless $subitemname == ''
+          warn('' + 'Incorrect notation for %s, using %s.' % ($subitemname_prefix ($subitemname_connector + $subitemname_postfix))) unless $subitemname == ''
 
       // If there is extended subitem function, use it, otherwise
       $subitemname_extended = ''
