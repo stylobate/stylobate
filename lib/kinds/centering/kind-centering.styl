@@ -3,9 +3,9 @@ kind-centering($this)
   text-align: center
 
   stylobate_defaults($this,
-    -helper '&:before')
+    __helper '&:before')
 
-kind-centering-helper()
+kind-centering__helper()
   +cache()
     content: "" // As it should be empty element anyway, it's safe to use here
     display: inline-block
@@ -13,7 +13,7 @@ kind-centering-helper()
 
     height: 100%
 
-kind-centering-item()
+kind-centering__item()
   +cache()
     display: inline-block
     white-space: normal

@@ -16,13 +16,13 @@ kind-shrink($this)
         flex-shrink: 1000000000
       unquote("}")
 
-kind-shrink-left()
+kind-shrink__left()
   float: left
 
-kind-shrink-right()
+kind-shrink__right()
   float: right
 
-kind-shrink-wrap($this)
+kind-shrink__wrap($this)
   if $this.params.inline
     display: inline-block
     white-space: nowrap
@@ -34,4 +34,4 @@ kind-shrink-wrap($this)
         flex-direction: row-reverse
       unquote("}")
   else
-    kind(clear (-before ''))
+    kind(clear (__before ''))

@@ -6,8 +6,8 @@ kind-content($this)
     padding: 0 $sides[1] 0 $sides[3]
 
     stylobate_defaults($this, \
-      -before ($this.params.no-before or $this.params.no-elements ? '' : '&:before'), \
-      -after ($this.params.no-after or $this.params.no-elements ? '' : '&:after'))
+      __before ($this.params.no-before or $this.params.no-elements ? '' : '&:before'), \
+      __after ($this.params.no-after or $this.params.no-elements ? '' : '&:after'))
 
     if $this.params.no-before or $this.elements.before
       padding-top: $sides[0]
@@ -21,14 +21,14 @@ kind-content($this)
   depecate_removed($this.params, no-elements)
 
 
-kind-content-before($this)
+kind-content__before($this)
   pseudo-with-content()
 
   display: table
 
   margin-bottom: any_get_sides($this)[0]
 
-kind-content-after($this)
+kind-content__after($this)
   pseudo-with-content()
 
   display: table

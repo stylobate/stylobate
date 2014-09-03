@@ -6,9 +6,9 @@ kind-justifier($this)
     text-align-last: justify
   else
     stylobate_defaults($this,
-      -helper '&:after')
+      __helper '&:after')
 
-kind-justifier-helper()
+kind-justifier__helper()
   pseudo-with-content()
 
   display: inline-block

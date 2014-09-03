@@ -4,17 +4,17 @@ kind-field($this)
   unless $this.params.no-elements
     unless $this.elements.content
       &-content
-        kind-field-content()
+        kind-field__content()
 
     unless $this.elements.left
       &-left
-        kind-field-left($this)
+        kind-field__left($this)
 
     unless $this.elements.right
       &-right
-        kind-field-right($this)
+        kind-field__right($this)
 
-kind-field-content()
+kind-field__content()
   +cache()
     kind('block' static)
 
@@ -22,7 +22,7 @@ kind-field-content()
 
     height: 100%
 
-kind-field-left($this)
+kind-field__left($this)
   +cache()
     position: relative
     z-index: 9
@@ -35,7 +35,7 @@ kind-field-left($this)
   unless $this.params.no-padding
     padding: $sides
 
-kind-field-right($this)
+kind-field__right($this)
   +cache()
     position: relative
     z-index: 9

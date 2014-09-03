@@ -4,6 +4,7 @@
 
 ## v1.0.0 (in development)
 
+- Breaking change: changed notation for Stylobate elements from `foo-element` to `foo__element`.
 - Breaking change: modifiers and elements are now stored without the prefix (`$this.elements.-before` → `$this.elements.before` etc.).
 - Added substituting for different BEM notations (`-` to `__`, `--` to `_` etc.).
 
