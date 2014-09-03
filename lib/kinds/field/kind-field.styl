@@ -2,15 +2,15 @@ kind-field($this)
   kind(input no-reset)
 
   unless $this.params.no-elements
-    unless $this.elements.-content
+    unless $this.elements.content
       &-content
         kind-field-content()
 
-    unless $this.elements.-left
+    unless $this.elements.left
       &-left
         kind-field-left($this)
 
-    unless $this.elements.-right
+    unless $this.elements.right
       &-right
         kind-field-right($this)
 

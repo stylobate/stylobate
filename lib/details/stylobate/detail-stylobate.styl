@@ -129,10 +129,10 @@ _stylobate_collect_arguments($this)
 
       if match('^(__|-[^\-])', $key)
         $workaround = $this['elements']
-        $workaround['' + utilus_ident($key)] = '&'
+        $workaround[replace('^([_-]+)', '', '' + utilus_ident($key))] = '&'
       else if match('^(_|--)', $key)
         $workaround = $this['modifiers']
-        $workaround['' + utilus_ident($key)] = '&'
+        $workaround[replace('^([_-]+)', '', '' + utilus_ident($key))] = '&'
 
   if length($this['arrays']) > 0
     for $index, $array in $this['arrays']
@@ -146,10 +146,10 @@ _stylobate_collect_arguments($this)
 
       if match('^(__|-[^\-])', $key) and $rest
         $workaround = $this['elements']
-        $workaround['' + $key] = $rest
+        $workaround[replace('^([_-]+)', '', '' + $key)] = $rest
       else if match('^(_|--)', $key) and $rest
         $workaround = $this['modifiers']
-        $workaround['' + $key] = $rest
+        $workaround[replace('^([_-]+)', '','' + $key)] = $rest
 
 
 _stylobate($name, $params, $this = {

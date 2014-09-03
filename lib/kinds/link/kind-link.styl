@@ -4,7 +4,7 @@ kind-link($this)
 
     color: $this.colors[0] or blue
 
-  if $this.modifiers._pseudo or $this.modifiers._underline != ''
+  if $this.modifiers.pseudo or $this.modifiers.underline != ''
     text-decoration: none
 
   if $this.params.pseudo
@@ -18,7 +18,7 @@ kind-link($this)
   unless $this.params.no-hover
     stylobate_defaults($this, _hover '&:hover')
 
-  unless $this.modifiers._pseudo
+  unless $this.modifiers.pseudo
     stylobate_defaults($this, _underline)
 
 kind-link_pseudo()

@@ -9,10 +9,10 @@ kind-content($this)
       -before ($this.params.no-before or $this.params.no-elements ? '' : '&:before'), \
       -after ($this.params.no-after or $this.params.no-elements ? '' : '&:after'))
 
-    if $this.params.no-before or $this.params.-before
+    if $this.params.no-before or $this.elements.before
       padding-top: $sides[0]
 
-    if $this.params.no-after or $this.params.-after
+    if $this.params.no-after or $this.elements.after
       padding-top: $sides[2]
 
   // Deprecating no-…
