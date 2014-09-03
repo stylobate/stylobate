@@ -2,6 +2,11 @@
 # Stylobate Changelog
 ---
 
+## v1.0.0 (in development)
+
+- Added substituting for different BEM notations (`-` to `__`, `--` to `_` etc.).
+
+
 ## v0.25.0 (2014-06-18)
 
 - Updated deps: Stylus, utilus, if-ie.

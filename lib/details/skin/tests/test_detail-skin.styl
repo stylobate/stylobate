@@ -117,7 +117,7 @@ skin-contextual-link()
   height: 10px
 
 .pysh
-  skin: contextual (context 'body &') (-link 'a&.lol') (_checked 'input:checked + &')
+  skin: contextual (context 'body &') (__link 'a&.lol') (_checked 'input:checked + &')
 
 stylobate_extends('skin-superlink', 'kind-link', false)
 
@@ -133,7 +133,7 @@ $normal-link
   kind: link (_underline '&-inner')
 
 .superlink
-  skin: superlink (_underline '&-inner')
+  skin: superlink (--underline '&-inner')
 
 stylobate_extends(skin-disabled, kind-disabled, false)
 
