@@ -103,18 +103,7 @@ _stylobate_collect_arguments($this)
   // Collect the arguments, first step
   $collected = utilus_collect_by_type($this['arguments'])
   for $key in ('strings' 'idents' 'units' 'rgbas' 'booleans' 'functions' 'objects' 'arrays' 'colors')
-    if length($this.parent)
-      // Merging all subitems
-      $this[$key] = $collected[$key]
-      if type($this[$key]) == 'object'
-        for $subkey, $subvalue in $this.parent[$key]
-          $workaround = $this[$key]
-          $workaround[$subkey] = $subvalue
-      else
-        for $subvalue in $this.parent[$key]
-          push($this[$key], $subvalue)
-    else
-      $this[$key] = $collected[$key]
+    $this[$key] = $collected[$key]
 
   // Getting different params and stuff
   if length($this['strings']) > 0
