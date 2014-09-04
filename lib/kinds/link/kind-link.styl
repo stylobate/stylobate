@@ -1,25 +1,15 @@
 kind-link($this)
-  unless $this.params.no-hover
-    stylobate_defaults($this, _hover '&:hover')
+  stylobate_defaults($this, _hover '&:hover')
 
   unless $this.modifiers.pseudo
     stylobate_defaults($this, _underline)
 
-  unless $this.params.nested
-    cursor: pointer
+  cursor: pointer
 
-    color: $this.colors[0] or blue
+  color: $this.colors[0] or blue
 
   if $this.modifiers.pseudo or $this.modifiers.underline != '&'
     text-decoration: none
-
-  if $this.params.pseudo
-    kind-link_pseudo()
-
-  deprecate($this.params, pseudo)
-  deprecate($this.params, no-hover)
-  deprecate($this.params, underline)
-  deprecate($this.params, nested, true '`nested` param for link is deprecated, use the proper mechanism for nesting')
 
 kind-link_pseudo()
   text-decoration: none
@@ -29,10 +19,4 @@ kind-link_underline()
   text-decoration: underline
 
 kind-link_hover($this)
-  // Remove the compleity when `no-hover` is deprecated
-  color: utilus_get_color($this.arguments) or red
-
-  if utilus_get_color($this.parent.arguments)[1]
-    error('Setting color to the link using two color arguments is depraceted and removed, use `_hover` modifier')
-
-
+  color: $this.colors[0] or red

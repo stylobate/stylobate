@@ -4,9 +4,10 @@
 
 ## v1.0.0 (in development)
 
-- Breaking change: changed notation for Stylobate elements from `foo-element` to `foo__element`.
-- Breaking change: modifiers and elements are now stored without the prefix (`$this.elements.-before` → `$this.elements.before` etc.).
-- Breaking change: no more merged params/collected arguments for modifiers and elements (use explicit `.parent`).
+- **Breaking change:** Changed notation for Stylobate elements from `foo-element` to `foo__element`.
+- **Breaking change:** Modifiers and elements are now stored without the prefix (`$this.elements.-before` → `$this.elements.before` etc.).
+- **Breaking change:** No more merged params/collected arguments for modifiers and elements (use explicit `.parent`).
+- **Breaking change:** Removed all the deprecated code.
 - Added substituting for different BEM notations (`-` to `__`, `--` to `_` etc.).
 - Fixed setting the defaults (they now should be placed at the top of the kind).
 

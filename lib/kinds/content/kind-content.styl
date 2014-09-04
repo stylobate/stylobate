@@ -5,21 +5,13 @@ kind-content($this)
   else
     padding: 0 $sides[1] 0 $sides[3]
 
-    stylobate_defaults($this, \
-      __before ($this.params.no-before or $this.params.no-elements ? '' : '&:before'), \
-      __after ($this.params.no-after or $this.params.no-elements ? '' : '&:after'))
+    stylobate_defaults($this, __before '&:before', __after '&:after')
 
-    if $this.params.no-before or $this.elements.before
+    unless $this.elements.before
       padding-top: $sides[0]
 
-    if $this.params.no-after or $this.elements.after
-      padding-top: $sides[2]
-
-  // Deprecating no-…
-  deprecate($this.params, no-before)
-  deprecate($this.params, no-after)
-  depecate_removed($this.params, no-elements)
-
+    unless $this.elements.after
+      padding-bottom: $sides[2]
 
 kind-content__before($this)
   pseudo-with-content()

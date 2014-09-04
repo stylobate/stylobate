@@ -1,11 +1,6 @@
 kind-clear($this)
   if !ie
-    stylobate_defaults($this,
-      __before ($this.params.after ? '' : '&:before'),
-      __after ($this.params.before ? '' : '&:after'))
-
-    deprecate($this.params, after)
-    deprecate($this.params, before)
+    stylobate_defaults($this, __before '&:before', __after '&:after')
 
   zoom: 1
 

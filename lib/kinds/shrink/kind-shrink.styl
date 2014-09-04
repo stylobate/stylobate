@@ -4,11 +4,6 @@ kind-shrink($this)
   display: block
   overflow: hidden
 
-  if $this.params.ellipsis
-    kind(ellipsis)
-
-  deprecate($this.params, ellipsis, false, '`ellipsis` param for shrink kind is deprecated, use ellipsis kind instead.')
-
   // Can't use extend here 'cause Stylus don't know -moz-doc
   if $this.params.inline
     &
