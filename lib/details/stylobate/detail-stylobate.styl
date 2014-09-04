@@ -36,8 +36,13 @@ stylobate_this()
   return $this
 
 _stylobate_defaults($this, $defaults)
+  // FIXME: REDO the whole defaulting thing?
+
   $origin = $this.called_from
   return false if not $origin
+
+  $new_args = clone($defaults)
+  prepend($new_args, unquote(''))
 
   $newthis = clone($this)
   $newthis['called_from'] = $origin + '_'
@@ -47,32 +52,35 @@ _stylobate_defaults($this, $defaults)
 
   $defaults_collected = {
     parent: {},
-    arguments: clone($defaults)
+    arguments: clone($new_args)
   }
 
   _stylobate_collect_arguments($defaults_collected)
-  if $defaults_collected.modifiers
-    for $key, $value in $defaults_collected.modifiers
-      unless $key in $newthis.params
-        $newthis['modifiers'][$key] = $value
 
-  if $defaults_collected.elements
-    for $key, $value in $defaults_collected.elements
-      unless $key in $newthis.params
-        $newthis['elements'][$key] = $value
+  for $key, $value in $defaults_collected.modifiers
+    unless $key in $this.modifiers
+      $newthis['modifiers'][$key] = $value
 
-  $new = clone($defaults)
-  for $param, $index in $new
+  for $key, $value in $defaults_collected.elements
+    unless $key in $this.elements
+      $newthis['elements'][$key] = $value
+
+  // Merge the modifiers and elements from the defaults to $this.
+  $this['modifiers'] = merge($defaults_collected.modifiers, $this.modifiers)
+  $this['elements'] = merge($defaults_collected.elements, $this.elements)
+
+  for $param, $index in $new_args
     $found_param = utilus_get($this['arguments'], $param[0])
     if $found_param or (type($found_param) == 'string' and $found_param == '')
-      $new[$index] = ''
+      $new_args[$index] = ''
+
   for $param, $index in $this.arguments
     $testparam = $param
     $testparam = '' unless type($param) in ('ident' 'string')
     unless match('^[-_]', $testparam)
-      push($new, $param)
+      push($new_args, $param)
 
-  $newthis['arguments'] = clone($new)
+  $newthis['arguments'] = clone($new_args)
   _stylobate('', $origin + '_', $newthis)
 
 _stylobate_collect_arguments($this)
@@ -142,12 +150,12 @@ _stylobate_collect_arguments($this)
         $rest = utilus_append($rest, $item) if $index > 0
 
       $workaround = $this['params']
-      $workaround['' + $key] = $rest if $rest
+      $workaround['' + $key] = $rest if $rest != ()
 
-      if match('^(__|-[^\-])', $key) and $rest
+      if match('^(__|-[^\-])', $key) and $rest != ()
         $workaround = $this['elements']
         $workaround[replace('^([_-]+)', '', '' + $key)] = $rest
-      else if match('^(_|--)', $key) and $rest
+      else if match('^(_|--)', $key) and $rest != ()
         $workaround = $this['modifiers']
         $workaround[replace('^([_-]+)', '','' + $key)] = $rest
 

@@ -1,10 +1,16 @@
 kind-link($this)
+  unless $this.params.no-hover
+    stylobate_defaults($this, _hover '&:hover')
+
+  unless $this.modifiers.pseudo
+    stylobate_defaults($this, _underline)
+
   unless $this.params.nested
     cursor: pointer
 
     color: $this.colors[0] or blue
 
-  if $this.modifiers.pseudo or $this.modifiers.underline != ''
+  if $this.modifiers.pseudo or $this.modifiers.underline != '&'
     text-decoration: none
 
   if $this.params.pseudo
@@ -14,12 +20,6 @@ kind-link($this)
   deprecate($this.params, no-hover)
   deprecate($this.params, underline)
   deprecate($this.params, nested, true '`nested` param for link is deprecated, use the proper mechanism for nesting')
-
-  unless $this.params.no-hover
-    stylobate_defaults($this, _hover '&:hover')
-
-  unless $this.modifiers.pseudo
-    stylobate_defaults($this, _underline)
 
 kind-link_pseudo()
   text-decoration: none
