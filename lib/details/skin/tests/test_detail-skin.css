@@ -117,18 +117,6 @@
   padding: 190px;
 }
 
-body .pysh {
-  width: 10px;
-}
-
-body a.pysh.lol {
-  height: 10px;
-}
-
-body input:checked + .pysh {
-  width: 20px;
-}
-
 .superlink {
   cursor: pointer;
   text-decoration: none;

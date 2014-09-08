@@ -170,19 +170,12 @@ _stylobate($name, $params, $this = {
     if !utilus_is_function($extended_name) and $extended_name_ending == ''
       error('No stylobate function “' + $extended_name + '”')
 
-  // Why do we need context in the first place
-  $context = utilus_get($params, 'context', '')
-
-  {$extended_name}($this) if $extended_name and !$context and $extended_name_ending == ''
-  {$context}
-    {$extended_name}($this) if $extended_name and $context and $extended_name_ending == ''
+  {$extended_name}($this) if $extended_name and $extended_name_ending == ''
 
   if ($name + join('',$params) != '') and !utilus_is_function($name + utilus_ident($params[0])) and !$extended_name and !match('[_-]$', utilus_ident($params[0]))
     error('No such “' + $name + '” — “' + utilus_ident($params[0]) + '”')
 
-  {$name + utilus_ident($params[0])}($this) if !$context and utilus_is_function($name + utilus_ident($params[0]))
-  {$context}
-    {$name + utilus_ident($params[0])}($this) if $context and utilus_is_function($name + utilus_ident($params[0]))
+  {$name + utilus_ident($params[0])}($this) if utilus_is_function($name + utilus_ident($params[0]))
 
   for $subitem in $this.arguments
     // There shouldn't be an `if` inside a {$selector}, 'cause
@@ -240,11 +233,8 @@ _stylobate($name, $params, $this = {
       $this_subitem['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
       $this_subitem['called_from'] = $subitemname_extended if $subitemname_extended
 
-      {$subitemname}($this_subitem) unless $context or $subitemname_extended or !$subitemname
-      {$subitemname_extended}($this_subitem) unless $context or !$subitemname_extended
-      {$context}
-        {$subitemname}($this_subitem) if $context and !$subitemname_extended and $subitemname
-        {$subitemname_extended}($this_subitem) if $context and $subitemname_extended
+      {$subitemname}($this_subitem) unless $subitemname_extended or !$subitemname
+      {$subitemname_extended}($this_subitem) unless !$subitemname_extended
 
     {$selector}
       call_subitem() if $foundsubitem != '' and $selector != ''
