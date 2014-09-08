@@ -18,6 +18,11 @@
 }
 
 .button,
+.button-with-no-reset {
+  vertical-align: baseline;
+}
+
+.button,
 .button-with-no-reset,
 .middle-button {
   display: inline-block;
@@ -30,7 +35,6 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  vertical-align: baseline;
   white-space: nowrap;
   text-decoration: none;
 }

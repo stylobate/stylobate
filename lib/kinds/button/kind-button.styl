@@ -1,12 +1,11 @@
 kind-button($this)
-  +cache()
-    kind-pill()
+  kind-pill()
 
-    box-sizing: border-box
+  box-sizing: border-box
 
-    cursor: pointer
-    user-select: none
-    vertical-align: baseline
+  cursor: pointer
+  user-select: none
+  vertical-align: baseline
 
   $align = utilus_retrieve($this.params, middle top bottom)
   vertical-align: $align if $align
