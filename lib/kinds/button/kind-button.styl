@@ -1,4 +1,6 @@
 kind-button($this)
+  stylobate_defaults($this, '_reset')
+
   kind-pill()
 
   box-sizing: border-box
@@ -7,8 +9,5 @@ kind-button($this)
   user-select: none
   vertical-align: baseline
 
-  $align = utilus_retrieve($this.params, middle top bottom)
-  vertical-align: $align if $align
-
-  unless $this.params.no-reset
-    reset('button')
+kind-button_reset($this)
+  reset('button')

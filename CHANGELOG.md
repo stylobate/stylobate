@@ -9,6 +9,10 @@
 - **Breaking change:** No more merged params/collected arguments for modifiers and elements (use explicit `.parent`).
 - **Breaking change:** Removed all the deprecated code.
 - **Breaking change:** Removed built-in almost useless `context` param.
+- **Breaking change:** Removed “retrieving” params like for vertical-align from a bunch of kinds:
+    - `kind-button`.
+- **Breaking change:** Moved resets from a bunch of kinds to `_reset` modifiers:
+    - `kind-button`.
 - Added substituting for different BEM notations (`-` to `__`, `--` to `_` etc.).
 - Fixed setting the defaults (they now should be placed at the top of the kind).
 
