@@ -236,6 +236,7 @@ _stylobate($name, $params, $this = {
       {$subitemname}($this_subitem) unless $subitemname_extended or !$subitemname
       {$subitemname_extended}($this_subitem) unless !$subitemname_extended
 
+    $selector = '' if $selector == '&'
     {$selector}
       call_subitem() if $foundsubitem != '' and $selector != ''
 
