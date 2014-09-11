@@ -11,14 +11,32 @@ stylobate_extends($what, $target, $defaults = true)
   if !$defaults
     $stylobate_extends_without_defaults[''+utilus_ident($what)] = true
 
+$stylobate_defaults = {}
+
 // Far from ideal (can't redefine defaults for already redefined defaults)
 // Dunno if it is possible to make proper refedining in Stylus' stylobate
 stylobate_new_defaults($this, $defaults...)
-  _stylobate_defaults($this, $defaults)
+  _stylobate_call_defaults($this, $defaults)
 
-stylobate_defaults($this, $defaults...)
-  if !($this.is_extended and $this.called_from in $stylobate_extends_without_defaults)
-    _stylobate_defaults($this, $defaults)
+stylobate_defaults($what, $defaults...)
+  $stylobate_defaults['' + utilus_ident($what)] = $defaults
+
+// rename to _call_
+stylobate_call_defaults($this, $defaults...)
+  _stylobate_call_defaults($this, $defaults)
+
+stylobate_params($this, $params)
+  $collected_params = {
+    parent: {},
+    arguments: clone($params)
+  }
+  prepend($collected_params.arguments, unquote(''))
+  _stylobate_collect_arguments($collected_params)
+
+  $this['modifiers'] = merge($collected_params.modifiers, $this.modifiers)
+  $this['elements'] = merge($collected_params.elements, $this.elements)
+
+  return $collected_params
 
 stylobate_this()
   $this = {
@@ -35,14 +53,16 @@ stylobate_this()
     $this[$key] = $null_collected[$key]
   return $this
 
-_stylobate_defaults($this, $defaults)
+_stylobate_call_defaults($this, $defaults)
+  if $this.is_extended and $this.called_from in $stylobate_extends_without_defaults
+    return
+
   // FIXME: REDO the whole defaulting thing?
 
   $origin = $this.called_from
   return false if not $origin
 
   $new_args = clone($defaults)
-  prepend($new_args, unquote(''))
 
   $newthis = clone($this)
   $newthis['called_from'] = $origin + '_'
@@ -50,12 +70,7 @@ _stylobate_defaults($this, $defaults)
   $newthis['modifiers'] = {}
   $newthis['elements'] = {}
 
-  $defaults_collected = {
-    parent: {},
-    arguments: clone($new_args)
-  }
-
-  _stylobate_collect_arguments($defaults_collected)
+  $defaults_collected = stylobate_params($this, $defaults)
 
   for $key, $value in $defaults_collected.modifiers
     unless $key in $this.modifiers
@@ -65,14 +80,11 @@ _stylobate_defaults($this, $defaults)
     unless $key in $this.elements
       $newthis['elements'][$key] = $value
 
-  // Merge the modifiers and elements from the defaults to $this.
-  $this['modifiers'] = merge($defaults_collected.modifiers, $this.modifiers)
-  $this['elements'] = merge($defaults_collected.elements, $this.elements)
-
   for $param, $index in $new_args
-    $found_param = utilus_get($this['arguments'], $param[0])
-    if $found_param or (type($found_param) == 'string' and $found_param == '')
-      $new_args[$index] = ''
+    unless $param == null
+      $found_param = utilus_get($this['arguments'], $param[0])
+      if $found_param or (type($found_param) == 'string' and $found_param == '')
+        $new_args[$index] = ''
 
   for $param, $index in $this.arguments
     $testparam = $param
@@ -170,10 +182,14 @@ _stylobate($name, $params, $this = {
     if !utilus_is_function($extended_name) and $extended_name_ending == ''
       error('No stylobate function “' + $extended_name + '”')
 
+    _stylobate_call_defaults($this, $stylobate_defaults[$extended_name]) if $extended_name in $stylobate_defaults and !($name + utilus_ident($params[0]) in $stylobate_extends_without_defaults)
+
   {$extended_name}($this) if $extended_name and $extended_name_ending == ''
 
   if ($name + join('',$params) != '') and !utilus_is_function($name + utilus_ident($params[0])) and !$extended_name and !match('[_-]$', utilus_ident($params[0]))
     error('No such “' + $name + '” — “' + utilus_ident($params[0]) + '”')
+
+  _stylobate_call_defaults($this, $stylobate_defaults[$name + utilus_ident($params[0])]) if ($name + utilus_ident($params[0])) in $stylobate_defaults
 
   {$name + utilus_ident($params[0])}($this) if utilus_is_function($name + utilus_ident($params[0]))
 
@@ -233,7 +249,10 @@ _stylobate($name, $params, $this = {
       $this_subitem['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
       $this_subitem['called_from'] = $subitemname_extended if $subitemname_extended
 
+      _stylobate_call_defaults($this_subitem, $stylobate_defaults[$subitemname]) if $subitemname in $stylobate_defaults and !$subitemname_extended
       {$subitemname}($this_subitem) unless $subitemname_extended or !$subitemname
+
+      _stylobate_call_defaults($subitemname_extended, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
       {$subitemname_extended}($this_subitem) unless !$subitemname_extended
 
     $selector = '' if $selector == '&'

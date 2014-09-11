@@ -1,9 +1,6 @@
+stylobate_defaults('kind-link', _hover '&:hover', _underline)
+
 kind-link($this)
-  stylobate_defaults($this, _hover '&:hover')
-
-  unless $this.modifiers.pseudo
-    stylobate_defaults($this, _underline)
-
   cursor: pointer
 
   color: $this.colors[0] or blue
@@ -15,8 +12,9 @@ kind-link_pseudo()
   text-decoration: none
   border-bottom: 1px dotted
 
-kind-link_underline()
-  text-decoration: underline
+kind-link_underline($this)
+  unless $this.parent.modifiers.pseudo
+    text-decoration: underline
 
 kind-link_hover($this)
   color: $this.colors[0] or red

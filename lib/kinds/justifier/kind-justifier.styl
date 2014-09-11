@@ -1,12 +1,12 @@
+if !ie
+  stylobate_defaults('kind-justifier', __helper '&:after')
+
 kind-justifier($this)
   text-align: justify
 
   if ie
     text-justify: newspaper
     text-align-last: justify
-  else
-    stylobate_defaults($this,
-      __helper '&:after')
 
 kind-justifier__helper()
   pseudo-with-content()

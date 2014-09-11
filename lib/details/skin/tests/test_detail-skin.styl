@@ -52,6 +52,7 @@ set-skin-namespace('')
 .multiparamey
   skin: foo baz, bar baz (-subbar '&-lol' red) (__lol '&:before')
 
+stylobate_defaults('skin-base', -subitem '&-defitem', _supermod)
 
 skin-base($this)
   width: 10px
@@ -61,16 +62,13 @@ skin-base($this)
     else
       background: red
 
-  stylobate_defaults($this, -subitem '&-defitem', _supermod)
-
 skin-base_supermod()
   position: absolute
 
+stylobate_defaults('skin-base-subitem', -subsub)
+
 skin-base-subitem($this)
   height: 20px
-
-  // stylobate_defaults(arguments, -subitem-subsub) — works
-  stylobate_defaults($this, -subsub)
 
 skin-base-subitem-subsub()
   text-align: justify
@@ -111,10 +109,10 @@ skin-extended2-newsub()
 
 stylobate_extends('skin-superlink', 'kind-link', false)
 
+stylobate_defaults('skin-superlink', _hover '&.is-hovered')
+
 skin-superlink($this)
   color: #FFF
-
-  stylobate_new_defaults($this, _hover '&.is-hovered')
 
 skin-superlink_hover()
   color: #000

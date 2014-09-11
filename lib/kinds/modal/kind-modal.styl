@@ -1,3 +1,5 @@
+stylobate_defaults('kind-modal__wrap', __helper '&:after')
+
 kind-modal__wrap($this)
   $args = $this.arguments
   prepend($args, guide)
@@ -5,9 +7,6 @@ kind-modal__wrap($this)
   kind(centering (__helper ''))
 
   z-index: 99
-
-  stylobate_defaults($this,
-    __helper '&:after')
 
 kind-modal__wrap__helper()
   kind-centering__helper(arguments)

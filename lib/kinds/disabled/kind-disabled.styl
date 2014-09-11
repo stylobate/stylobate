@@ -1,3 +1,5 @@
+stylobate_defaults('kind-disabled', __nested '& &')
+
 kind-disabled($this)
   cursor: default !important
 
@@ -9,8 +11,6 @@ kind-disabled($this)
       outline: 0
   else
     pointer-events: none
-
-  stylobate_defaults($this, __nested '& &')
 
 kind-disabled__nested()
   opacity: 1

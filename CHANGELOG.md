@@ -7,6 +7,7 @@
 - **Breaking change:** Changed notation for Stylobate elements from `foo-element` to `foo__element`.
 - **Breaking change:** Modifiers and elements are now stored without the prefix (`$this.elements.-before` → `$this.elements.before` etc.).
 - **Breaking change:** No more merged params/collected arguments for modifiers and elements (use explicit `.parent`).
+- **Breaking change:** Changed the way `stylobate_defaults` works: now it should be called before the kind/skin.
 - **Breaking change:** Removed all the deprecated code.
 - **Breaking change:** Removed built-in almost useless `context` param.
 - **Breaking change:** Removed “retrieving” params like for vertical-align from a bunch of kinds:

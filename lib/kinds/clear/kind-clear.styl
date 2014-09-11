@@ -1,7 +1,7 @@
-kind-clear($this)
-  if !ie
-    stylobate_defaults($this, __before '&:before', __after '&:after')
+if !ie
+  stylobate_defaults('kind-clear', __before '&:before', __after '&:after')
 
+kind-clear($this)
   zoom: 1
 
 kind-clear__before()
