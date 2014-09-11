@@ -55,16 +55,6 @@ _stylobate_apply_defaults($this, $defaults)
   $newthis = clone($this)
   $newthis['called_from'] = $origin + '_'
   $newthis['defaulted'] = true
-  $newthis['modifiers'] = {}
-  $newthis['elements'] = {}
-
-  for $key, $value in $defaults_collected.modifiers
-    unless $key in $this.modifiers
-      $newthis['modifiers'][$key] = $value
-
-  for $key, $value in $defaults_collected.elements
-    unless $key in $this.elements
-      $newthis['elements'][$key] = $value
 
   for $param, $index in $new_args
     unless $param == null
