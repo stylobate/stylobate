@@ -1,11 +1,12 @@
+unless ie
+  stylobate_defaults('kind-content', __before '&:before', __after '&:after')
+
 kind-content($this)
   $sides = utilus_get_sides($this.arguments)
   if ie or ('' + $sides == '0 0 0 0')
     padding: $sides
   else
     padding: 0 $sides[1] 0 $sides[3]
-
-    stylobate_call_defaults($this, __before '&:before', __after '&:after')
 
     unless $this.elements.before
       padding-top: $sides[0]
@@ -14,16 +15,18 @@ kind-content($this)
       padding-bottom: $sides[2]
 
 kind-content__before($this)
-  pseudo-with-content()
+  if not ('' + utilus_get_sides($this.parent.arguments) == '0 0 0 0')
+    pseudo-with-content()
 
-  display: table
+    display: table
 
-  margin-bottom: any_get_sides($this)[0]
+    margin-bottom: any_get_sides($this)[0]
 
 kind-content__after($this)
-  pseudo-with-content()
+  if not ('' + utilus_get_sides($this.parent.arguments) == '0 0 0 0')
+    pseudo-with-content()
 
-  display: table
-  clear: both
+    display: table
+    clear: both
 
-  margin-top: any_get_sides($this)[2]
+    margin-top: any_get_sides($this)[2]

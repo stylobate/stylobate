@@ -13,17 +13,8 @@ stylobate_extends($what, $target, $defaults = true)
 
 $stylobate_defaults = {}
 
-// Far from ideal (can't redefine defaults for already redefined defaults)
-// Dunno if it is possible to make proper refedining in Stylus' stylobate
-stylobate_new_defaults($this, $defaults...)
-  _stylobate_call_defaults($this, $defaults)
-
 stylobate_defaults($what, $defaults...)
   $stylobate_defaults['' + utilus_ident($what)] = $defaults
-
-// rename to _call_
-stylobate_call_defaults($this, $defaults...)
-  _stylobate_call_defaults($this, $defaults)
 
 stylobate_params($this, $params)
   $collected_params = {
@@ -53,14 +44,11 @@ stylobate_this()
     $this[$key] = $null_collected[$key]
   return $this
 
-_stylobate_call_defaults($this, $defaults)
-  if $this.is_extended and $this.called_from in $stylobate_extends_without_defaults
-    return
-
-  // FIXME: REDO the whole defaulting thing?
-
+_stylobate_apply_defaults($this, $defaults)
   $origin = $this.called_from
   return false if not $origin
+
+  $defaults_collected = stylobate_params($this, $defaults)
 
   $new_args = clone($defaults)
 
@@ -69,8 +57,6 @@ _stylobate_call_defaults($this, $defaults)
   $newthis['defaulted'] = true
   $newthis['modifiers'] = {}
   $newthis['elements'] = {}
-
-  $defaults_collected = stylobate_params($this, $defaults)
 
   for $key, $value in $defaults_collected.modifiers
     unless $key in $this.modifiers
@@ -182,16 +168,17 @@ _stylobate($name, $params, $this = {
     if !utilus_is_function($extended_name) and $extended_name_ending == ''
       error('No stylobate function “' + $extended_name + '”')
 
-    _stylobate_call_defaults($this, $stylobate_defaults[$extended_name]) if $extended_name in $stylobate_defaults and !($name + utilus_ident($params[0]) in $stylobate_extends_without_defaults)
+    _stylobate_apply_defaults($this, $stylobate_defaults[$extended_name]) if $extended_name in $stylobate_defaults and !($name + utilus_ident($params[0]) in $stylobate_extends_without_defaults)
 
   {$extended_name}($this) if $extended_name and $extended_name_ending == ''
 
   if ($name + join('',$params) != '') and !utilus_is_function($name + utilus_ident($params[0])) and !$extended_name and !match('[_-]$', utilus_ident($params[0]))
     error('No such “' + $name + '” — “' + utilus_ident($params[0]) + '”')
 
-  _stylobate_call_defaults($this, $stylobate_defaults[$name + utilus_ident($params[0])]) if ($name + utilus_ident($params[0])) in $stylobate_defaults
+  _stylobate_apply_defaults($this, $stylobate_defaults[$name + utilus_ident($params[0])]) if ($name + utilus_ident($params[0])) in $stylobate_defaults
 
   {$name + utilus_ident($params[0])}($this) if utilus_is_function($name + utilus_ident($params[0]))
+
 
   for $subitem in $this.arguments
     // There shouldn't be an `if` inside a {$selector}, 'cause
@@ -249,10 +236,10 @@ _stylobate($name, $params, $this = {
       $this_subitem['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
       $this_subitem['called_from'] = $subitemname_extended if $subitemname_extended
 
-      _stylobate_call_defaults($this_subitem, $stylobate_defaults[$subitemname]) if $subitemname in $stylobate_defaults and !$subitemname_extended
+      _stylobate_apply_defaults($this_subitem, $stylobate_defaults[$subitemname]) if $subitemname in $stylobate_defaults and !$subitemname_extended
       {$subitemname}($this_subitem) unless $subitemname_extended or !$subitemname
 
-      _stylobate_call_defaults($subitemname_extended, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
+      _stylobate_apply_defaults($subitemname_extended, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
       {$subitemname_extended}($this_subitem) unless !$subitemname_extended
 
     $selector = '' if $selector == '&'
