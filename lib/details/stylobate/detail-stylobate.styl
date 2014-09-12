@@ -239,7 +239,7 @@ _stylobate($name, $params, $this = {
     if $selector == '' and $foundsubitem != ''
       call_subitem()
 
-stylobate($name, $params)
+stylobate_property($name, $params)
   if utilus_is_comma_list($params)
     for $item in $params
       _stylobate($name, $item)
