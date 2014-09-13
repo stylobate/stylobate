@@ -21,8 +21,6 @@
 
 .field-content,
 .custom-field__inner {
-  position: static;
-
   display: block;
   overflow: hidden;
 

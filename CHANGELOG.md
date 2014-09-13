@@ -11,6 +11,7 @@
 - **Breaking change:** Removed all the deprecated code.
 - **Breaking change:** Removed built-in almost useless `context` param.
 - **Breaking change:** Removed “retrieving” params like for vertical-align from a bunch of kinds:
+    - `kind-block`,
     - `kind-button`.
 - **Breaking change:** Moved resets from a bunch of kinds to `_reset` modifiers:
     - `kind-button`.
