@@ -177,7 +177,7 @@ _stylobate($name, $params, $this = {
     $selector = ''
     $foundsubitem = ''
     if is_array($subitem)
-      if type($subitem[0]) in ('ident' 'string')
+      if type($subitem[0]) in ('ident' 'string' 'function')
         if match('^(\-|_)', $subitem[0])
           $foundsubitem = $subitem
           if type($subitem[1]) == 'string'
@@ -186,7 +186,7 @@ _stylobate($name, $params, $this = {
             else
               $foundsubitem = ''
     else
-      if type($subitem) in ('ident' 'string')
+      if type($subitem) in ('ident' 'string' 'function')
         if match('^(\-|_)', $subitem)
           $foundsubitem = $subitem
 
@@ -206,7 +206,7 @@ _stylobate($name, $params, $this = {
         '__': '-',
         '-': '__'
       }
-      $subitemname_postfix = replace('^[_-]+', '', $foundsubitem[0])
+      $subitemname_postfix = utilus_ident(replace('^[_-]+', '', $foundsubitem[0]))
       $subitemname = $subitemname_prefix + $subitemname_connector + $subitemname_postfix
       $subitemname = '' unless utilus_is_function($subitemname)
       if $subitemname == ''
