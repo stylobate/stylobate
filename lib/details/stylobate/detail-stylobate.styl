@@ -48,8 +48,6 @@ _stylobate_apply_defaults($this, $defaults)
   $origin = $this.called_from
   return false if not $origin
 
-  $defaults_collected = stylobate_params($this, $defaults)
-
   $new_args = clone($defaults)
 
   $newthis = clone($this)
@@ -158,17 +156,21 @@ _stylobate($name, $params, $this = {
     if !utilus_is_function($extended_name) and $extended_name_ending == ''
       error('No stylobate function “' + $extended_name + '”')
 
-    _stylobate_apply_defaults($this, $stylobate_defaults[$extended_name]) if $extended_name in $stylobate_defaults and !($name + utilus_ident($params[0]) in $stylobate_extends_without_defaults)
+    stylobate_params($this, $stylobate_defaults[$extended_name]) if $extended_name in $stylobate_defaults and !($name + utilus_ident($params[0]) in $stylobate_extends_without_defaults)
 
   {$extended_name}($this) if $extended_name and $extended_name_ending == ''
+
+  if $extended_name
+    _stylobate_apply_defaults($this, $stylobate_defaults[$extended_name]) if $extended_name in $stylobate_defaults and !($name + utilus_ident($params[0]) in $stylobate_extends_without_defaults)
 
   if ($name + join('',$params) != '') and !utilus_is_function($name + utilus_ident($params[0])) and !$extended_name and !match('[_-]$', utilus_ident($params[0]))
     error('No such “' + $name + '” — “' + utilus_ident($params[0]) + '”')
 
-  _stylobate_apply_defaults($this, $stylobate_defaults[$name + utilus_ident($params[0])]) if ($name + utilus_ident($params[0])) in $stylobate_defaults
+  stylobate_params($this, $stylobate_defaults[$name + utilus_ident($params[0])]) if ($name + utilus_ident($params[0])) in $stylobate_defaults
 
   {$name + utilus_ident($params[0])}($this) if utilus_is_function($name + utilus_ident($params[0]))
 
+  _stylobate_apply_defaults($this, $stylobate_defaults[$name + utilus_ident($params[0])]) if ($name + utilus_ident($params[0])) in $stylobate_defaults
 
   for $subitem in $this.arguments
     // There shouldn't be an `if` inside a {$selector}, 'cause
@@ -226,11 +228,13 @@ _stylobate($name, $params, $this = {
       $this_subitem['called_from'] = $subitemname unless $subitemname_extended or !$subitemname
       $this_subitem['called_from'] = $subitemname_extended if $subitemname_extended
 
-      _stylobate_apply_defaults($this_subitem, $stylobate_defaults[$subitemname]) if $subitemname in $stylobate_defaults and !$subitemname_extended
+      stylobate_params($this, $stylobate_defaults[$subitemname]) if $subitemname in $stylobate_defaults and !$subitemname_extended
       {$subitemname}($this_subitem) unless $subitemname_extended or !$subitemname
+      _stylobate_apply_defaults($this_subitem, $stylobate_defaults[$subitemname]) if $subitemname in $stylobate_defaults and !$subitemname_extended
 
-      _stylobate_apply_defaults($subitemname_extended, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
+      stylobate_params($this, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
       {$subitemname_extended}($this_subitem) unless !$subitemname_extended
+      _stylobate_apply_defaults($subitemname_extended, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
 
     $selector = '' if $selector == '&'
     {$selector}

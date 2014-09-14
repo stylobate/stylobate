@@ -4,6 +4,21 @@
   background: #000;
 }
 
+.field,
+.small-field,
+.custom-field {
+  position: relative;
+
+  display: inline-block;
+
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+
+  cursor: text;
+  vertical-align: baseline;
+}
+
 .field-content,
 .custom-field__inner {
   display: block;
@@ -37,21 +52,6 @@
   z-index: 9;
 
   float: right;
-}
-
-.field,
-.small-field,
-.custom-field {
-  position: relative;
-
-  display: inline-block;
-
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  max-width: 100%;
-
-  cursor: text;
-  vertical-align: baseline;
 }
 
 .small-field {

@@ -31,10 +31,10 @@
   opacity: 0.5;
 }
 
-.is-disabled-with-events .is-disabled-with-events {
-  opacity: 1;
-}
-
 .is-disabled-with-events:focus {
   outline: 0;
+}
+
+.is-disabled-with-events .is-disabled-with-events {
+  opacity: 1;
 }
