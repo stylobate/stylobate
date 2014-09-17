@@ -1,9 +1,12 @@
-.foo,
-.pseudo-foo {
+.foo {
   width: 10px;
 }
 
-.pseudo-foo,
+.pseudo-foo {
+  width: 10px;
+  border: 1px solid;
+}
+
 .foo_pseudo {
   border: 1px solid;
 }
@@ -13,9 +16,8 @@
 }
 
 .bar-subbar {
-  padding-left: 10px;
-
   background: #000;
+  padding-left: 10px;
 }
 
 .foobar {
@@ -34,14 +36,12 @@
 }
 
 .foobar3-lol {
+  background: #f00;
   padding-left: 11px;
-
-  background: red;
 }
 
 .foobar3:before {
   content: "";
-
   height: 10px;
 }
 

@@ -26,8 +26,7 @@
   "devDependencies": {
     "stylus": "~0.48.1",
     "autoprefixer": "~3.0.0",
-    "csso": "1.3.x",
-    "csscomb": "3.0.x",
+    "postcss": "~2.1.2",
     "glob": "3.2.x",
     "mocha": "1.20.x",
     "should": "2.0.x"

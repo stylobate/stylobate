@@ -1,10 +1,9 @@
 .ununderlined-link {
   cursor: pointer;
+  color: #00f;
   text-decoration: none;
-
-  color: #00F;
 }
 
 .ununderlined-link:hover {
-  color: red;
+  color: #f00;
 }

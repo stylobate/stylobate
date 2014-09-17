@@ -1,26 +1,21 @@
 .lol-icon,
 .lol2-icon {
   position: relative;
-
   display: inline-block;
-
-  margin-top: -0.2em;
-
+  vertical-align: top;
   vertical-align: middle;
-
+  margin-top: -0.2em;
   background: 50% no-repeat;
 }
 
 .lol-icon {
   width: 16px;
   height: 16px;
-
   background-image: url("lol.png");
 }
 
 .lol2-icon {
   width: 16px;
   height: 16px;
-
   background-image: url("lol2.png");
 }

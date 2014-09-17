@@ -4,9 +4,7 @@
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-
   vertical-align: baseline;
   white-space: nowrap;
   text-decoration: none;
 }
-

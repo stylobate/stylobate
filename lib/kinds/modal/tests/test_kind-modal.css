@@ -1,40 +1,35 @@
 .popup-wrap {
   position: fixed;
-  z-index: 99;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-
   visibility: hidden;
-
-  text-align: center;
   white-space: nowrap;
+  text-align: center;
+  z-index: 99;
 }
 
 .popup-wrap:after,
 .apupup__helper {
   content: "";
-
   display: inline-block;
-
-  height: 100%;
-
   vertical-align: middle;
+  height: 100%;
 }
 
 .popup {
-  position: relative;
-
-  display: inline-block;
   visibility: visible;
-
+  position: relative;
   max-width: 100%;
   max-height: 100%;
+}
 
-  text-align: left;
-  vertical-align: middle;
+.popup {
+  display: inline-block;
   white-space: normal;
+  vertical-align: middle;
+  text-align: left;
 }
 
 .overlay {
@@ -43,27 +38,26 @@
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-.overlay,
-.local-overlay {
   visibility: visible;
 }
 
-.local-overlay,
+.local-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: visible;
+}
+
 .apupup {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-.apupup {
-  z-index: 99;
-
   visibility: hidden;
-
-  text-align: center;
   white-space: nowrap;
+  text-align: center;
+  z-index: 99;
 }

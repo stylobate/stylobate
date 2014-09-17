@@ -1,15 +1,15 @@
-.ellipsis,
-.inline-ellipsis {
-  overflow: hidden;
-
+.ellipsis {
   white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .inline-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: inline-block;
-
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
+       box-sizing: border-box;
   max-width: 100%;
 }

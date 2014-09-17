@@ -1,14 +1,11 @@
 .button,
 .middle-button {
   padding: 0;
-  border: none;
   margin: 0;
-
-  font: inherit;
-
+  border: none;
   background: transparent;
-
   -moz-appearance: none;
+  font: inherit;
 }
 
 .button::-moz-focus-inner,
@@ -17,33 +14,57 @@
   border: none;
 }
 
-.button,
-.button-with-no-reset {
+.button {
+  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   vertical-align: baseline;
+  white-space: nowrap;
+  text-decoration: none;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-.button,
-.button-with-no-reset,
+.button-with-no-reset {
+  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-decoration: none;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .middle-button {
   display: inline-block;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  vertical-align: baseline;
   white-space: nowrap;
   text-decoration: none;
-}
-
-.middle-button {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   vertical-align: middle;
 }
-

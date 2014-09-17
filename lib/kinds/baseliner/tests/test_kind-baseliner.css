@@ -1,34 +1,28 @@
 .select {
   display: inline-block;
-
   vertical-align: baseline;
 }
 
 .select:before {
-  content: " ";
-
   display: inline-block;
   overflow: hidden;
-
   width: 0;
+  content: " ";
 }
 
 .select-content {
   float: left;
-
   width: 100%;
 }
 
 .select2 {
   display: inline-block;
-
   vertical-align: baseline;
 }
 
 .select2-helper {
   display: inline-block;
   overflow: hidden;
-
   width: 0;
 }
 
@@ -38,6 +32,5 @@
 
 .select2-content {
   float: left;
-
   width: 100%;
 }
