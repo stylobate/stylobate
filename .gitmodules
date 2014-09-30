@@ -1,9 +1,9 @@
 [submodule "stylus/if-ie_styl"]
 	path = stylus/if-ie_styl
-	url = git://github.com/kizu/if-ie.styl.git
+	url = https://github.com/kizu/if-ie.styl
 [submodule "jade/bemto"]
 	path = jade/bemto
-	url = git://github.com/kizu/bemto.git
+	url = https://github.com/kizu/bemto
 [submodule "stylus/utilus"]
 	path = stylus/utilus
-	url = https://github.com/kizu/utilus.styl.git
+	url = https://github.com/kizu/utilus.styl
