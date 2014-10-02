@@ -129,10 +129,10 @@ _stylobate_collect_arguments($this)
 
       if match('^(__|-[^\-])', $key) and $rest != ()
         $workaround = $this['elements']
-        $workaround[replace('^([_-]+)', '', '' + $key)] = $rest
+        $workaround[replace('^([_-]+)', '', '' + $key)] = utilus_ident($rest)
       else if match('^(_|--)', $key) and $rest != ()
         $workaround = $this['modifiers']
-        $workaround[replace('^([_-]+)', '','' + $key)] = $rest
+        $workaround[replace('^([_-]+)', '','' + $key)] = utilus_ident($rest)
 
 
 _stylobate($name, $params, $this = {
