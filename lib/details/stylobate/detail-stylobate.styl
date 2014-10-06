@@ -36,7 +36,8 @@ stylobate_this()
     'params': {}
     'modifiers': {}
     'elements': {}
-    'urls': ()
+    'urls': (),
+    'selector': selector(),
     'selectors': ()
   }
   $null_collected = utilus_collect_by_type(())
@@ -138,7 +139,8 @@ _stylobate_collect_arguments($this)
 _stylobate($name, $params, $this = {
     parent: {},
     arguments: clone($params),
-    called_from: $name + $params[0]
+    called_from: $name + $params[0],
+    selector: selector()
   })
 
   _stylobate_collect_arguments($this) unless $this.defaulted
@@ -195,7 +197,8 @@ _stylobate($name, $params, $this = {
     call_subitem()
       $this_subitem = {
         parent: $this,
-        arguments: clone($foundsubitem)
+        arguments: clone($foundsubitem),
+        selector: selector()
       }
 
       _stylobate_collect_arguments($this_subitem)
