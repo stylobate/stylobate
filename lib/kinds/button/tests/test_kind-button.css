@@ -16,6 +16,7 @@
 
 .button {
   display: inline-block;
+  display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -33,6 +34,7 @@
 
 .button-with-no-reset {
   display: inline-block;
+  display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -50,6 +52,7 @@
 
 .middle-button {
   display: inline-block;
+  display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
