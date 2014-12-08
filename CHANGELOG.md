@@ -9,6 +9,7 @@
 - **Breaking change:** No more merged params/collected arguments for modifiers and elements (use explicit `.parent`).
 - **Breaking change:** Changed the way `stylobate_defaults` works: now it should be called before the kind/skin.
 - **Breaking change:** Removed all the deprecated code.
+- **Breaking change:** Rewrote `list` kind to use flexbox with fallbacks.
 - **Breaking change:** Removed built-in almost useless `context` param.
 - **Breaking change:** Removed “retrieving” params like for vertical-align from a bunch of kinds:
     - `kind-block`,

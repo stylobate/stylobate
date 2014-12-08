@@ -1,23 +1,42 @@
+stylobate_defaults('kind-list',
+  '_reset',
+  '_align' baseline
+  )
+
 kind-list($this)
-  kind(block)
+  position: relative
+  display: block
+  display: flex
+  flex-wrap: wrap
 
-  // Getting the nowrap
-  if utilus_retrieve($this.params, nowrap nobr)
-    white-space: nowrap
-
-  // Getting the align
-  $align = utilus_retrieve($this.params, left right center justify justify-all, left)
-  if $align
-    text-align: $align
-
-  // Placing the type
-  $type = utilus_retrieve($this.params, separate tight, separate)
-  $gap = $this.params.gap
 
 kind-list__item($this)
-  // Getting the valign
-  $valign = utilus_retrieve($this.params, middle baseline bottom, top)
-  kind(block inline $valign)
+  if 'reset' in $this.modifiers
+    reset('li')
 
-  // get the gap from the parent
-  $gap = $this.params.gap
+  position: relative
+  display: inline-block
+  flex-shrink: 0
+
+  if 'align' in $this.modifiers
+    vertical-align: $this.modifiers.align
+
+
+kind-list_nowrap($this)
+  white-space: nowrap
+  flex-wrap: nowrap
+
+
+kind-list_justified($this)
+  justify-content: space-between
+  text-align: justify
+
+
+kind-list_align($this)
+  $align = $this.idents[0] || 'baseline'
+  if $align == 'baseline'
+    align-items: baseline
+
+
+kind-list_reset($this)
+  reset('ul')
