@@ -1,0 +1,9 @@
+optional-element($this, $element)
+  $selector = $element in $this.elements ? $this.elements[$element] : ''
+
+  rules()
+    {block}
+
+  rules() unless $selector
+  {$selector}
+    rules() if $selector

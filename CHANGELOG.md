@@ -17,6 +17,7 @@
 - **Breaking change:** Moved resets from a bunch of kinds to `_reset` modifiers:
     - `kind-button`.
 - **Breaking change:** `stylobate` to `stylobate_property`, as `stylobate` would be used for declarative setter things.
+- Added `optional-element` detail.
 - Changed the display for `kind-pill` and `kind-button` to `inline-flex` to allow better baseline aligning (also moved vab to pill).
 - Added substituting for different BEM notations (`-` to `__`, `--` to `_` etc.).
 - Fixed setting the defaults (they now should be placed at the top of the kind).

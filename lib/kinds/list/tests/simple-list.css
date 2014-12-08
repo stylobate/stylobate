@@ -1,13 +1,4 @@
 .list {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-.list {
   position: relative;
   display: block;
   display: -webkit-box;
@@ -17,6 +8,9 @@
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   -webkit-box-align: baseline;
   -webkit-align-items: baseline;
       -ms-flex-align: baseline;

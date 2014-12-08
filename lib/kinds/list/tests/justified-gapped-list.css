@@ -1,4 +1,4 @@
-.justified-list {
+.justified-gapped-list {
   position: relative;
   display: block;
   display: -webkit-box;
@@ -20,13 +20,15 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-align: justify;
+  margin-left: -20px;
 }
 
-.justified-list-item {
+.justified-gapped-list-item {
   position: relative;
   display: inline-block;
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
   vertical-align: baseline;
+  margin-left: 20px;
 }
