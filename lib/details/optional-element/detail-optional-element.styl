@@ -1,9 +1,13 @@
-optional-element($this, $element)
+optional-element($this, $element, $complex_selector = '')
   $selector = $element in $this.elements ? $this.elements[$element] : ''
+
+  if $selector
+    $selector = '/' + replace('&', $this.parent.selector, $selector)
 
   rules()
     {block}
 
   rules() unless $selector
   {$selector}
-    rules() if $selector
+    {$complex_selector}
+      rules() if $selector
