@@ -4,6 +4,9 @@ optional-element($this, $element, $complex_selector = '')
   if $selector
     $selector = '/' + replace('&', $this.parent.selector, $selector)
 
+    if !$complex_selector and $this.selectors[0]
+      $selector = replace('&', $selector, $this.selectors[0])
+
   rules()
     {block}
 
