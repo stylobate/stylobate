@@ -1,7 +1,7 @@
 optional-element($this, $element, $complex_selector = '')
   $selector = $element in $this.elements ? $this.elements[$element] : ''
 
-  if $selector
+  if $selector and $this.parent.selector
     $selector = '/' + replace('&', $this.parent.selector, $selector)
 
     if !$complex_selector and $this.selectors[0]
