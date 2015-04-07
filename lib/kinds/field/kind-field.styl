@@ -20,10 +20,11 @@ kind-field__left($this)
     float: left
 
   $sides = any_get_sides($this)
-  unless ($this.parent and $this.parent.params.no-margin) or $this.params.no-margin
+  // TODO: Stylus should do proper checks for xx and xx.yy
+  unless ($this.parent and $this.parent['params']['no-margin']) or $this.params.no-margin
     margin: -1*$sides[0] 0 -1*$sides[2] -1*$sides[3]
 
-  unless ($this.parent and $this.parent.params.no-padding) or $this.params.no-padding
+  unless ($this.parent and $this.parent['params']['no-padding']) or $this.params.no-padding
     padding: $sides
 
 kind-field__right($this)
@@ -33,8 +34,8 @@ kind-field__right($this)
     float: right
 
   $sides = any_get_sides($this)
-  unless ($this.parent and $this.parent.params.no-margin) or $this.params.no-margin
+  unless ($this.parent and $this.parent['params']['no-margin']) or $this.params.no-margin
     margin: -1*$sides[0] -1*$sides[1] -1*$sides[2] 0
 
-  unless ($this.parent and $this.parent.params.no-padding) or $this.params.no-padding
+  unless ($this.parent and $this.parent['params']['no-padding']) or $this.params.no-padding
     padding: $sides
