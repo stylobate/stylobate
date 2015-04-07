@@ -1,8 +1,10 @@
 optional-element($this, $element, $complex_selector = '')
   $selector = $element in $this.elements ? $this.elements[$element] : ''
+  // Replace with some func for finding the root parent?
+  $parent = $this.parent.parent || $this.parent
 
-  if $selector and $this.parent.selector
-    $selector = '/' + replace('&', $this.parent.selector, $selector)
+  if $selector and $parent.selector
+    $selector = '/' + replace('&', $parent.selector, $selector)
 
     if !$complex_selector and $this.selectors[0]
       $selector = replace('&', $selector, $this.selectors[0])
