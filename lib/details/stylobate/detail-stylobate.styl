@@ -237,7 +237,7 @@ _stylobate($name, $params, $this = {
 
       stylobate_params($this, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
       {$subitemname_extended}($this_subitem) unless !$subitemname_extended
-      _stylobate_apply_defaults($subitemname_extended, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
+      _stylobate_apply_defaults($this_subitem, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
 
     $selector = '' if $selector == '&'
     {$selector}

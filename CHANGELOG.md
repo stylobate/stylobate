@@ -21,6 +21,7 @@
 - Changed the display for `kind-pill` and `kind-button` to `inline-flex` to allow better baseline aligning (also moved vab to pill).
 - Added substituting for different BEM notations (`-` to `__`, `--` to `_` etc.).
 - Fixed setting the defaults (they now should be placed at the top of the kind).
+- Fixed a bug in defaults of extended subitems.
 
 
 ## v0.25.0 (2014-06-18)
