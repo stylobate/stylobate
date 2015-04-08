@@ -1,18 +1,21 @@
-optional-element($this, $element, $complex_selector = '')
+optional-element($this, $element, $substitute_selector = '')
   $selector = $element in $this.elements ? $this.elements[$element] : ''
-  // Replace with some func for finding the root parent?
-  $parent = $this.parent.parent || $this.parent
 
-  if $selector and $parent.selector
-    $selector = '/' + replace('&', $parent.selector, $selector)
+  if $selector
+    $root_selector = stylobate-root($this).selector
+    $rooted_selector = stylobate-to-selector($this, $this.selector)
+    if $rooted_selector == $root_selector
+      $selector = '/' + stylobate-selector($this, '__' + $element)
+    else
+      $selector = '/' + stylobate-selector($this, replace('ROOT', '__' + $element, $rooted_selector))
 
-    if !$complex_selector and $this.selectors[0]
-      $selector = replace('&', $selector, $this.selectors[0])
+  // FIXME: not the best way -_-
+  if $substitute_selector
+    $selector = '/' + stylobate-selector($this, $substitute_selector)
 
   rules()
     {block}
 
   rules() unless $selector
   {$selector}
-    {$complex_selector}
-      rules() if $selector
+    rules() if $selector

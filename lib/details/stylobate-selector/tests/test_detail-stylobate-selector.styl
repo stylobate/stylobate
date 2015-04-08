@@ -1,0 +1,28 @@
+skin-foo($this)
+  width: 10px
+
+skin-foo__el($this)
+  height: 10px
+
+skin-foo__el2($this)
+  height: 20px
+
+skin-foo__el3($this)
+  height: 30px
+
+skin-foo_mod($this)
+  padding: 10px
+
+  el_selector: stylobate-selector($this, '__el2')
+
+  +stylobate-selector($this, 'ROOT:hover > __el')
+    margin: 10px
+
+  +stylobate-selector($this, 'ROOT:hover > __el2')
+    margin: 11px
+
+  +stylobate-selector($this, 'ROOT:hover > input:focus + __el3')
+    margin: 12px
+
+.foo
+  skin: foo (__el '&-bar') (_mod '&:hover') (__el2 '.baz') (__el3 '&:focus > .raz')

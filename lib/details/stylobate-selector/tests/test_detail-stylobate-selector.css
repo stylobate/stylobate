@@ -1,0 +1,32 @@
+.foo {
+  width: 10px;
+}
+
+.foo-bar {
+  height: 10px;
+}
+
+.foo:hover {
+  padding: 10px;
+  el_selector: '.baz';
+}
+
+.foo:hover > .foo-bar {
+  margin: 10px;
+}
+
+.foo:hover > .baz {
+  margin: 11px;
+}
+
+.foo:focus:hover > input:focus + .raz {
+  margin: 12px;
+}
+
+.foo .baz {
+  height: 20px;
+}
+
+.foo:focus > .raz {
+  height: 30px;
+}

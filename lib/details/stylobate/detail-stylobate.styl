@@ -2,6 +2,8 @@ $stylobate_options = {
   'warn_on_incorrect_notation': true
 }
 
+$selector_regex = '&|^[\/\.]|ROOT|(^|[^\w])(__|-)\w'
+
 $stylobate_extends = {}
 $stylobate_extends_without_defaults = {}
 
@@ -98,7 +100,7 @@ _stylobate_collect_arguments($this)
       // replace those checks with functions
       if match('\.(png|jpg|svg|gif)\b|https?:\/\/|^data:', $key)
         push($this['urls'], $key)
-      else if match('&|^[\/\.]', $key)
+      else if match($selector_regex, $key)
         push($this['selectors'], $key)
       else if $key != ''
         // workaround for strange clone? bug
@@ -185,7 +187,7 @@ _stylobate($name, $params, $this = {
         if match('^(\-|_)', $subitem[0])
           $foundsubitem = $subitem
           if type($subitem[1]) == 'string'
-            if match('&', $subitem[1])
+            if match($selector_regex, $subitem[1])
               $selector = $subitem[1]
             else
               $foundsubitem = ''
@@ -240,7 +242,7 @@ _stylobate($name, $params, $this = {
       _stylobate_apply_defaults($this_subitem, $stylobate_defaults[$subitemname_extended]) if $subitemname_extended in $stylobate_defaults and $subitemname_extended
 
     $selector = '' if $selector == '&'
-    {$selector}
+    {stylobate-selector($this, $selector)}
       call_subitem() if $foundsubitem != '' and $selector != ''
 
     if $selector == '' and $foundsubitem != ''

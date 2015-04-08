@@ -1,0 +1,61 @@
+stylobate-root($this)
+  if $this.parent
+    return stylobate-root($this.parent)
+  else
+    return $this
+
+stylobate-to-selector($this, $selector)
+  $root_selector = stylobate-root($this).selector
+  $result = $selector
+  if $result != $root_selector
+    return replace($root_selector + '(?![-_\w])', 'ROOT', $result)
+
+  return $result
+
+stylobate-selector($this, $selector)
+  $result = $selector
+
+  $root = stylobate-root($this)
+  $root_modifier = ''
+
+  // Handle all elements (like `__el`)
+  // TODO: if el is not found or falsey, look at defaults
+  for $element, $element_selector in $root.elements
+    $element_regex = '(^|[\s])(__|-)' + $element + '(?![-_\w])'
+    $root_regex = '&($|[^-_\w])|ROOT($|[^-_\w])'
+    if match($element_regex, $result)
+      $full_element_selector = $element_selector[0]
+      $element_selector_have_root = match($root_regex, $full_element_selector)
+
+      if match('ROOT', $result) and $element_selector_have_root
+        $rebuild_selector = ''
+        $selector_parts = split(' ', $full_element_selector)
+        $skip_next = false
+        for $part in $selector_parts
+          if match($root_regex, $part)
+            $root_modifier = $root_modifier + replace($root_regex, '$1$2', $part)
+            $skip_next = true
+
+          else if not ($skip_next and $part in ('>' '+' '~'))
+            $rebuild_selector = $rebuild_selector + ' ' + $part
+            $skip_next = false
+
+        $rebuild_selector = replace('^\s+', '', $rebuild_selector)
+        $full_element_selector = $rebuild_selector
+
+      else
+        $full_element_selector = replace('&', $root.selector, $full_element_selector)
+
+      $result = replace($element_regex, '$1' + $full_element_selector, $result)
+
+  // Handle root references (`ROOT`)
+  $result = replace('ROOT', $root.selector + $root_modifier, $result)
+
+  // Remove extra root references
+  $result = replace('([^\/])?/', $1, $result)
+
+  if block is defined
+    /{$result}
+      {block}
+  else
+    return $result
