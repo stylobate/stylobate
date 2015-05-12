@@ -6,6 +6,13 @@
   border: none;
   background: transparent;
   font: inherit;
+  -webkit-appearance: none;
+}
+
+.input::-ms-clear,
+.input-controller::-ms-clear,
+.small-input::-ms-clear {
+  display: none;
 }
 
 .input:focus,
