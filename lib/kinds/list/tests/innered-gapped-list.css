@@ -6,6 +6,7 @@
 .innered-gapped-list-inner {
   display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -22,6 +23,7 @@
 .innered-gapped-list-inner {
   -webkit-box-align: baseline;
   -webkit-align-items: baseline;
+     -moz-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
 }

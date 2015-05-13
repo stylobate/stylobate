@@ -19,8 +19,11 @@
   max-width: 100%;
 }
 @-moz-document url-prefix() { .shrinker {
+  display: -moz-inline-box;
   display: inline-flex;
-  flex-direction: row-reverse;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: reverse;
+       flex-direction: row-reverse;
 }
 }
 
@@ -47,8 +50,11 @@
   max-width: 100%;
 }
 @-moz-document url-prefix() { .shrinker1 {
+  display: -moz-inline-box;
   display: inline-flex;
-  flex-direction: row-reverse;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: reverse;
+       flex-direction: row-reverse;
 }
 }
 
