@@ -1,5 +1,6 @@
 .button,
-.middle-button {
+.middle-button,
+.complex-button {
   padding: 0;
   margin: 0;
   border: none;
@@ -9,42 +10,24 @@
 }
 
 .button::-moz-focus-inner,
-.middle-button::-moz-focus-inner {
+.middle-button::-moz-focus-inner,
+.complex-button::-moz-focus-inner {
   padding: 0;
   border: none;
 }
 
-.button {
+.button,
+.button-with-no-reset,
+.middle-button,
+.complex-button {
   display: inline-block;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   vertical-align: baseline;
   white-space: nowrap;
   text-decoration: none;
-  display: -moz-inline-box;
+  position: relative;
   -moz-box-sizing: border-box;
        box-sizing: border-box;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.button-with-no-reset {
-  display: inline-block;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  vertical-align: baseline;
-  white-space: nowrap;
-  text-decoration: none;
-  display: -moz-inline-box;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  max-width: 100%;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -53,21 +36,63 @@
 }
 
 .middle-button {
-  display: inline-block;
+  vertical-align: middle;
+}
+
+.complex-button-content {
+  position: relative;
+  display: block;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
+  display: -moz-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  vertical-align: baseline;
-  white-space: nowrap;
-  text-decoration: none;
-  display: -moz-inline-box;
   -moz-box-sizing: border-box;
        box-sizing: border-box;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  vertical-align: middle;
+  width: 100%;
+  border-radius: inherit;
+}
+
+.complex-button-content:before {
+  float: left;
+  content: "\a0";
+  width: 0;
+}
+
+.complex-button-text {
+  display: block;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.complex-button-before {
+  float: left;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}
+
+.complex-button-after {
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+     -moz-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  float: right;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
 }
