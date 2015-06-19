@@ -73,6 +73,13 @@
   min-width: 0;
 }
 
+_:-ms-input-placeholder,
+:root .complex-button-text {
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  width: 100%;
+}
+
 .complex-button-before {
   float: left;
   -webkit-align-self: center;
