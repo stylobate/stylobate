@@ -1,0 +1,7 @@
+.zzz {
+  foo: size('m');
+  foo: #fff;
+  width: 10px size 's' 20px;
+  width: 10px _size 's' 20px;
+  width: 10px type 'normal' 20px;
+}

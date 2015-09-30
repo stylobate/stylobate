@@ -18,6 +18,7 @@
     - `kind-button`.
 - **Breaking change:** `stylobate` to `stylobate_property`, as `stylobate` would be used for declarative setter things.
 - Added `optional-element` detail.
+- Added new syntax for assigning elements and modifiers (like `_size('m')`).
 - Added `stylobate-selector` and `stylobate-to-selector` detail. Changed Stylobate to use `stylobate-selector` for elements.
 - Changed the display for `kind-pill` and `kind-button` to `inline-flex` to allow better baseline aligning (also moved vab to pill).
 - Added substituting for different BEM notations (`-` to `__`, `--` to `_` etc.).

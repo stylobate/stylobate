@@ -59,13 +59,13 @@ _stylobate_apply_defaults($this, $defaults)
 
   for $param, $index in $new_args
     unless $param == null
-      $found_param = utilus_get($this['arguments'], $param[0])
+      $found_param = utilus_get($this['arguments'], utilus_ident($param[0]))
       if $found_param or (type($found_param) == 'string' and $found_param == '')
         $new_args[$index] = ''
 
   for $param, $index in $this.arguments
-    $testparam = $param
-    $testparam = '' unless type($param) in ('ident' 'string')
+    $testparam = utilus_ident($param)
+    $testparam = '' unless type($param) in ('ident' 'string' 'function' 'literal')
     unless match('^[-_]', $testparam)
       push($new_args, $param)
 
@@ -120,9 +120,23 @@ _stylobate_collect_arguments($this)
         $workaround = $this['modifiers']
         $workaround[replace('^([_-]+)', '', '' + utilus_ident($key))] = '&'
 
+  if length($this['functions']) > 0
+    for $key in $this['functions']
+      // workaround for strange clone? bug
+      $workaround = $this['params']
+      $workaround['' + utilus_ident($key)] = utilus_ident($key)
+
+      if match('^(__|-[^\-])', utilus_ident($key))
+        $workaround = $this['elements']
+        $workaround[replace('^([_-]+)', '', '' + utilus_ident($key))] = '&'
+      else if match('^(_|--)', utilus_ident($key))
+        $workaround = $this['modifiers']
+        $workaround[replace('^([_-]+)', '', '' + utilus_ident($key))] = '&'
+
   if length($this['arrays']) > 0
     for $index, $array in $this['arrays']
-      $key = $array[0]
+      $key = utilus_ident($array[0])
+
       $rest = ()
       for $item, $index in $array
         $rest = utilus_append($rest, $item) if $index > 0
@@ -183,8 +197,9 @@ _stylobate($name, $params, $this = {
     $selector = ''
     $foundsubitem = ''
     if is_array($subitem)
-      if type($subitem[0]) in ('ident' 'string')
-        if match('^(\-|_)', $subitem[0])
+      if type($subitem[0]) in ('ident' 'string' 'function' 'literal')
+        $testsubitem = utilus_ident($subitem[0])
+        if match('^(\-|_)', $testsubitem)
           $foundsubitem = $subitem
           if type($subitem[1]) == 'string'
             if match($selector_regex, $subitem[1])
@@ -192,9 +207,9 @@ _stylobate($name, $params, $this = {
             else
               $foundsubitem = ''
     else
-      if type($subitem) in ('ident' 'string')
-        if match('^(\-|_)', $subitem)
-          $foundsubitem = $subitem
+      if type($subitem) in ('ident' 'string' 'function' 'literal')
+        if match('^(\-|_)', utilus_ident($subitem))
+          $foundsubitem = utilus_ident($subitem)
 
     call_subitem()
       $this_subitem = {
@@ -206,14 +221,14 @@ _stylobate($name, $params, $this = {
       _stylobate_collect_arguments($this_subitem)
 
       $subitemname_prefix = ($extended_name ? '' : $name) +  replace('[_-]+$', '', $extended_name ? $extended_name : $skin_name)
-      $subitemname_connector = replace('^([_-]+)[^_-].*$', '$1', $foundsubitem[0])
+      $subitemname_connector = replace('^([_-]+)[^_-].*$', '$1', utilus_ident($foundsubitem[0]))
       $subitemname_connector_substitutes = {
         '_': '--',
         '--': '_',
         '__': '-',
         '-': '__'
       }
-      $subitemname_postfix = utilus_ident(replace('^[_-]+', '', $foundsubitem[0]))
+      $subitemname_postfix = utilus_ident(replace('^[_-]+', '', utilus_ident($foundsubitem[0])))
       $subitemname = $subitemname_prefix + $subitemname_connector + $subitemname_postfix
       $subitemname = '' unless utilus_is_function($subitemname)
       if $subitemname == ''
@@ -225,7 +240,7 @@ _stylobate($name, $params, $this = {
 
       // If there is extended subitem function, use it, otherwise
       $subitemname_extended = ''
-      $subitemname_extended = $name + replace('[_-]+$', '', utilus_ident($params[0])) + $foundsubitem[0] if $extended_name
+      $subitemname_extended = $name + replace('[_-]+$', '', utilus_ident($params[0])) + utilus_ident($foundsubitem[0]) if $extended_name
       $subitemname_extended = '' unless utilus_is_function($subitemname_extended)
 
 

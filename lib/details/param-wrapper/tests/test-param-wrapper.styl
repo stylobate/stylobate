@@ -1,0 +1,28 @@
+type()
+  return #FFF
+
+old_size = typeof(size) == 'function' ? size : null
+size()
+  param-wrapper(arguments, true)
+
+old_type = typeof(type) == 'function' ? type : null
+type()
+  param-wrapper(arguments, true)
+
+
+skin()
+  skin_inner(arguments)
+
+skin_inner()
+  width: arguments
+
+
+zzz()
+  .zzz
+    foo: size('m')
+    foo: type('m')
+    skin: 10px size('s') 20px
+    skin: 10px _size('s') 20px
+    skin: 10px type('normal') 20px
+
+zzz()

@@ -1,8 +1,7 @@
-stylobate_defaults('kind-link', _hover '&:hover', _underline)
+stylobate_defaults('kind-link', _hover('&:hover'), _underline)
 
 kind-link($this)
   cursor: pointer
-
   color: $this.colors[0] or blue
 
   if $this.modifiers.pseudo or $this.modifiers.underline != '&'

@@ -1,5 +1,5 @@
 unless ie
-  stylobate_defaults('kind-content', __before '&:before', __after '&:after')
+  stylobate_defaults('kind-content', __before('&:before'), __after('&:after'))
 
 kind-content($this)
   $sides = utilus_get_sides($this.arguments)
