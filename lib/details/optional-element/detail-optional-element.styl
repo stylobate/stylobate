@@ -1,4 +1,4 @@
-optional-element($this, $element, $substitute_selector = '')
+optional-element($this, $element, $substitute_selector = '', $only_optional = false)
   $selector = $element in $this.elements ? $this.elements[$element] : ''
 
   if $selector
@@ -16,6 +16,6 @@ optional-element($this, $element, $substitute_selector = '')
   rules()
     {block}
 
-  rules() unless $selector
+  rules() unless $selector or $only_optional
   {$selector}
     rules() if $selector
