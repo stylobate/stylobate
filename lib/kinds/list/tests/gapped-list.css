@@ -2,18 +2,15 @@
   position: relative;
   display: block;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style: none;
   -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
      -moz-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
@@ -23,9 +20,8 @@
 .gapped-list-item {
   position: relative;
   display: inline-block;
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   vertical-align: baseline;
   margin-left: 20px;
 }
