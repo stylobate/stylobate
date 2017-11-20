@@ -1,22 +1,18 @@
 .centerer {
-  text-align: center;
   white-space: nowrap;
+  text-align: center;
 }
 
 .centerer:before {
   content: "";
-
+  display: inline-block;
+  vertical-align: middle;
   height: 100%;
 }
 
-.centerer:before,
 .centerer-content {
   display: inline-block;
-
-  vertical-align: middle;
-}
-
-.centerer-content {
-  text-align: left;
   white-space: normal;
+  vertical-align: middle;
+  text-align: left;
 }

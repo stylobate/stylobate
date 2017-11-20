@@ -1,7 +1,6 @@
 .pill {
   display: inline-block;
-
+  vertical-align: baseline;
   white-space: nowrap;
   text-decoration: none;
 }
-

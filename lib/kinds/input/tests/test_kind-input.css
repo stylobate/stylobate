@@ -2,12 +2,17 @@
 .input-controller,
 .small-input {
   padding: 0;
-  border: none;
   margin: 0;
-
-  font: inherit;
-
+  border: none;
   background: transparent;
+  font: inherit;
+  -webkit-appearance: none;
+}
+
+.input::-ms-clear,
+.input-controller::-ms-clear,
+.small-input::-ms-clear {
+  display: none;
 }
 
 .input:focus,
@@ -21,36 +26,27 @@
 }
 
 .input,
-.input-controller {
-  vertical-align: baseline;
-}
-
-.input,
 .input-controller,
 .small-input {
   position: relative;
-
   display: inline-block;
-
-  -webkit-box-sizing: border-box;
+  vertical-align: top;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
+       box-sizing: border-box;
   max-width: 100%;
-
   cursor: text;
+  vertical-align: baseline;
 }
 
 .input-controller {
+  width: 400px;
   z-index: 9;
-
   width: 100%;
   height: 100%;
 }
 
 .small-input {
   width: 400px;
-
   vertical-align: bottom;
-
   font-size: 10px;
 }

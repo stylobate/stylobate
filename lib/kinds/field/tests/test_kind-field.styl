@@ -3,12 +3,12 @@
   background: #000
 
 .small-field
-  kind: field no-elements
+  kind: field __content('') __left('') __right('')
   background: #fff
 
 .field-label
-  kind: field-left 10px 20px
+  kind: field__left 10px 20px
   background: #f00
 
 .custom-field
-  kind: field 1em (-content '&__inner') (-left '&__label') (-right '&__input')
+  kind: field 1em __content('&__inner') __left('&__label') __right('&__input')

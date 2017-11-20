@@ -8,7 +8,6 @@
 
 .button:before {
   content: "";
-
   position: absolute;
   top: -1px;
   right: -1px;
@@ -33,34 +32,32 @@
 }
 
 .sidey {
+  position: absolute;
+  top: 1em;
+  right: 0;
   bottom: 1em;
+  left: 0;
 }
 
-.sidey,
 .triple {
   position: absolute;
   top: 1em;
   right: 0;
+  bottom: 2em;
   left: 0;
 }
 
-.triple,
 .fourey {
-  bottom: 2em;
-}
-
-.fourey {
+  position: absolute;
+  top: 1em;
   right: 0;
+  bottom: 2em;
   left: 3em;
 }
 
-.fourey,
 .toppy {
   position: absolute;
   top: 1em;
-}
-
-.toppy {
   right: 1em;
   bottom: auto;
   left: 1em;
@@ -72,24 +69,23 @@
   right: 0;
   bottom: 0;
   left: 0;
-
   background: rgba(0,0,0,0.5);
 }
 
 .paranja_image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: url("kitty.png") no-repeat 50%;
 }
 
-.paranja_image,
 .paranja_tiled {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  background: url("pattern.png") repeat 50%;
 }
-
-.paranja_tiled {
-  background: url("pattern.png") 50%;
-}
-

@@ -1,6 +1,5 @@
 .field {
   width: 400px;
-
   background: #000;
 }
 
@@ -8,31 +7,30 @@
 .small-field,
 .custom-field {
   position: relative;
-
   display: inline-block;
-
-  -webkit-box-sizing: border-box;
+  vertical-align: top;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
+       box-sizing: border-box;
   max-width: 100%;
-
   cursor: text;
   vertical-align: baseline;
 }
 
 .field-content,
 .custom-field__inner {
-  position: static;
-
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+     -moz-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   display: block;
   overflow: hidden;
-
   height: 100%;
 }
 
 .field-left {
-  padding: 10px 20px;
   margin: -10px 0 -10px -20px;
+  padding: 10px 20px 10px 20px;
 }
 
 .field-left,
@@ -40,34 +38,35 @@
 .custom-field__label {
   position: relative;
   z-index: 9;
-
   float: left;
 }
 
 .field-right {
-  padding: 10px 20px;
   margin: -10px -20px -10px 0;
+  padding: 10px 20px 10px 20px;
 }
 
 .field-right,
 .custom-field__input {
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+     -moz-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
   position: relative;
   z-index: 9;
-
   float: right;
 }
 
 .small-field {
   width: 400px;
-
-  background: #FFF;
+  background: #fff;
 }
 
 .field-label {
-  padding: 10px 20px;
   margin: -10px 0 -10px -20px;
-
-  background: red;
+  padding: 10px 20px 10px 20px;
+  background: #f00;
 }
 
 .custom-field {
@@ -75,12 +74,11 @@
 }
 
 .custom-field__label {
-  padding: 1em;
   margin: -1em 0 -1em -1em;
+  padding: 1em 1em 1em 1em;
 }
 
 .custom-field__input {
-  padding: 1em;
   margin: -1em -1em -1em 0;
+  padding: 1em 1em 1em 1em;
 }
-

@@ -1,15 +1,79 @@
+stylobate_defaults('kind-button', '_reset')
+
+// Elements nesting structure:
+//
+//     button
+//       __content
+//         __before
+//         __after
+//         __text
+
 kind-button($this)
   +cache()
     kind-pill()
 
+    position: relative
+
     box-sizing: border-box
+    max-width: 100%
 
     cursor: pointer
     user-select: none
-    vertical-align: baseline
 
-  $align = utilus_retrieve($this.params, middle top bottom)
-  vertical-align: $align if $align
+kind-button__content($this)
+  +cache()
+    position: relative
 
-  unless $this.params.no-reset
-    reset('button')
+    display: block
+    display: inline-flex
+
+    box-sizing: border-box
+    width: 100%
+
+    border-radius: inherit
+
+    // We need this, so extra elements would not break our baseline
+    &:before
+      float: left
+      content: "\a0" // nbsp
+      width: 0
+      min-width: 0 // Hello, old Opera!
+
+
+kind-button__text($this)
+  +cache()
+    display: block
+    flex-shrink: 1
+    flex-basis: 100% // Not width for fallback
+
+    overflow: hidden
+    text-overflow: ellipsis
+
+    min-width: 0 // For old Opera
+
+    // IE shrinking bug
+    /_:-ms-input-placeholder,
+    :root &
+      flex-basis: auto
+      width: 100%
+
+
+kind-button__before($this)
+  +cache()
+    float: left
+
+    align-self: center
+    flex-shrink: 0
+
+
+kind-button__after($this)
+  +cache()
+    order: 1
+    float: right
+
+    align-self: center
+    flex-shrink: 0
+
+
+kind-button_reset($this)
+  reset('button')

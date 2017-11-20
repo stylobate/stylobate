@@ -1,0 +1,21 @@
+optional-element($this, $element, $substitute_selector = '', $only_optional = false)
+  $selector = $element in $this.elements ? $this.elements[$element] : ''
+
+  if $selector
+    $root_selector = stylobate-root($this).selector
+    $rooted_selector = stylobate-to-selector($this, $this.selector)
+    if $rooted_selector == $root_selector
+      $selector = '/' + stylobate-selector($this, '__' + $element)
+    else
+      $selector = '/' + stylobate-selector($this, replace('ROOT', '__' + $element, $rooted_selector))
+
+  // FIXME: not the best way -_-
+  if $substitute_selector
+    $selector = '/' + stylobate-selector($this, $substitute_selector)
+
+  rules()
+    {block}
+
+  rules() unless $selector or $only_optional
+  {$selector}
+    rules() if $selector

@@ -1,77 +1,72 @@
 .limey {
-  background: #0F0;
+  background: #0f0;
 }
 
 .whitey {
-  color: #FFF;
+  color: #fff;
 }
 
 .whitey-subbar {
-  padding-left: 10px;
-
   background: #000;
+  padding-left: 10px;
 }
 
-.mergey,
-.oneparamey {
-  color: #FFF;
-
-  background: #0F0;
+.mergey {
+  background: #0f0;
+  color: #fff;
 }
 
 .oneparamey {
-  overflow: hidden;
-
+  background: #0f0;
   width: 10px;
+  overflow: hidden;
+  color: #fff;
   height: 10px;
 }
 
 .lolly {
+  background: #f00;
   content: "OLOLO";
-
-  background: red;
 }
 
-.limey-namespacey,
-.multiparamey {
-  background: #0F0;
+.limey-namespacey {
+  background: #0f0;
 }
 
 .multiparamey {
+  background: #0f0;
   width: 10px;
+  color: #fff;
   height: 10px;
-
-  color: #FFF;
 }
 
 .multiparamey-lol {
+  background: #f00;
   padding-left: 10px;
-
-  background: red;
 }
 
 .multiparamey:before {
   content: "";
-
   width: 10px;
 }
 
 .the-base {
-  position: absolute;
-
-  overflow: hidden;
-
   width: 10px;
+  position: absolute;
+  overflow: hidden;
 }
 
 .the-base:hover > .the-base-subitem {
-  background: #0F0;
+  background: #0f0;
 }
 
-.the-base-subitem,
+.the-base-subitem {
+  height: 20px;
+  text-align: justify;
+}
+
 .the-base_modified-subitem {
   height: 20px;
-
   text-align: justify;
 }
 
@@ -81,24 +76,24 @@
 }
 
 .the-extended:hover > .the-extended-subitem {
-  background: red;
+  background: #f00;
 }
 
 .the-extended-subitem {
   padding: 90px;
 }
 
-.the-extended + .the-extended,
-.the-extended2 {
+.the-extended+.the-extended {
   position: absolute;
 }
 
 .the-extended2 {
   width: 10px;
+  position: absolute;
 }
 
 .the-extended2:hover > .the-extended2-subitem {
-  background: red;
+  background: #f00;
 }
 
 .the-extended2-subitem {
@@ -117,23 +112,11 @@
   padding: 190px;
 }
 
-body .pysh {
-  width: 10px;
-}
-
-body a.pysh.lol {
-  height: 10px;
-}
-
-body input:checked + .pysh {
-  width: 20px;
-}
-
 .superlink {
   cursor: pointer;
+  color: #00f;
   text-decoration: none;
-
-  color: #FFF;
+  color: #fff;
 }
 
 .superlink.is-hovered {
@@ -146,7 +129,7 @@ body input:checked + .pysh {
 
 .extended-disabled {
   cursor: default !important;
+  opacity: 0.5;
   pointer-events: none;
-
   opacity: 0.75;
 }

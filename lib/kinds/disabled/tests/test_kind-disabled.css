@@ -1,8 +1,7 @@
 .is-disabled {
   cursor: default !important;
-  pointer-events: none;
-
   opacity: 0.5;
+  pointer-events: none;
 }
 
 .is-disabled .is-disabled {
@@ -11,9 +10,8 @@
 
 .is-slightly-disabled {
   cursor: default !important;
-  pointer-events: none;
-
   opacity: 0.75;
+  pointer-events: none;
 }
 
 .is-slightly-disabled .is-slightly-disabled {
@@ -21,13 +19,13 @@
 }
 
 .is-fully-disabled {
+  cursor: default !important;
+  opacity: 0.5;
   pointer-events: none;
 }
 
-.is-fully-disabled,
 .is-disabled-with-events {
   cursor: default !important;
-
   opacity: 0.5;
 }
 

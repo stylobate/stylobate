@@ -1,27 +1,22 @@
 ol,
 article,
 .list {
+  margin: 0;
   padding: 0;
   border: 0;
-  margin: 0;
-
-  vertical-align: baseline;
-
-  font: inherit;
   font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 .btn,
 button {
   padding: 0;
-  border: none;
   margin: 0;
-
-  font: inherit;
-
+  border: none;
   background: transparent;
-
   -moz-appearance: none;
+  font: inherit;
 }
 
 .btn::-moz-focus-inner,
@@ -29,4 +24,3 @@ button::-moz-focus-inner {
   padding: 0;
   border: none;
 }
-

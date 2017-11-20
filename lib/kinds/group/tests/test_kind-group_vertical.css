@@ -8,8 +8,8 @@
 .radiogroup__item:last-child:not(:only-child),
 .radiogroup > .complex-button:last-child:not(:only-child) > .complex-button-inner,
 .radiogroup > .complex-button:last-child:not(:only-child) > .complex-button-inner:before {
-  border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
 }
 
 .radiogroup__item:not(:first-child):not(:last-child),
@@ -21,9 +21,7 @@
 
 .radiogroup {
   position: relative;
-
   display: inline-block;
-
   vertical-align: top;
   white-space: nowrap;
 }
@@ -36,4 +34,3 @@
 .radiogroup > .complex-button:not(:first-child):not(:last-child) > .complex-button-inner:before {
   border-radius: 0 !important;
 }
-

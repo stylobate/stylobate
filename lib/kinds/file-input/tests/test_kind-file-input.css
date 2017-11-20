@@ -1,28 +1,22 @@
 .file-input,
 .file-input-for-button {
   position: relative;
-
   display: inline-block;
-  overflow: hidden;
-
   vertical-align: top;
+  overflow: hidden;
 }
 
 .file-input-controller,
 .file-input-for-button-controller {
-  position: absolute;
   z-index: 10;
+  position: absolute;
   right: 0;
   bottom: 0;
-
   min-width: 100%;
   padding: 0;
   margin: 0;
-
   cursor: pointer;
-
   font-size: 500px;
-
   opacity: 0;
 }
 
@@ -30,4 +24,3 @@
   padding: 6px;
   margin: -6px;
 }
-

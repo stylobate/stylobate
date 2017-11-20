@@ -2,7 +2,11 @@
   kind: button
 
 .button-with-no-reset
-  kind: button no-reset
+  kind: button _reset('')
 
 .middle-button
-  kind: button middle
+  kind: button
+  vertical-align: middle
+
+.complex-button
+  kind: button __content('&-content') __text('&-text') __before('&-before') __after('&-after')

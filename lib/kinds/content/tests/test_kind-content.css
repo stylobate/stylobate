@@ -1,36 +1,31 @@
 .content {
-  padding: 0;
+  padding: 0 0 0 0;
 }
 
 .text-content {
-  padding: 0 1em;
+  padding: 0 1em 0 1em;
 }
 
 .text-content:before {
   content: "";
-
   display: table;
-
   margin-bottom: 1em;
 }
 
 .text-content:after {
   content: "";
-
   display: table;
   clear: both;
-
   margin-top: 1em;
 }
 
 .bottomed-content {
-  padding: 1rem 1rem 0;
+  padding: 0 1rem 0 1rem;
+  padding-top: 1rem;
 }
 
 .bottomed-content-helper {
   display: table;
   clear: both;
-
   margin-top: 1rem;
 }
-

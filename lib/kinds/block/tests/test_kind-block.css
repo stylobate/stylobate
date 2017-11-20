@@ -1,26 +1,23 @@
 .item {
   position: relative;
-
   display: block;
 }
 
 .item_static {
-  position: static;
-
+  position: relative;
   display: block;
+  position: static;
 }
 
 .list-item {
+  position: relative;
+  display: inline-block;
   vertical-align: top;
 }
 
-.list-item,
 .list-item_bottom {
   position: relative;
-
   display: inline-block;
-}
-
-.list-item_bottom {
+  vertical-align: top;
   vertical-align: bottom;
 }

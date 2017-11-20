@@ -21,9 +21,7 @@
 
 .radiogroup {
   position: relative;
-
   display: inline-block;
-
   vertical-align: top;
   white-space: nowrap;
 }
@@ -36,4 +34,3 @@
 .radiogroup > .complex-button:not(:first-child):not(:last-child) > .complex-button-inner:before {
   border-radius: 0 !important;
 }
-

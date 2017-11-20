@@ -6,13 +6,10 @@
 .ico-auto-image-size,
 .ico-image-sizeless {
   position: relative;
-
   display: inline-block;
-
-  margin-top: -0.2em;
-
+  vertical-align: top;
   vertical-align: middle;
-
+  margin-top: -0.2em;
   background: 50% no-repeat;
 }
 
@@ -27,37 +24,37 @@
 }
 
 .ico-replaced {
-  content: "";
+  padding: 0 10px 20px 0;
+}
 
+.ico-replaced {
+  content: "";
   width: 0;
   height: 0;
-  padding: 0 10px 20px 0;
 }
 
 .ico-with-image {
   width: 10px;
   height: 20px;
-
   background-image: url("lol.png");
 }
 
 .ico-auto-image-size {
   width: 19px;
   height: 19px;
+  background-image: url("test_kind-icon.png");
 }
 
-.ico-auto-image-size,
-.ico-image-sizeless,
-.ico_modifying {
+.ico-image-sizeless {
   background-image: url("test_kind-icon.png");
 }
 
 .ico_modifying {
   width: 19px;
   height: 19px;
+  background-image: url("test_kind-icon.png");
 }
 
 .ico-replaced_16px {
   padding: 0 16px 16px 0;
 }
-

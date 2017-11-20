@@ -1,0 +1,21 @@
+// Wrapper for params without prefixes
+//
+// Usage:
+//   _size()
+//     param_wrapper(arguments)
+//
+// Safe Usage:
+//   old_size = typeof(size) == 'function' ? size : null
+//   size()
+//     safe_param_wrapper(arguments, true)
+
+param-wrapper($args, $safe = false)
+  $param = called-from[0]
+  if !$safe or called-from[1] == 'skin'
+    unshift($args, $param)
+    return $args
+  else
+    if typeof(lookup('old_' + $param)) == 'function'
+      old_{$param}($args)
+    else
+      '%s(%s)' % ($param $args)

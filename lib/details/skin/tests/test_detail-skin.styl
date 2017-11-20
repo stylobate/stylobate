@@ -1,3 +1,5 @@
+$stylobate_options['warn_on_incorrect_notation'] = false
+
 skin-foo($this)
   background: lime
   if $this.params.baz
@@ -50,25 +52,23 @@ set-skin-namespace('')
 .multiparamey
   skin: foo baz, bar baz (-subbar '&-lol' red) (__lol '&:before')
 
+stylobate_defaults('skin-base', -subitem '&-defitem', _supermod)
 
 skin-base($this)
   width: 10px
-  &:hover > {$this.elements['-subitem'][0]}
+  &:hover > {$this.elements['subitem'][0]}
     if not $this.is_extended
       background: lime
     else
       background: red
 
-  stylobate_defaults($this, -subitem '&-defitem', _supermod)
-
 skin-base_supermod()
   position: absolute
 
+stylobate_defaults('skin-base-subitem', -subsub)
+
 skin-base-subitem($this)
   height: 20px
-
-  // stylobate_defaults(arguments, -subitem-subsub) — works
-  stylobate_defaults($this, -subsub)
 
 skin-base-subitem-subsub()
   text-align: justify
@@ -107,24 +107,12 @@ skin-extended2-newsub()
 .the-extended2_modified
   skin: extended2_ (-subitem '&-subitem') _mod
 
-skin-contextual()
-  width: 10px
-
-skin-contextual_checked()
-  width: 20px
-
-skin-contextual-link()
-  height: 10px
-
-.pysh
-  skin: contextual (context 'body &') (-link 'a&.lol') (_checked 'input:checked + &')
-
 stylobate_extends('skin-superlink', 'kind-link', false)
+
+stylobate_defaults('skin-superlink', _hover '&.is-hovered')
 
 skin-superlink($this)
   color: #FFF
-
-  stylobate_new_defaults($this, _hover '&.is-hovered')
 
 skin-superlink_hover()
   color: #000
@@ -133,7 +121,7 @@ $normal-link
   kind: link (_underline '&-inner')
 
 .superlink
-  skin: superlink (_underline '&-inner')
+  skin: superlink (--underline '&-inner')
 
 stylobate_extends(skin-disabled, kind-disabled, false)
 
